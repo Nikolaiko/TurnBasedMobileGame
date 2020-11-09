@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:turn_based_game/login/states/login_screen_state.dart';
+
+class LoginInputWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    LoginScreenState state = Provider.of<LoginScreenState>(context);
+
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 32),
+        child: Column(                
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                labelText: "Name",
+                hintText: "Enter user name"
+              ),
+              onChanged: (String value) => state.setName(value)
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: "Name",
+                hintText: "Enter user name"
+              ),
+              onChanged: (String value) => state.setPassword(value)
+            ),
+            FlatButton(
+              color: Colors.blue,              
+              onPressed: ((!state.loginButtonEnabled) ? null : (){ _sendLoginRequest(state); } ), 
+              child: Text("Login")
+            )
+          ]
+        )
+      );
+  }
+
+  void _sendLoginRequest(LoginScreenState state) {
+    state.tryLogin();
+  }
+}
