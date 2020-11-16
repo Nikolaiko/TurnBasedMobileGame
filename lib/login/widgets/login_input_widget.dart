@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turn_based_game/login/states/login_screen_state.dart';
+import 'package:turn_based_game/register/register_screen.dart';
 
 class LoginInputWidget extends StatelessWidget {
   @override
@@ -33,7 +34,7 @@ class LoginInputWidget extends StatelessWidget {
             ),
             FlatButton(
               color: Colors.blue,              
-              onPressed: ((!state.loginButtonEnabled) ? null : (){ _sendLoginRequest(state); } ), 
+              onPressed: () { _openRegisterScreen(context); }, 
               child: Text("Register")
             )
           ]
@@ -44,4 +45,11 @@ class LoginInputWidget extends StatelessWidget {
   void _sendLoginRequest(LoginScreenState state) {
     state.tryLogin();
   }
+
+  void _openRegisterScreen(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (BuildContext context) => RegisterScreen())
+    );    
+  }
+
 }
