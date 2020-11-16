@@ -30,6 +30,11 @@ class LoginInputWidget extends StatelessWidget {
               color: Colors.blue,              
               onPressed: ((!state.loginButtonEnabled) ? null : (){ _sendLoginRequest(state); } ), 
               child: Text("Login")
+            ),
+            FlatButton(
+              color: Colors.blue,              
+              onPressed: ((!state.loginButtonEnabled) ? null : (){ _sendLoginRequest(state); } ), 
+              child: Text("Register")
             )
           ]
         )
