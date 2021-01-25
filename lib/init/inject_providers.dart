@@ -10,7 +10,7 @@ class InjectProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthState>(
+        ChangeNotifierProvider<AuthState>(          
           create: (context) => AuthState()
         ),
         Provider(

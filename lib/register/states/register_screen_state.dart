@@ -13,7 +13,7 @@ class RegisterScreenState with ChangeNotifier {
 
   String get name => _name;
   String get password => _password;
-  bool get loginButtonEnabled => _dataIsValid() && !_requestInProgress;
+  bool get registerButtonEnabled => _dataIsValid() && !_requestInProgress;
   bool get requestInProgress => _requestInProgress;
 
   RegisterScreenState(
@@ -31,7 +31,7 @@ class RegisterScreenState with ChangeNotifier {
     notifyListeners();
   }
 
-  void tryLogin() {    
+  void tryRegister() {    
     _requestInProgress = true;
     notifyListeners();
 
