@@ -11,7 +11,7 @@ T _$identity<T>(T value) => value;
 UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType'] as String) {
     case 'default':
-      return _UserProfile.fromJson(json);
+      return LoggedUser.fromJson(json);
     case 'notLoggedIn':
       return NotLoggedUser.fromJson(json);
     case 'initialUser':
@@ -27,8 +27,8 @@ class _$UserProfileTearOff {
   const _$UserProfileTearOff();
 
 // ignore: unused_element
-  _UserProfile call(String id, String name, String password) {
-    return _UserProfile(
+  LoggedUser call(String id, String name, String password) {
+    return LoggedUser(
       id,
       name,
       password,
@@ -72,13 +72,13 @@ mixin _$UserProfile {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     @required TResult notLoggedIn(NotLoggedUser value),
     @required TResult initialUser(InitialUser value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     TResult notLoggedIn(NotLoggedUser value),
     TResult initialUser(InitialUser value),
     @required TResult orElse(),
@@ -103,22 +103,21 @@ class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserProfileCopyWith<$Res> {
-  factory _$UserProfileCopyWith(
-          _UserProfile value, $Res Function(_UserProfile) then) =
-      __$UserProfileCopyWithImpl<$Res>;
+abstract class $LoggedUserCopyWith<$Res> {
+  factory $LoggedUserCopyWith(
+          LoggedUser value, $Res Function(LoggedUser) then) =
+      _$LoggedUserCopyWithImpl<$Res>;
   $Res call({String id, String name, String password});
 }
 
 /// @nodoc
-class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
-    implements _$UserProfileCopyWith<$Res> {
-  __$UserProfileCopyWithImpl(
-      _UserProfile _value, $Res Function(_UserProfile) _then)
-      : super(_value, (v) => _then(v as _UserProfile));
+class _$LoggedUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
+    implements $LoggedUserCopyWith<$Res> {
+  _$LoggedUserCopyWithImpl(LoggedUser _value, $Res Function(LoggedUser) _then)
+      : super(_value, (v) => _then(v as LoggedUser));
 
   @override
-  _UserProfile get _value => super._value as _UserProfile;
+  LoggedUser get _value => super._value as LoggedUser;
 
   @override
   $Res call({
@@ -126,7 +125,7 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
     Object name = freezed,
     Object password = freezed,
   }) {
-    return _then(_UserProfile(
+    return _then(LoggedUser(
       id == freezed ? _value.id : id as String,
       name == freezed ? _value.name : name as String,
       password == freezed ? _value.password : password as String,
@@ -137,14 +136,14 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_UserProfile implements _UserProfile {
-  const _$_UserProfile(this.id, this.name, this.password)
+class _$LoggedUser implements LoggedUser {
+  const _$LoggedUser(this.id, this.name, this.password)
       : assert(id != null),
         assert(name != null),
         assert(password != null);
 
-  factory _$_UserProfile.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserProfileFromJson(json);
+  factory _$LoggedUser.fromJson(Map<String, dynamic> json) =>
+      _$_$LoggedUserFromJson(json);
 
   @override
   final String id;
@@ -161,7 +160,7 @@ class _$_UserProfile implements _UserProfile {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserProfile &&
+        (other is LoggedUser &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
@@ -180,8 +179,8 @@ class _$_UserProfile implements _UserProfile {
 
   @JsonKey(ignore: true)
   @override
-  _$UserProfileCopyWith<_UserProfile> get copyWith =>
-      __$UserProfileCopyWithImpl<_UserProfile>(this, _$identity);
+  $LoggedUserCopyWith<LoggedUser> get copyWith =>
+      _$LoggedUserCopyWithImpl<LoggedUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -214,7 +213,7 @@ class _$_UserProfile implements _UserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     @required TResult notLoggedIn(NotLoggedUser value),
     @required TResult initialUser(InitialUser value),
   }) {
@@ -227,7 +226,7 @@ class _$_UserProfile implements _UserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     TResult notLoggedIn(NotLoggedUser value),
     TResult initialUser(InitialUser value),
     @required TResult orElse(),
@@ -241,22 +240,22 @@ class _$_UserProfile implements _UserProfile {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserProfileToJson(this)..['runtimeType'] = 'default';
+    return _$_$LoggedUserToJson(this)..['runtimeType'] = 'default';
   }
 }
 
-abstract class _UserProfile implements UserProfile {
-  const factory _UserProfile(String id, String name, String password) =
-      _$_UserProfile;
+abstract class LoggedUser implements UserProfile {
+  const factory LoggedUser(String id, String name, String password) =
+      _$LoggedUser;
 
-  factory _UserProfile.fromJson(Map<String, dynamic> json) =
-      _$_UserProfile.fromJson;
+  factory LoggedUser.fromJson(Map<String, dynamic> json) =
+      _$LoggedUser.fromJson;
 
   String get id;
   String get name;
   String get password;
   @JsonKey(ignore: true)
-  _$UserProfileCopyWith<_UserProfile> get copyWith;
+  $LoggedUserCopyWith<LoggedUser> get copyWith;
 }
 
 /// @nodoc
@@ -330,7 +329,7 @@ class _$NotLoggedUser implements NotLoggedUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     @required TResult notLoggedIn(NotLoggedUser value),
     @required TResult initialUser(InitialUser value),
   }) {
@@ -343,7 +342,7 @@ class _$NotLoggedUser implements NotLoggedUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     TResult notLoggedIn(NotLoggedUser value),
     TResult initialUser(InitialUser value),
     @required TResult orElse(),
@@ -439,7 +438,7 @@ class _$InitialUser implements InitialUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     @required TResult notLoggedIn(NotLoggedUser value),
     @required TResult initialUser(InitialUser value),
   }) {
@@ -452,7 +451,7 @@ class _$InitialUser implements InitialUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>(
-    TResult $default(_UserProfile value), {
+    TResult $default(LoggedUser value), {
     TResult notLoggedIn(NotLoggedUser value),
     TResult initialUser(InitialUser value),
     @required TResult orElse(),

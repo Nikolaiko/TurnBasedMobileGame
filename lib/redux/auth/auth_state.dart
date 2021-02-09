@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:turn_based_game/model/user_profile.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
+
 
 part 'auth_state.freezed.dart';
 

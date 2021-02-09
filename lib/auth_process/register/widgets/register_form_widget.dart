@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:turn_based_game/register/states/register_screen_state.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    RegisterScreenState _state = Provider.of<RegisterScreenState>(context);
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 32),
       child: Column(
@@ -18,7 +14,7 @@ class RegisterFormWidget extends StatelessWidget {
               hintText: "Enter user name",
               filled: true
             ),
-            onChanged: (String value) => _state.setName(value)
+            onChanged: (String value) => { }
           ),
           TextField(
             decoration: InputDecoration(
@@ -27,12 +23,12 @@ class RegisterFormWidget extends StatelessWidget {
               filled: true
             ),
             obscureText: true,
-            onChanged: (String value) => _state.setPassword(value)
+            onChanged: (String value) => { }
           ),
           ButtonBar(
             children: [
               RaisedButton(                
-                onPressed: ((!_state.registerButtonEnabled) ? null : (){ _sendRegisterRequest(_state); } ), 
+                onPressed: null, 
                 child: Text("Register")
               ),
               FlatButton(                
@@ -44,9 +40,5 @@ class RegisterFormWidget extends StatelessWidget {
         ]
       )
     );
-  }
-
-  void _sendRegisterRequest(RegisterScreenState state) {
-    state.tryRegister();
-  }
+  }  
 }

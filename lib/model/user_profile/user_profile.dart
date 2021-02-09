@@ -5,7 +5,7 @@ part 'user_profile.g.dart';
 
 @freezed
 abstract class UserProfile with _$UserProfile {
-  const factory UserProfile(String id, String name, String password) = _UserProfile;
+  const factory UserProfile(String id, String name, String password) = LoggedUser;
   const factory UserProfile.notLoggedIn() = NotLoggedUser;
   const factory UserProfile.initialUser() = InitialUser;
 

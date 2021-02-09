@@ -1,7 +1,11 @@
-import 'package:turn_based_game/model/user_profile.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
 
-class LoginAction {
+class LogUserInAction {
   final UserProfile userToLogin;
 
-  LoginAction(this.userToLogin);
+  LogUserInAction(this.userToLogin);
+}
+
+class SetNotLoggedInAction {
+  final UserProfile notLoggedInUser = NotLoggedUser();  
 }

@@ -6,15 +6,15 @@ part of 'user_profile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserProfile _$_$_UserProfileFromJson(Map<String, dynamic> json) {
-  return _$_UserProfile(
+_$LoggedUser _$_$LoggedUserFromJson(Map<String, dynamic> json) {
+  return _$LoggedUser(
     json['id'] as String,
     json['name'] as String,
     json['password'] as String,
   );
 }
 
-Map<String, dynamic> _$_$_UserProfileToJson(_$_UserProfile instance) =>
+Map<String, dynamic> _$_$LoggedUserToJson(_$LoggedUser instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

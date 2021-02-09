@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:turn_based_game/model/user_profile.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
 
 import 'dart:convert';
 
