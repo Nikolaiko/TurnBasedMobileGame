@@ -5,7 +5,7 @@ part 'auth_state.freezed.dart';
 
 @freezed
 abstract class AuthState with _$AuthState {
-  static const initState = AuthState(NotLoggedUser());
+  static const initState = AuthState(InitialUser());
 
   const factory AuthState(UserProfile user) = _AuthState;
 }

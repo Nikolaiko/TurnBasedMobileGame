@@ -8,6 +8,19 @@ part of 'user_profile.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType'] as String) {
+    case 'default':
+      return _UserProfile.fromJson(json);
+    case 'notLoggedIn':
+      return NotLoggedUser.fromJson(json);
+    case 'initialUser':
+      return InitialUser.fromJson(json);
+
+    default:
+      throw FallThroughError();
+  }
+}
 
 /// @nodoc
 class _$UserProfileTearOff {
@@ -26,6 +39,16 @@ class _$UserProfileTearOff {
   NotLoggedUser notLoggedIn() {
     return const NotLoggedUser();
   }
+
+// ignore: unused_element
+  InitialUser initialUser() {
+    return const InitialUser();
+  }
+
+// ignore: unused_element
+  UserProfile fromJson(Map<String, Object> json) {
+    return UserProfile.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -38,24 +61,29 @@ mixin _$UserProfile {
   TResult when<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     @required TResult notLoggedIn(),
+    @required TResult initialUser(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     TResult notLoggedIn(),
+    TResult initialUser(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>(
     TResult $default(_UserProfile value), {
     @required TResult notLoggedIn(NotLoggedUser value),
+    @required TResult initialUser(InitialUser value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>(
     TResult $default(_UserProfile value), {
     TResult notLoggedIn(NotLoggedUser value),
+    TResult initialUser(InitialUser value),
     @required TResult orElse(),
   });
+  Map<String, dynamic> toJson();
 }
 
 /// @nodoc
@@ -106,12 +134,17 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_UserProfile implements _UserProfile {
   const _$_UserProfile(this.id, this.name, this.password)
       : assert(id != null),
         assert(name != null),
         assert(password != null);
+
+  factory _$_UserProfile.fromJson(Map<String, dynamic> json) =>
+      _$_$_UserProfileFromJson(json);
 
   @override
   final String id;
@@ -155,9 +188,11 @@ class _$_UserProfile implements _UserProfile {
   TResult when<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     @required TResult notLoggedIn(),
+    @required TResult initialUser(),
   }) {
     assert($default != null);
     assert(notLoggedIn != null);
+    assert(initialUser != null);
     return $default(id, name, password);
   }
 
@@ -166,6 +201,7 @@ class _$_UserProfile implements _UserProfile {
   TResult maybeWhen<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     TResult notLoggedIn(),
+    TResult initialUser(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -180,9 +216,11 @@ class _$_UserProfile implements _UserProfile {
   TResult map<TResult extends Object>(
     TResult $default(_UserProfile value), {
     @required TResult notLoggedIn(NotLoggedUser value),
+    @required TResult initialUser(InitialUser value),
   }) {
     assert($default != null);
     assert(notLoggedIn != null);
+    assert(initialUser != null);
     return $default(this);
   }
 
@@ -191,6 +229,7 @@ class _$_UserProfile implements _UserProfile {
   TResult maybeMap<TResult extends Object>(
     TResult $default(_UserProfile value), {
     TResult notLoggedIn(NotLoggedUser value),
+    TResult initialUser(InitialUser value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -199,11 +238,19 @@ class _$_UserProfile implements _UserProfile {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_UserProfileToJson(this)..['runtimeType'] = 'default';
+  }
 }
 
 abstract class _UserProfile implements UserProfile {
   const factory _UserProfile(String id, String name, String password) =
       _$_UserProfile;
+
+  factory _UserProfile.fromJson(Map<String, dynamic> json) =
+      _$_UserProfile.fromJson;
 
   String get id;
   String get name;
@@ -230,9 +277,14 @@ class _$NotLoggedUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
   NotLoggedUser get _value => super._value as NotLoggedUser;
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$NotLoggedUser implements NotLoggedUser {
   const _$NotLoggedUser();
+
+  factory _$NotLoggedUser.fromJson(Map<String, dynamic> json) =>
+      _$_$NotLoggedUserFromJson(json);
 
   @override
   String toString() {
@@ -252,9 +304,11 @@ class _$NotLoggedUser implements NotLoggedUser {
   TResult when<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     @required TResult notLoggedIn(),
+    @required TResult initialUser(),
   }) {
     assert($default != null);
     assert(notLoggedIn != null);
+    assert(initialUser != null);
     return notLoggedIn();
   }
 
@@ -263,6 +317,7 @@ class _$NotLoggedUser implements NotLoggedUser {
   TResult maybeWhen<TResult extends Object>(
     TResult $default(String id, String name, String password), {
     TResult notLoggedIn(),
+    TResult initialUser(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -277,9 +332,11 @@ class _$NotLoggedUser implements NotLoggedUser {
   TResult map<TResult extends Object>(
     TResult $default(_UserProfile value), {
     @required TResult notLoggedIn(NotLoggedUser value),
+    @required TResult initialUser(InitialUser value),
   }) {
     assert($default != null);
     assert(notLoggedIn != null);
+    assert(initialUser != null);
     return notLoggedIn(this);
   }
 
@@ -288,6 +345,7 @@ class _$NotLoggedUser implements NotLoggedUser {
   TResult maybeMap<TResult extends Object>(
     TResult $default(_UserProfile value), {
     TResult notLoggedIn(NotLoggedUser value),
+    TResult initialUser(InitialUser value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -296,8 +354,125 @@ class _$NotLoggedUser implements NotLoggedUser {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$NotLoggedUserToJson(this)..['runtimeType'] = 'notLoggedIn';
+  }
 }
 
 abstract class NotLoggedUser implements UserProfile {
   const factory NotLoggedUser() = _$NotLoggedUser;
+
+  factory NotLoggedUser.fromJson(Map<String, dynamic> json) =
+      _$NotLoggedUser.fromJson;
+}
+
+/// @nodoc
+abstract class $InitialUserCopyWith<$Res> {
+  factory $InitialUserCopyWith(
+          InitialUser value, $Res Function(InitialUser) then) =
+      _$InitialUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InitialUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
+    implements $InitialUserCopyWith<$Res> {
+  _$InitialUserCopyWithImpl(
+      InitialUser _value, $Res Function(InitialUser) _then)
+      : super(_value, (v) => _then(v as InitialUser));
+
+  @override
+  InitialUser get _value => super._value as InitialUser;
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$InitialUser implements InitialUser {
+  const _$InitialUser();
+
+  factory _$InitialUser.fromJson(Map<String, dynamic> json) =>
+      _$_$InitialUserFromJson(json);
+
+  @override
+  String toString() {
+    return 'UserProfile.initialUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InitialUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>(
+    TResult $default(String id, String name, String password), {
+    @required TResult notLoggedIn(),
+    @required TResult initialUser(),
+  }) {
+    assert($default != null);
+    assert(notLoggedIn != null);
+    assert(initialUser != null);
+    return initialUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String id, String name, String password), {
+    TResult notLoggedIn(),
+    TResult initialUser(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialUser != null) {
+      return initialUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>(
+    TResult $default(_UserProfile value), {
+    @required TResult notLoggedIn(NotLoggedUser value),
+    @required TResult initialUser(InitialUser value),
+  }) {
+    assert($default != null);
+    assert(notLoggedIn != null);
+    assert(initialUser != null);
+    return initialUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_UserProfile value), {
+    TResult notLoggedIn(NotLoggedUser value),
+    TResult initialUser(InitialUser value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialUser != null) {
+      return initialUser(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$InitialUserToJson(this)..['runtimeType'] = 'initialUser';
+  }
+}
+
+abstract class InitialUser implements UserProfile {
+  const factory InitialUser() = _$InitialUser;
+
+  factory InitialUser.fromJson(Map<String, dynamic> json) =
+      _$InitialUser.fromJson;
 }

@@ -1,11 +1,12 @@
+import 'package:turn_based_game/redux/auth/auth_action.dart';
 import 'package:turn_based_game/redux/auth/auth_state.dart';
 
 import 'package:redux/redux.dart';
 
 final authReducer = combineReducers<AuthState>([
-  TypedReducer<AuthState, SetFavorites>(_setFavorites),
+  TypedReducer<AuthState, LoginAction>(_tryToLogin),
 ]);
 
-AuthState _setFavorites(FavoritesState state, SetFavorites action) {
-  return state.copyWith(favoritesMap: action.favorites);
+AuthState _tryToLogin(AuthState state, LoginAction action) {
+  return state;
 }
