@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LoginFormWidget extends StatelessWidget {
+class LoginFormWidget extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {    
+  _LoginFormWidgetState createState() => _LoginFormWidgetState();
+}
+
+class _LoginFormWidgetState extends State<LoginFormWidget> {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 32),
         child: Column(                
