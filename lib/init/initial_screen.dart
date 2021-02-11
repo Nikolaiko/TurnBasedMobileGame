@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:turn_based_game/auth_process/login/login_screen_widget.dart';
+import 'package:turn_based_game/auth_process/login_screen_widget.dart';
+import 'package:turn_based_game/game_screens/main_screen.dart';
 import 'package:turn_based_game/init/initial_loading_screen.dart';
 import 'package:turn_based_game/redux/app_state.dart';
 import 'package:turn_based_game/redux/auth/auth_view_model.dart';
@@ -26,7 +27,7 @@ class InitialScreenWidget extends StatelessWidget {
       },
       builder: (context, viewModel) => viewModel.when(
         init: () => InitialLoadingScreen(), 
-        logged: () => LoginScreenWidget(), 
+        logged: () => MainScreen(), 
         notLogged: () => LoginScreenWidget()
       )
     );

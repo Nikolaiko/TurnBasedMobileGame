@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:turn_based_game/auth_process/consts/auth_process_routes.dart';
-import 'package:turn_based_game/auth_process/login/widgets/login_form_widget.dart';
-import 'package:turn_based_game/auth_process/register/widgets/register_form_widget.dart';
+import 'package:turn_based_game/auth_process/widgets/login_form_widget.dart';
+import 'package:turn_based_game/auth_process/widgets/register_form_widget.dart';
+import 'package:turn_based_game/service_screens/unknown_route_screen.dart';
 
 class AuthNavigator extends StatelessWidget {
   @override
@@ -47,7 +48,7 @@ class AuthNavigator extends StatelessWidget {
         route = PageRouteBuilder(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
-                UnknownRouteScreen(),
+                UknownRouteScreen(),
             transitionsBuilder: _buildTransition
         );
         break;
