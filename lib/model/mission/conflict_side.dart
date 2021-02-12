@@ -1,0 +1,4 @@
+enum ConflictSide {
+  player,
+  enemy
+}

@@ -14,8 +14,8 @@ class InitialScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, AuthViewModel>(      
-      converter: (Store<AppState> store) {
-        print(store.state.authState.user);
+      distinct: true,
+      converter: (Store<AppState> store) {        
         return store.state.authState.user.when(
           (id, name, password) => AuthViewModel.logged(), 
           notLoggedIn: () => AuthViewModel.notLogged(), 
