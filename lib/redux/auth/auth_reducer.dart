@@ -1,7 +1,6 @@
+import 'package:redux/redux.dart';
 import 'package:turn_based_game/redux/auth/auth_action.dart';
 import 'package:turn_based_game/redux/auth/auth_state.dart';
-
-import 'package:redux/redux.dart';
 
 final authReducer = combineReducers<AuthState>([
   TypedReducer<AuthState, LogUserInAction>(_tryToLogin),
@@ -9,11 +8,11 @@ final authReducer = combineReducers<AuthState>([
 ]);
 
 AuthState _setNotLoggedInUser(AuthState state, SetNotLoggedInAction action) {
-  print("Setting not login in");
+  print("Setting not logged in");
   return AuthState(action.notLoggedInUser);
 }
 
 AuthState _tryToLogin(AuthState state, LogUserInAction action) {
-  print("Log user in");
+  print("Setting userToLogin");
   return AuthState(action.userToLogin);
 }
