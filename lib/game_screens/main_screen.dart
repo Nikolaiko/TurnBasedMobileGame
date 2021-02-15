@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turn_based_game/game_screens/mission_screen.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -9,7 +10,15 @@ class MainScreen extends StatelessWidget {
           children: [
             RaisedButton(
               child: Text("Start game", style: TextStyle(color: Colors.red)),
-              onPressed: null
+              onPressed: () {
+                Navigator.push(context, 
+                  MaterialPageRoute(
+                    builder: (routerContext) {
+                      return MissionScreen();
+                    }
+                  )
+                );
+              }
             )
           ]      
         ),
