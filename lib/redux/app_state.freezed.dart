@@ -14,9 +14,10 @@ class _$AppStateTearOff {
   const _$AppStateTearOff();
 
 // ignore: unused_element
-  _AppState call(AuthState authState) {
+  _AppState call(AuthState authState, MissionState missionState) {
     return _AppState(
       authState,
+      missionState,
     );
   }
 }
@@ -28,6 +29,7 @@ const $AppState = _$AppStateTearOff();
 /// @nodoc
 mixin _$AppState {
   AuthState get authState;
+  MissionState get missionState;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith;
@@ -37,9 +39,10 @@ mixin _$AppState {
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res>;
-  $Res call({AuthState authState});
+  $Res call({AuthState authState, MissionState missionState});
 
   $AuthStateCopyWith<$Res> get authState;
+  $MissionStateCopyWith<$Res> get missionState;
 }
 
 /// @nodoc
@@ -53,10 +56,14 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $Res call({
     Object authState = freezed,
+    Object missionState = freezed,
   }) {
     return _then(_value.copyWith(
       authState:
           authState == freezed ? _value.authState : authState as AuthState,
+      missionState: missionState == freezed
+          ? _value.missionState
+          : missionState as MissionState,
     ));
   }
 
@@ -69,6 +76,16 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
       return _then(_value.copyWith(authState: value));
     });
   }
+
+  @override
+  $MissionStateCopyWith<$Res> get missionState {
+    if (_value.missionState == null) {
+      return null;
+    }
+    return $MissionStateCopyWith<$Res>(_value.missionState, (value) {
+      return _then(_value.copyWith(missionState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -76,10 +93,12 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   factory _$AppStateCopyWith(_AppState value, $Res Function(_AppState) then) =
       __$AppStateCopyWithImpl<$Res>;
   @override
-  $Res call({AuthState authState});
+  $Res call({AuthState authState, MissionState missionState});
 
   @override
   $AuthStateCopyWith<$Res> get authState;
+  @override
+  $MissionStateCopyWith<$Res> get missionState;
 }
 
 /// @nodoc
@@ -94,23 +113,31 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object authState = freezed,
+    Object missionState = freezed,
   }) {
     return _then(_AppState(
       authState == freezed ? _value.authState : authState as AuthState,
+      missionState == freezed
+          ? _value.missionState
+          : missionState as MissionState,
     ));
   }
 }
 
 /// @nodoc
 class _$_AppState implements _AppState {
-  const _$_AppState(this.authState) : assert(authState != null);
+  const _$_AppState(this.authState, this.missionState)
+      : assert(authState != null),
+        assert(missionState != null);
 
   @override
   final AuthState authState;
+  @override
+  final MissionState missionState;
 
   @override
   String toString() {
-    return 'AppState(authState: $authState)';
+    return 'AppState(authState: $authState, missionState: $missionState)';
   }
 
   @override
@@ -119,12 +146,17 @@ class _$_AppState implements _AppState {
         (other is _AppState &&
             (identical(other.authState, authState) ||
                 const DeepCollectionEquality()
-                    .equals(other.authState, authState)));
+                    .equals(other.authState, authState)) &&
+            (identical(other.missionState, missionState) ||
+                const DeepCollectionEquality()
+                    .equals(other.missionState, missionState)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(authState);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(authState) ^
+      const DeepCollectionEquality().hash(missionState);
 
   @JsonKey(ignore: true)
   @override
@@ -133,10 +165,13 @@ class _$_AppState implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState(AuthState authState) = _$_AppState;
+  const factory _AppState(AuthState authState, MissionState missionState) =
+      _$_AppState;
 
   @override
   AuthState get authState;
+  @override
+  MissionState get missionState;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith;

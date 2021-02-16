@@ -13,16 +13,12 @@ class InitialScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, AuthViewModel>(
       onInit: (store) => store.dispatch(OnLoggedUserCheck()),
-      converter: (store) {
-        print(store.state.authState.user);
-        return store.state.authState.user.when((id, name, password) {
-          print('converter logged');
+      converter: (store) {        
+        return store.state.authState.user.when((id, name, password) {          
           return AuthViewModel.logged();
-        }, notLoggedIn: () {
-          print('converter not logged');
+        }, notLoggedIn: () {          
           return AuthViewModel.notLogged();
-        }, initialUser: () {
-          print('converter init');
+        }, initialUser: () {          
           return AuthViewModel.init();
         });
       },

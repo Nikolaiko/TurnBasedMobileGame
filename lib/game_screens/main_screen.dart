@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/game_screens/mission_screen.dart';
+import 'package:turn_based_game/game_screens/mission/mission_screen.dart';
 
 class MainScreen extends StatelessWidget {
   @override
