@@ -10,11 +10,8 @@ class OnLoggedUserCheck extends BaseUserRepositoryThunk {
   @override
   Future<void> execute(
       Store<AppState> store, UserProfileRepository repository) async {
-    print('thunk exec');
-
-    UserProfile loggedUser =
-        repository.getLoggedUser(); // long comment to reach 80 symbols
-    // UserProfile('', '', ''); //
+    
+    UserProfile loggedUser = repository.getLoggedUser(); 
     loggedUser.maybeWhen(
       (id, name, password) => store.dispatch(LogUserInAction(loggedUser)),
       orElse: () => store.dispatch(SetNotLoggedInAction()),

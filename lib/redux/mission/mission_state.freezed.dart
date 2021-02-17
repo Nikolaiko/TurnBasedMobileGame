@@ -14,8 +14,7 @@ class _$MissionStateTearOff {
   const _$MissionStateTearOff();
 
 // ignore: unused_element
-  _MissionState call(
-      List<List<int>> missionMap, List<List<Unit>> missionUnits) {
+  _MissionState call(List<List<int>> missionMap, List<Unit> missionUnits) {
     return _MissionState(
       missionMap,
       missionUnits,
@@ -36,14 +35,12 @@ const $MissionState = _$MissionStateTearOff();
 mixin _$MissionState {
   @optionalTypeArgs
   TResult when<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     @required TResult notStarted(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     TResult notStarted(),
     @required TResult orElse(),
   });
@@ -81,7 +78,7 @@ abstract class _$MissionStateCopyWith<$Res> {
   factory _$MissionStateCopyWith(
           _MissionState value, $Res Function(_MissionState) then) =
       __$MissionStateCopyWithImpl<$Res>;
-  $Res call({List<List<int>> missionMap, List<List<Unit>> missionUnits});
+  $Res call({List<List<int>> missionMap, List<Unit> missionUnits});
 }
 
 /// @nodoc
@@ -103,7 +100,7 @@ class __$MissionStateCopyWithImpl<$Res> extends _$MissionStateCopyWithImpl<$Res>
       missionMap == freezed ? _value.missionMap : missionMap as List<List<int>>,
       missionUnits == freezed
           ? _value.missionUnits
-          : missionUnits as List<List<Unit>>,
+          : missionUnits as List<Unit>,
     ));
   }
 }
@@ -117,7 +114,7 @@ class _$_MissionState implements _MissionState {
   @override
   final List<List<int>> missionMap;
   @override
-  final List<List<Unit>> missionUnits;
+  final List<Unit> missionUnits;
 
   @override
   String toString() {
@@ -150,8 +147,7 @@ class _$_MissionState implements _MissionState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     @required TResult notStarted(),
   }) {
     assert($default != null);
@@ -162,8 +158,7 @@ class _$_MissionState implements _MissionState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     TResult notStarted(),
     @required TResult orElse(),
   }) {
@@ -202,11 +197,10 @@ class _$_MissionState implements _MissionState {
 
 abstract class _MissionState implements MissionState {
   const factory _MissionState(
-          List<List<int>> missionMap, List<List<Unit>> missionUnits) =
-      _$_MissionState;
+      List<List<int>> missionMap, List<Unit> missionUnits) = _$_MissionState;
 
   List<List<int>> get missionMap;
-  List<List<Unit>> get missionUnits;
+  List<Unit> get missionUnits;
   @JsonKey(ignore: true)
   _$MissionStateCopyWith<_MissionState> get copyWith;
 }
@@ -250,8 +244,7 @@ class _$MissionNotStarted implements MissionNotStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     @required TResult notStarted(),
   }) {
     assert($default != null);
@@ -262,8 +255,7 @@ class _$MissionNotStarted implements MissionNotStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>(
-    TResult $default(
-        List<List<int>> missionMap, List<List<Unit>> missionUnits), {
+    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
     TResult notStarted(),
     @required TResult orElse(),
   }) {

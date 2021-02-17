@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/game_screens/mission/mission_screen.dart';
+import 'package:turn_based_game/game_screens/mission/init_widgets/init_mission_widget.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class MainScreen extends StatelessWidget {
                 Navigator.push(context, 
                   MaterialPageRoute(
                     builder: (routerContext) {
-                      return MissionScreen();
+                      return InitMissionWidget();
                     }
                   )
                 );

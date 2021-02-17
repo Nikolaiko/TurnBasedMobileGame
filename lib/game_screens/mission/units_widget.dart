@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:turn_based_game/const/map_consts.dart';
+import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
+import 'package:turn_based_game/model/mission/unit.dart';
 
 class UnitsWidget extends StatefulWidget {
   @override
@@ -7,14 +10,14 @@ class UnitsWidget extends StatefulWidget {
 }
 
 class _UnitsWidgetState extends State<UnitsWidget> {  
-  int poleWidth = 20;
-  int poleHeight = 20;
+  GameState _state;
 
   @override
   Widget build(BuildContext context) {
+    _state = Provider.of<GameState>(context);
     return SizedBox(
-      width: MapConsts.TILE_SIDE * poleWidth,
-      height: MapConsts.TILE_SIDE * poleHeight,
+      width: MapConsts.TILE_SIDE * _state.missionMap.length,
+      height: MapConsts.TILE_SIDE * _state.missionMap.first.length,
       child: Stack(
         children: _buildUnitsStack()
       ),
@@ -23,32 +26,20 @@ class _UnitsWidgetState extends State<UnitsWidget> {
 
   List<Widget> _buildUnitsStack() {
     List<Widget> units = List();
-
-    units.add(
-      Positioned(
-        left: MapConsts.TILE_SIDE * 0,
-        top: MapConsts.TILE_SIDE * 0,
-        child: Image.asset(
-          "assets/images/mission/tank.png",
-          fit: BoxFit.contain,
-          width: MapConsts.TILE_SIDE,
-          height: MapConsts.TILE_SIDE
-        ),
-      )
-    );
-
-    units.add(
-      Positioned(
-        left: MapConsts.TILE_SIDE * 4,
-        top: MapConsts.TILE_SIDE * 6,
-        child: Image.asset(
-          "assets/images/mission/tank.png",
-          fit: BoxFit.contain,
-          width: MapConsts.TILE_SIDE,
-          height: MapConsts.TILE_SIDE
-        ),
-      )
-    );
+    for (Unit unit in _state.missionUnits) {
+      units.add(
+        Positioned(
+          left: MapConsts.TILE_SIDE * unit.column,
+          top: MapConsts.TILE_SIDE * unit.row,
+          child: Image.asset(
+            "assets/images/mission/tank.png",
+            fit: BoxFit.contain,
+            width: MapConsts.TILE_SIDE,
+            height: MapConsts.TILE_SIDE
+          ),
+        )
+      );  
+    }
 
     return units;
   }
