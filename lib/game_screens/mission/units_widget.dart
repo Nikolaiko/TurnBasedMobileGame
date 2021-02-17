@@ -15,9 +15,9 @@ class _UnitsWidgetState extends State<UnitsWidget> {
   @override
   Widget build(BuildContext context) {
     _state = Provider.of<GameState>(context);
-    return SizedBox(
-      width: MapConsts.TILE_SIDE * _state.missionMap.length,
-      height: MapConsts.TILE_SIDE * _state.missionMap.first.length,
+    return SizedBox(      
+      height: MapConsts.TILE_SIDE * _state.missionMap.length,
+      width: MapConsts.TILE_SIDE * _state.missionMap.first.length,
       child: Stack(
         children: _buildUnitsStack()
       ),
@@ -25,22 +25,27 @@ class _UnitsWidgetState extends State<UnitsWidget> {
   }
 
   List<Widget> _buildUnitsStack() {
-    List<Widget> units = List();
+    List<Widget> units = List();    
     for (Unit unit in _state.missionUnits) {
       units.add(
-        Positioned(
+        AnimatedPositioned(
+          duration: Duration(milliseconds: 300),
           left: MapConsts.TILE_SIDE * unit.column,
           top: MapConsts.TILE_SIDE * unit.row,
-          child: Image.asset(
-            "assets/images/mission/tank.png",
-            fit: BoxFit.contain,
-            width: MapConsts.TILE_SIDE,
-            height: MapConsts.TILE_SIDE
+          child: GestureDetector(
+            onTap: () {
+              _state.unitTap(unit);
+            },
+            child: Image.asset(
+              "assets/images/mission/soldier1.png",
+              fit: BoxFit.scaleDown,
+              width: MapConsts.TILE_SIDE,
+              height: MapConsts.TILE_SIDE
+            ),
           ),
         )
       );  
     }
-
     return units;
   }
 }

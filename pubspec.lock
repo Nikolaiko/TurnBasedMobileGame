@@ -359,13 +359,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-  orientation_helper:
-    dependency: "direct main"
-    description:
-      name: orientation_helper
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   package_config:
     dependency: transitive
     description:
@@ -553,6 +546,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.2"
+  spritewidget:
+    dependency: "direct main"
+    description:
+      name: spritewidget
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.24"
   stack_trace:
     dependency: transitive
     description:
@@ -660,4 +660,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.10.0 <2.11.0"
-  flutter: ">=1.17.0 <2.0.0"
+  flutter: ">=1.16.0 <2.0.0"

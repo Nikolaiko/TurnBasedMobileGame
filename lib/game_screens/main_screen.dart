@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:turn_based_game/game_screens/mission/init_widgets/init_mission_widget.dart';
+import 'package:turn_based_game/redux/app_state.dart';
+import 'package:turn_based_game/redux/auth/thunks/on_logout_user.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -18,6 +21,13 @@ class MainScreen extends StatelessWidget {
                     }
                   )
                 );
+              }
+            ),
+            RaisedButton(
+              child: Text("Logout", style: TextStyle(color: Colors.red)),
+              onPressed: () {
+                var store = StoreProvider.of<AppState>(context);
+                store.dispatch(OnLogoutUser());
               }
             )
           ]      

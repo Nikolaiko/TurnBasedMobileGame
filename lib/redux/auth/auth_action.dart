@@ -1,11 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:turn_based_game/model/user_profile/user_profile.dart';
 
-class LogUserInAction {
-  final UserProfile userToLogin;
+part 'auth_action.freezed.dart';
 
-  LogUserInAction(this.userToLogin);
-}
-
-class SetNotLoggedInAction {
-  final UserProfile notLoggedInUser = NotLoggedUser();  
+@freezed
+abstract class AuthAction with _$AuthAction {
+  const factory AuthAction.logUserIn(UserProfile userToLogin) = LogUserInAction;
+  const factory AuthAction.setNotLoggedInUser() = SetNotLoggedInAction;  
 }

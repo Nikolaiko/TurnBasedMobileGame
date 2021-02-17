@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:turn_based_game/game_screens/mission/game_pole_widget.dart';
-import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
+import 'package:turn_based_game/game_screens/mission/ui_tiles_widget.dart';
 import 'package:turn_based_game/game_screens/mission/units_widget.dart';
 
 class MissionScreen extends StatefulWidget {
@@ -24,7 +23,8 @@ class _MissionScreenState extends State<MissionScreen> {
             child: Stack(
               children: [
                 GamePoleWidget(),
-                UnitsWidget()
+                UnitsWidget(),
+                UITilesWidget()
               ]
             )
           ),

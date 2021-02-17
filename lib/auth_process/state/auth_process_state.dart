@@ -7,10 +7,12 @@ import 'package:turn_based_game/redux/app_state.dart';
 
 import 'package:redux/redux.dart';
 import 'package:turn_based_game/redux/auth/auth_action.dart';
+import 'package:turn_based_game/repositories/user_profile_repository.dart';
 
 class AuthProcessState with ChangeNotifier {
   final Store<AppState> _store;
   final NetworkService _networkService;
+  final UserProfileRepository _repository; 
 
   bool _isLoginLoading = false;
   bool get isLoginLoading => _isLoginLoading;
@@ -34,7 +36,8 @@ class AuthProcessState with ChangeNotifier {
 
   AuthProcessState(
     this._store,
-    this._networkService
+    this._networkService,
+    this._repository
   );
 
   void setUsername(String value) {
@@ -88,7 +91,8 @@ class AuthProcessState with ChangeNotifier {
     UserAuthData data = UserAuthData(_userName, _password);    
     NetworkResponse<UserProfile> response = await _networkService.loginUser(data);
 
-    if (response.success) {      
+    if (response.success) {     
+      _repository.setLoggedUser(response.result);  
       _store.dispatch(LogUserInAction(response.result));
     } else {
       _isLoginLoading = false;      
@@ -104,6 +108,7 @@ class AuthProcessState with ChangeNotifier {
     NetworkResponse<UserProfile> response = await _networkService.registerUser(data);
 
     if (response.success) {      
+      _repository.setLoggedUser(response.result);
       _store.dispatch(LogUserInAction(response.result));
     } else {
       _isRegisterLoading = false;      

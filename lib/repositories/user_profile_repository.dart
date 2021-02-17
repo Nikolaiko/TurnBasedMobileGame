@@ -28,6 +28,10 @@ class UserProfileRepository {
     return await _prefs.setString(_LOGGED_USER_KEY, stringJson);
   }
 
+  Future logoutUser() async {
+    return await _prefs.remove(_LOGGED_USER_KEY);
+  }
+
   Future initPrefs() async {
     _prefs = await SharedPreferences.getInstance();
   }

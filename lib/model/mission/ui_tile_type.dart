@@ -1,0 +1,4 @@
+enum UITileType {
+  empty,
+  checkmark
+}
