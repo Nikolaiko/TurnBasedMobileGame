@@ -31,15 +31,15 @@ class TurnLogicResolver {
 
   bool _isTileAvailable(int row, int column, List<Unit> unitsMap) {    
     return (
+      _isTileInsideMap(row, column) &&
       _map[row][column] != null && 
       _map[row][column] == MapConsts.TERRAIN_TILE && 
-      _isTileNotOccupied(row, column, unitsMap) &&
-      _isTileInsideMap(row, column)
+      _isTileNotOccupied(row, column, unitsMap)      
     );    
   }
 
   bool _isTileInsideMap(int row, int column) {
-    return (row > 0 && column > 0 && row < _map.length && column < _map.first.length);
+    return (row >= 0 && column >= 0 && row < _map.length && column < _map.first.length);
   }
 
   bool _isTileNotOccupied(int row, int column, List<Unit> unitsMap) {

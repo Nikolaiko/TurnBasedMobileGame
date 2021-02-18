@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -5,21 +6,25 @@ import 'package:turn_based_game/game_screens/mission/helpers/turn_logic_resolver
 import 'package:turn_based_game/model/mission/ui_tile.dart';
 import 'package:turn_based_game/model/mission/ui_tile_type.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
+import 'package:turn_based_game/model/mission/unit_action.dart';
 
 class GameState with ChangeNotifier {
-  Unit _selectedUnit;
+  final StreamController<UnitAction> _actionsStream = StreamController.broadcast();
 
-  TurnLogicResolver _logicResolver;
+  Unit _selectedUnit;
+  TurnLogicResolver _logicResolver;  
 
   List<List<int>> _missionMap;
   List<Unit> _missionUnits;
   List<UITile> _uiMap = List();
+  List<UnitAction> _currentActions = List();
 
   List<UITile> get uiMap => _uiMap;
   List<List<int>> get missionMap => _missionMap;
   List<Unit> get missionUnits => _missionUnits;  
+  Stream<UnitAction> get actionsStream => _actionsStream.stream;
 
-  GameState(this._missionMap, this._missionUnits) {
+  GameState(this._missionMap, this._missionUnits) {    
     _logicResolver = TurnLogicResolver(_missionMap);
   }
 
@@ -49,18 +54,41 @@ class GameState with ChangeNotifier {
 
       if (_tileIsAvailable(row, column)) {
         uiMap.clear();
+
+        UnitAction action = UnitAction.move(
+          _selectedUnit,
+          row,
+          column,
+          _selectedUnit.row,
+          _selectedUnit.column,
+        );        
+
         _selectedUnit.column = column;
         _selectedUnit.row = row;
         _selectedUnit = null;
+
         notifyListeners();
+        _actionsStream.add(action);        
       }      
     }
+  }
+
+  void actionDone() {
+    _actionsStream.add(UnitAction.empty());
   }
 
   bool _tileIsAvailable(int row, int column) {
     UITile selectedTile = _uiMap.firstWhere((uiTile) {
       return uiTile.column == column && uiTile.row == row;
+    }, orElse: () {
+      return null;
     });
     return selectedTile != null;
+  }
+
+  @override
+  void dispose() {
+    _actionsStream.close();
+    super.dispose();
   }
 }

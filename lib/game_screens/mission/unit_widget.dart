@@ -1,20 +1,59 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:turn_based_game/const/map_consts.dart';
 
 class UnitWidget extends StatefulWidget {
+  final bool run;
+  final bool flip;
+
+  UnitWidget({ this.run = false, this.flip = false });
+
+
   @override
   _UnitWidgetState createState() => _UnitWidgetState();
 }
 
-class _UnitWidgetState extends State<UnitWidget>  with TickerProviderStateMixin {
-
+class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderStateMixin {
+  Animation<double> _animation;
+  AnimationController _controller;
+  String frameNames;
   
+  @override
+  void initState() {
+    super.initState();
+    frameNames = widget.run ? "assets/images/mission/soldier_walk" : "assets/images/mission/soldier";
 
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 200),
+      vsync: this
+    );
+    _controller.repeat();
+    _animation = Tween<double>(begin: 1, end: 8).animate(_controller);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {        
+        return Transform(
+          alignment: Alignment.center,
+          transform: widget.flip ? Matrix4.rotationY(math.pi) : Matrix4.rotationY(0),
+          child: Image.asset(
+            "$frameNames${_animation.value.toInt()}.png",
+            fit: BoxFit.scaleDown,
+            width: MapConsts.TILE_SIDE,
+            height: MapConsts.TILE_SIDE,
+            gaplessPlayback: true,
+          ),
+        );
+      }
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
