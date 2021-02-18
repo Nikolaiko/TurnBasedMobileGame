@@ -28,7 +28,7 @@ class _UnitsWidgetState extends State<UnitsWidget> {
     List<Widget> units = List();    
     for (Unit unit in _state.missionUnits) {
       units.add(
-        AnimatedPositioned(
+        AnimatedPositioned(          
           duration: Duration(milliseconds: 300),
           left: MapConsts.TILE_SIDE * unit.column,
           top: MapConsts.TILE_SIDE * unit.row,
