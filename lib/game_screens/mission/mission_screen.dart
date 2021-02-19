@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/game_screens/mission/game_pole_widget.dart';
-import 'package:turn_based_game/game_screens/mission/ui_tiles_widget.dart';
-import 'package:turn_based_game/game_screens/mission/units_widget.dart';
+import 'package:turn_based_game/game_screens/mission/game_pole_widgets/game_pole_widget.dart';
+import 'package:turn_based_game/game_screens/mission/game_pole_widgets/ui_tiles_widget.dart';
+import 'package:turn_based_game/game_screens/mission/game_pole_widgets/units_widget.dart';
 
 class MissionScreen extends StatefulWidget {
   @override
@@ -11,8 +11,7 @@ class MissionScreen extends StatefulWidget {
 class _MissionScreenState extends State<MissionScreen> {
   
   @override
-  Widget build(BuildContext context) {    
-    //ScreenDimensions dimensions = ScreenDimensions(context);
+  Widget build(BuildContext context) {        
     return Scaffold( 
       appBar: AppBar(),     
       body: SafeArea(

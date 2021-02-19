@@ -1,4 +1,5 @@
 import 'package:redux/redux.dart';
+import 'package:turn_based_game/model/mission/conflict_side.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_type.dart';
 import 'package:turn_based_game/network/network_service.dart';
@@ -20,9 +21,11 @@ class OnLoadMission extends BaseNetworkThunk {
   ];
 
   List<Unit> units = [
-    Unit(UnitType.infranty, 1, 1, 30, 10),
-    Unit(UnitType.infranty, 4, 1, 30, 10),
-    Unit(UnitType.infranty, 2, 5, 30, 10)
+    Unit(ConflictSide.player, UnitType.infranty, 1, 1, 30, 10),
+    Unit(ConflictSide.player, UnitType.infranty, 4, 1, 30, 10),
+    Unit(ConflictSide.player, UnitType.infranty, 2, 5, 30, 10),
+    Unit(ConflictSide.enemy, UnitType.infranty, 6, 5, 30, 10),
+    Unit(ConflictSide.enemy, UnitType.infranty, 0, 5, 30, 10)
   ];
 
   @override

@@ -10,6 +10,8 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RaisedButton(
               child: Text("Start game", style: TextStyle(color: Colors.red)),

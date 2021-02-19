@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:turn_based_game/const/map_consts.dart';
 
 class UnitWidget extends StatefulWidget {
-  final bool run;
+  final List<String> animationFrames;
   final bool flip;
 
-  UnitWidget({ this.run = false, this.flip = false });
-
+  UnitWidget(this.animationFrames, { this.flip = false });
 
   @override
   _UnitWidgetState createState() => _UnitWidgetState();
@@ -15,20 +14,22 @@ class UnitWidget extends StatefulWidget {
 
 class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderStateMixin {
   Animation<double> _animation;
-  AnimationController _controller;
-  String frameNames;
+  AnimationController _controller;  
   
   @override
   void initState() {
     super.initState();
-    frameNames = widget.run ? "assets/images/mission/soldier_walk" : "assets/images/mission/soldier";
-
+    
     _controller = AnimationController(
       duration: Duration(milliseconds: 200),
       vsync: this
     );
     _controller.repeat();
-    _animation = Tween<double>(begin: 1, end: 8).animate(_controller);
+
+    _animation = Tween<double>(
+      begin: 0, 
+      end: (widget.animationFrames.length - 1).toDouble(),
+    ).animate(_controller);
   }
 
   @override
@@ -40,7 +41,7 @@ class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderState
           alignment: Alignment.center,
           transform: widget.flip ? Matrix4.rotationY(math.pi) : Matrix4.rotationY(0),
           child: Image.asset(
-            "$frameNames${_animation.value.toInt()}.png",
+            widget.animationFrames[_animation.value.toInt()],
             fit: BoxFit.scaleDown,
             width: MapConsts.TILE_SIDE,
             height: MapConsts.TILE_SIDE,

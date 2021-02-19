@@ -5,11 +5,11 @@ class MapTileResolver {
     String tileImageName = "";
     switch(tileId) {
       case MapConsts.TERRAIN_TILE: {
-        tileImageName = "assets/images/mission/terrain_tile.png";
+        tileImageName = MapConsts.TERRAIN_TILE_IMAGE;
         break;
       }
       case MapConsts.WATER_TILE: {
-        tileImageName = "assets/images/mission/water_tile.png";
+        tileImageName = MapConsts.WATER_TILE_IMAGE;
         break;
       }
     }
