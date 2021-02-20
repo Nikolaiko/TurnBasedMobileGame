@@ -13,7 +13,6 @@ import '../../test_data.dart';
 
 void main() {
 
-
   testWidgets("testing game pole tiles generation", (WidgetTester tester) async {
     await tester.pumpWidget(
       ChangeNotifierProvider(

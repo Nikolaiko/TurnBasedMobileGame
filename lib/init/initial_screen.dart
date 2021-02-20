@@ -15,11 +15,11 @@ class InitialScreenWidget extends StatelessWidget {
       onInit: (store) => store.dispatch(OnLoggedUserCheck()),
       converter: (store) {        
         return store.state.authState.user.when((id, name, password) {          
-          return AuthViewModel.logged();
+          return const AuthViewModel.logged();
         }, notLoggedIn: () {          
-          return AuthViewModel.notLogged();
+          return const AuthViewModel.notLogged();
         }, initialUser: () {          
-          return AuthViewModel.init();
+          return const AuthViewModel.init();
         });
       },
       builder: (context, viewModel) => viewModel.when(

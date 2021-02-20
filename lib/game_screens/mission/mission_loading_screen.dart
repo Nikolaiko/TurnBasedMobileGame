@@ -15,7 +15,7 @@ class MissionLoadingScreen extends StatelessWidget {
               Container(
                 width: dimen.width / 4,
                 height: dimen.width / 4,
-                child: CircularProgressIndicator()
+                child: const CircularProgressIndicator()
               )
             ]
           )

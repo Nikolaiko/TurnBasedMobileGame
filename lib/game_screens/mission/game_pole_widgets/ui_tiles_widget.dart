@@ -25,8 +25,8 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   }
 
   List<Widget> _buildUIStack() {
-    List<Widget> units = List(); 
-    for (UITile uiTile in _state.uiMap) {
+    List<Widget> units = []; 
+    for (final UITile uiTile in _state.uiMap) {
       units.add(
         Positioned(
           left: MapConsts.TILE_SIDE * uiTile.column,

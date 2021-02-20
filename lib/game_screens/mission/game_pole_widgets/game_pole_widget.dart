@@ -22,7 +22,7 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildGamePoleRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     for (int i = 0; i < _state.missionMap.length; i++) {
       Row row = Row(  
         children: _buildRowTiles(i),
@@ -33,7 +33,7 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildRowTiles(int rowIndex) {
-    List<Widget> tiles = List();
+    List<Widget> tiles = [];
     for (int i = 0; i < _state.missionMap.first.length; i++) {      
       tiles.add(GestureDetector(
         onTap: () {

@@ -8,14 +8,14 @@ class RegisterFormWidget extends StatelessWidget {
     final AuthProcessState _state = Provider.of<AuthProcessState>(context);
     
     return Scaffold(      
-      appBar: AppBar(title: Text("Register user")),
+      appBar: AppBar(title: const Text("Register user")),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Name",
                 hintText: "Enter user name",
                 filled: true
@@ -25,7 +25,7 @@ class RegisterFormWidget extends StatelessWidget {
               }
             ),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Password",
                 hintText: "Enter user password",
                 filled: true
@@ -39,11 +39,11 @@ class RegisterFormWidget extends StatelessWidget {
               children: [
                 RaisedButton(                
                   onPressed: () { _state.tryToRegister(); }, 
-                  child: Text("Register")
+                  child: const Text("Register")
                 ),
                 FlatButton(                
                   onPressed: () { Navigator.of(context).pop(); }, 
-                  child: Text("Back")
+                  child: const Text("Back")
                 )
               ]
             )          

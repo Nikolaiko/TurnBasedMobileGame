@@ -16,7 +16,7 @@ class AuthNavigator extends StatelessWidget {
 
   List<MaterialPageRoute> _buildStartScreenRoute(NavigatorState navigator, String initialRoute) {
     return [
-      MaterialPageRoute(
+      MaterialPageRoute<dynamic>(
           settings: RouteSettings(name: initialRoute),
           builder: (BuildContext context) {
             return LoginFormWidget();
@@ -29,7 +29,7 @@ class AuthNavigator extends StatelessWidget {
     Route route;
     switch(settings.name) {
       case LOGIN_ROUTE:
-        route = PageRouteBuilder(
+        route = PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
                 LoginFormWidget(),
@@ -37,7 +37,7 @@ class AuthNavigator extends StatelessWidget {
         );
         break;
       case REGISTER_ROUTE:
-        route = PageRouteBuilder(
+        route = PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
                 RegisterFormWidget(),
@@ -45,7 +45,7 @@ class AuthNavigator extends StatelessWidget {
         );
         break;
       default:
-        route = PageRouteBuilder(
+        route = PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
                 UknownRouteScreen(),

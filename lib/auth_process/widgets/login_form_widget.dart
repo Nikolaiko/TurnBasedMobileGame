@@ -14,14 +14,14 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     final AuthProcessState _state = Provider.of<AuthProcessState>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Login User")),
+      appBar: AppBar(title: const Text("Login User")),
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(                
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               TextField(                              
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Name",
                   hintText: "Enter user name",
                   filled: true
@@ -31,7 +31,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 }
               ),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Password",
                   hintText: "Enter user password",
                   filled: true
@@ -45,11 +45,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 children: [
                   RaisedButton(                  
                     onPressed: _state.isLoginEnabled ? () { _state.tryToLogin(); } : null, 
-                    child: Text("Login")
+                    child: const Text("Login")
                   ),
                   FlatButton(                  
                     onPressed: () { _registerUser(context); },
-                    child: Text("Register")
+                    child: const Text("Register")
                   )
                 ]
               )                        

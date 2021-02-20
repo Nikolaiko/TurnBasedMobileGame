@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:turn_based_game/model/network/network_response.dart';
 import 'package:turn_based_game/model/network/user_auth_data.dart';
-import 'package:turn_based_game/model/user_profile/user_profile.dart';
 import 'package:turn_based_game/network/network_service.dart';
 import 'package:turn_based_game/redux/app_state.dart';
 
@@ -89,15 +87,16 @@ class AuthProcessState with ChangeNotifier {
     notifyListeners();
 
     UserAuthData data = UserAuthData(_userName, _password);    
-    NetworkResponse<UserProfile> response = await _networkService.loginUser(data);
-
-    if (response.success) {     
-      _repository.setLoggedUser(response.result);  
-      _store.dispatch(LogUserInAction(response.result));
-    } else {
-      _isLoginLoading = false;      
-      notifyListeners();
-    }
+    _networkService.loginUser(data, (response) {
+      if (response.success) {     
+        _repository.setLoggedUser(response.result);  
+        _store.dispatch(LogUserInAction(response.result));
+      } else {
+        print(response.message);
+        _isLoginLoading = false;      
+        notifyListeners();
+      }
+    });    
   }
 
   void tryToRegister() async {
@@ -105,15 +104,16 @@ class AuthProcessState with ChangeNotifier {
     notifyListeners();
 
     UserAuthData data = UserAuthData(_userName, _password);    
-    NetworkResponse<UserProfile> response = await _networkService.registerUser(data);
-
-    if (response.success) {      
-      _repository.setLoggedUser(response.result);
-      _store.dispatch(LogUserInAction(response.result));
-    } else {
-      _isRegisterLoading = false;      
-      notifyListeners();
-    }
+    _networkService.registerUser(data, (response) {
+      if (response.success) {      
+        _repository.setLoggedUser(response.result);
+        _store.dispatch(LogUserInAction(response.result));
+      } else {
+        print(response.message);
+        _isRegisterLoading = false;      
+        notifyListeners();
+      }
+    });    
   }
 
 }

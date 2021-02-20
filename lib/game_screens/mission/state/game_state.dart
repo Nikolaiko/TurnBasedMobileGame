@@ -14,10 +14,9 @@ class GameState with ChangeNotifier {
   Unit _selectedUnit;
   TurnLogicResolver _logicResolver;  
 
-  List<List<int>> _missionMap;
-  List<Unit> _missionUnits;
-  List<UITile> _uiMap = List();
-  List<UnitAction> _currentActions = List();
+  final List<List<int>> _missionMap;
+  final List<Unit> _missionUnits;
+  final List<UITile> _uiMap = [];
 
   List<UITile> get uiMap => _uiMap;
   List<List<int>> get missionMap => _missionMap;
@@ -34,7 +33,7 @@ class GameState with ChangeNotifier {
     if (tappedUnit != _selectedUnit) {      
       _selectedUnit = tappedUnit;
       List<Point<int>> tiles = _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
-      for(Point<int> point in tiles) {
+      for(final Point<int> point in tiles) {
         _uiMap.add(
           UITile(
             UITileType.checkmark,
@@ -74,7 +73,7 @@ class GameState with ChangeNotifier {
   }
 
   void actionDone() {
-    _actionsStream.add(UnitAction.empty());
+    _actionsStream.add(const UnitAction.empty());
   }
 
   bool _tileIsAvailable(int row, int column) {

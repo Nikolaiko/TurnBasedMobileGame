@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:turn_based_game/const/map_consts.dart';
 import 'package:turn_based_game/game_screens/mission/factories/unit_factory.dart';
 import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
-import 'package:turn_based_game/game_screens/mission/unit_widget.dart';
 import 'package:turn_based_game/model/mission/conflict_side.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_action.dart';
@@ -26,7 +25,7 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 800)
+      duration: const Duration(milliseconds: 800)
     ); 
 
     _controller.addStatusListener( (status) {
@@ -43,15 +42,15 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
       height: MapConsts.TILE_SIDE * _state.missionMap.length,
       width: MapConsts.TILE_SIDE * _state.missionMap.first.length,
       child: StreamBuilder<Object>(
-        initialData: UnitAction.empty(),
+        initialData: const UnitAction.empty(),
         stream: _state.actionsStream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Stack(
-              children: _buildUnitsStack(snapshot.data)
+              children: _buildUnitsStack(snapshot.data as UnitAction)
             );
           } else {
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }         
         }
       ),
@@ -59,8 +58,8 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
   }
 
   List<Widget> _buildUnitsStack(UnitAction action) {    
-    List<Widget> units = List();    
-    for (Unit unit in _state.missionUnits) {      
+    List<Widget> units = [];    
+    for (final Unit unit in _state.missionUnits) {      
       action.maybeWhen(
         move: (actionUnit, destRow, destCol, row, col) {
           if (unit == actionUnit) {            

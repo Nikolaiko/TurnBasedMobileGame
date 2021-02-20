@@ -9,7 +9,7 @@ final authReducer = combineReducers<AuthState>([
 ]);
 
 AuthState _setNotLoggedInUser(AuthState state, SetNotLoggedInAction action) {  
-  return AuthState(NotLoggedUser());
+  return const AuthState(NotLoggedUser());
 }
 
 AuthState _tryToLogin(AuthState state, LogUserInAction action) {  

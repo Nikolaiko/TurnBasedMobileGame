@@ -1,7 +1,7 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turn_based_game/model/user_profile/user_profile.dart';
-
-import 'dart:convert';
 
 class UserProfileRepository {
   static const String _LOGGED_USER_KEY = "logged_user";
@@ -9,7 +9,7 @@ class UserProfileRepository {
   SharedPreferences _prefs;
 
   UserProfile getLoggedUser() {
-    UserProfile currentProfile = NotLoggedUser();
+    UserProfile currentProfile = const NotLoggedUser();
 
     if (_prefs.containsKey(_LOGGED_USER_KEY)) {
       try {

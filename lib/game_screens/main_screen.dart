@@ -14,10 +14,10 @@ class MainScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RaisedButton(
-              child: Text("Start game", style: TextStyle(color: Colors.red)),
+              child: const Text("Start game", style: TextStyle(color: Colors.red)),
               onPressed: () {
                 Navigator.push(context, 
-                  MaterialPageRoute(
+                  MaterialPageRoute<dynamic>(
                     builder: (routerContext) {
                       return InitMissionWidget();
                     }
@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
               }
             ),
             RaisedButton(
-              child: Text("Logout", style: TextStyle(color: Colors.red)),
+              child: const Text("Logout", style: TextStyle(color: Colors.red)),
               onPressed: () {
                 var store = StoreProvider.of<AppState>(context);
                 store.dispatch(OnLogoutUser());

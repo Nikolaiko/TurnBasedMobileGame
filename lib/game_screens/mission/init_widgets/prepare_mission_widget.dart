@@ -8,7 +8,7 @@ class PrepareMissionWidget extends StatelessWidget {
   final List<List<int>> _missionMap;
   final List<Unit> _missionUnits; 
 
-  PrepareMissionWidget(this._missionMap, this._missionUnits);
+  const PrepareMissionWidget(this._missionMap, this._missionUnits);
 
   @override
   Widget build(BuildContext context) {

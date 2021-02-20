@@ -11,6 +11,6 @@ class OnLogoutUser extends BaseUserRepositoryThunk {
     Store<AppState> store, UserProfileRepository repository) async {
     await repository.logoutUser();
 
-    store.dispatch(AuthAction.setNotLoggedInUser());
+    store.dispatch(const AuthAction.setNotLoggedInUser());
   }
 }

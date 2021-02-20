@@ -20,7 +20,7 @@ class InitMissionWidget extends StatelessWidget {
           );
         }, 
         orElse: () {
-          return MissionViewModel.loading();
+          return const MissionViewModel.loading();
         });
       },
       builder: (context, viewModel) => viewModel.maybeWhen(

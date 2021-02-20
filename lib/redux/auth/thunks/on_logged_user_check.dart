@@ -14,7 +14,7 @@ class OnLoggedUserCheck extends BaseUserRepositoryThunk {
     UserProfile loggedUser = repository.getLoggedUser(); 
     loggedUser.maybeWhen(
       (id, name, password) => store.dispatch(LogUserInAction(loggedUser)),
-      orElse: () => store.dispatch(SetNotLoggedInAction()),
+      orElse: () => store.dispatch(const SetNotLoggedInAction()),
     );
   }
 }

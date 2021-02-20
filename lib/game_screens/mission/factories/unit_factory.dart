@@ -18,7 +18,7 @@ class UnitFactory {
     String frameName = "${unitType.getName()}_${unitAnimationType.getName()}";
     int animationLength = _getAnimationLengthForType(unitType, unitAnimationType);
 
-    List<String> animationFrames = List();
+    List<String> animationFrames = [];
     for (int i = 1; i <= animationLength; i++) {
       animationFrames.add("$pathPart$frameName$i.png");
     }

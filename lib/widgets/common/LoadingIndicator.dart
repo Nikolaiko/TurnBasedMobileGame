@@ -14,7 +14,7 @@ class LoadingIndicatorWidget extends StatelessWidget {
               color: Colors.red,
               borderRadius: BorderRadius.circular(12)                    
             ),
-            child: CircularProgressIndicator()
+            child: const CircularProgressIndicator()
           )
         );
       }

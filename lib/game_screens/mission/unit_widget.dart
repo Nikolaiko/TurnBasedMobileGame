@@ -6,7 +6,7 @@ class UnitWidget extends StatefulWidget {
   final List<String> animationFrames;
   final bool flip;
 
-  UnitWidget(this.animationFrames, { this.flip = false });
+  const UnitWidget(this.animationFrames, { this.flip = false });
 
   @override
   _UnitWidgetState createState() => _UnitWidgetState();
@@ -21,7 +21,7 @@ class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderState
     super.initState();
     
     _controller = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       vsync: this
     );
     _controller.repeat();
