@@ -72,17 +72,12 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
                   return Positioned(                                  
                     left: destCol == col ? MapConsts.TILE_SIDE * col : MapConsts.TILE_SIDE * col + _animation.value,
                     top: destRow == row ? MapConsts.TILE_SIDE * row : MapConsts.TILE_SIDE * row + _animation.value,
-                      child: GestureDetector(
-                        onTap: () {
-                          _state.unitTap(unit);
-                        },
                       child: _factory.buildUnit(
                         unit.type, 
                         unit.conflictSide,
                         UnitAnimationType.move,
                         flipped: destCol < col
-                      )                      
-                    ),
+                      ),
                   );
                 }
               )

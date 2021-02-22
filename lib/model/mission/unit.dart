@@ -8,6 +8,7 @@ class Unit {
   int column;
   int health;
   int attack;
+  bool alreadyMoved;
 
   Unit(
     this.conflictSide,
@@ -15,6 +16,7 @@ class Unit {
     this.row,
     this.column,
     this.health,
-    this.attack
+    this.attack,
+    { this.alreadyMoved = false }
   );
 }

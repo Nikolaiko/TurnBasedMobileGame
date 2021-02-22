@@ -17,6 +17,7 @@ class GameState with ChangeNotifier {
   final List<List<int>> _missionMap;
   final List<Unit> _missionUnits;
   final List<UITile> _uiMap = [];
+  final List<UnitAction> _currentActions = [];
 
   List<UITile> get uiMap => _uiMap;
   List<List<int>> get missionMap => _missionMap;
@@ -27,7 +28,17 @@ class GameState with ChangeNotifier {
     _logicResolver = TurnLogicResolver(_missionMap);
   }
 
+  void endTurn() {    
+    for (final Unit currentUnit in _missionUnits) {
+      currentUnit.alreadyMoved = false;
+    }
+  }
+
   void unitTap(Unit tappedUnit) {
+    if (tappedUnit.alreadyMoved) {
+      return;
+    }
+
     _uiMap.clear();
 
     if (tappedUnit != _selectedUnit) {      
@@ -50,30 +61,60 @@ class GameState with ChangeNotifier {
 
   void tileTap(int row, int column) {
     if (_selectedUnit != null) {
-
+      
       if (_tileIsAvailable(row, column)) {
         uiMap.clear();
+        _currentActions.clear();
 
-        UnitAction action = UnitAction.move(
-          _selectedUnit,
-          row,
-          column,
-          _selectedUnit.row,
-          _selectedUnit.column,
-        );        
+        if (_selectedUnit.row == row || _selectedUnit.column == column) {
+          _currentActions.add(
+            UnitAction.move(
+              _selectedUnit,
+              row,
+              column,
+              _selectedUnit.row,
+              _selectedUnit.column,
+            )
+          );
+        } else {
+          _currentActions.add(
+            UnitAction.move(
+              _selectedUnit,
+              _selectedUnit.row,
+              column,
+              _selectedUnit.row,
+              _selectedUnit.column,
+            )
+          );
 
+          _currentActions.add(
+            UnitAction.move(
+              _selectedUnit,
+              row,
+              column,
+              _selectedUnit.row,
+              column,
+            )
+          );
+        }  
+
+        _selectedUnit.alreadyMoved = true;
         _selectedUnit.column = column;
         _selectedUnit.row = row;
         _selectedUnit = null;
 
-        notifyListeners();
-        _actionsStream.add(action);        
+        notifyListeners();        
+        _actionsStream.add(_currentActions.removeAt(0));        
       }      
     }
   }
 
   void actionDone() {
-    _actionsStream.add(const UnitAction.empty());
+    if (_currentActions.isEmpty) {
+      _actionsStream.add(const UnitAction.empty());
+    } else {
+      _actionsStream.add(_currentActions.removeAt(0));
+    }    
   }
 
   bool _tileIsAvailable(int row, int column) {

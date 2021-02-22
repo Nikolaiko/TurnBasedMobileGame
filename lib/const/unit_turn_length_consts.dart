@@ -1,0 +1,1 @@
+const int INFRANTY_TURN_LENGTH = 4;
