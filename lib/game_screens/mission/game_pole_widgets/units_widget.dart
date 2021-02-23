@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:turn_based_game/const/map_consts.dart';
 import 'package:turn_based_game/game_screens/mission/factories/unit_factory.dart';
 import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_action.dart';
-import 'package:turn_based_game/model/mission/unit_animation_type.dart';
+import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
 
 class UnitsWidget extends StatefulWidget {
   @override
@@ -106,7 +106,8 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
           unit.type, 
           unit.conflictSide,
           UnitAnimationType.idle,
-          flipped: unit.conflictSide == ConflictSide.enemy
+          flipped: unit.conflictSide == ConflictSide.enemy,
+          alreadyMoved: unit.alreadyMoved
         )   
       ),
     );

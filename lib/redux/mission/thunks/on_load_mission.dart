@@ -1,7 +1,7 @@
 import 'package:redux/redux.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
-import 'package:turn_based_game/model/mission/unit_type.dart';
+import 'package:turn_based_game/model/mission/enums/unit_type.dart';
 import 'package:turn_based_game/network/network_service.dart';
 import 'package:turn_based_game/redux/app_state.dart';
 import 'package:turn_based_game/redux/mission/mission_action.dart';

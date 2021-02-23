@@ -1,4 +1,6 @@
 enum UITileType {
   empty,
-  checkmark
+  checkmark,
+  attack
 }
+

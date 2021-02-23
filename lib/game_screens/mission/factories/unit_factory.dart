@@ -1,14 +1,17 @@
 import 'package:turn_based_game/game_screens/mission/unit_widget.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
-import 'package:turn_based_game/model/mission/unit_animation_type.dart';
-import 'package:turn_based_game/model/mission/unit_type.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
+import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
+import 'package:turn_based_game/model/mission/enums/unit_type.dart';
 
 class UnitFactory {
   UnitWidget buildUnit(
     UnitType unitType,
     ConflictSide side,
     UnitAnimationType unitAnimationType,
-    { bool flipped = false }
+    { 
+      bool flipped = false,
+      bool alreadyMoved = false
+    }
   ) {
 
     String pathPart = (side == ConflictSide.player) 
@@ -23,7 +26,7 @@ class UnitFactory {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
-    return UnitWidget(animationFrames, flip: flipped);
+    return UnitWidget(animationFrames, flip: flipped, alreadyMoved: alreadyMoved,);
   }
 
   int _getAnimationLengthForType(

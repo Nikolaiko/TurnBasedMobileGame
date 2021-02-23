@@ -11,4 +11,5 @@ class MapConsts {
   static const WATER_TILE_IMAGE = "assets/images/mission/tiles/water_tile.png";
 
   static const SELECTED_TILE_IMAGE = "assets/images/mission/ui/check.png";
+  static const ATTACK_TILE_IMAGE = "assets/images/mission/ui/red_cross.png";
 }

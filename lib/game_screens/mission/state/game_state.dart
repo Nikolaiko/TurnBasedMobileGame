@@ -3,14 +3,18 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:turn_based_game/game_screens/mission/helpers/turn_logic_resolver.dart';
+import 'package:turn_based_game/model/mission/available_tile.dart';
+import 'package:turn_based_game/model/mission/enums/available_tile_type.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/ui_tile.dart';
-import 'package:turn_based_game/model/mission/ui_tile_type.dart';
+import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_action.dart';
 
 class GameState with ChangeNotifier {
   final StreamController<UnitAction> _actionsStream = StreamController.broadcast();
 
+  ConflictSide _activeSide = ConflictSide.player;
   Unit _selectedUnit;
   TurnLogicResolver _logicResolver;  
 
@@ -32,6 +36,7 @@ class GameState with ChangeNotifier {
     for (final Unit currentUnit in _missionUnits) {
       currentUnit.alreadyMoved = false;
     }
+    notifyListeners();
   }
 
   void unitTap(Unit tappedUnit) {
@@ -43,13 +48,13 @@ class GameState with ChangeNotifier {
 
     if (tappedUnit != _selectedUnit) {      
       _selectedUnit = tappedUnit;
-      List<Point<int>> tiles = _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
-      for(final Point<int> point in tiles) {
+      List<AvailableTile> tiles = _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
+      for(final AvailableTile tile in tiles) {        
         _uiMap.add(
           UITile(
-            UITileType.checkmark,
-            point.x,
-            point.y
+            tile.type.convertToUIType(),
+            tile.position.x,
+            tile.position.y
           )
         );
       }      
