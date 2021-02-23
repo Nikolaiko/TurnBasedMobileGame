@@ -8,7 +8,7 @@ import '../../app_state.dart';
 import '../../base_thunks.dart';
 import '../mission_action.dart';
 
-class OnLoadMission extends BaseNetworkThunk {
+class OnLoadMissionAction extends BaseNetworkThunk {
   List<List<int>> map = [
     [1,1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1,1],

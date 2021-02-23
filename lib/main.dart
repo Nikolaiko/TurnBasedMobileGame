@@ -14,24 +14,24 @@ import 'repositories/user_profile_repository.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  var _userProfileRepositories = UserProfileRepository();
-  await _userProfileRepositories.initPrefs();
+  var userProfileRepositories = UserProfileRepository();
+  await userProfileRepositories.initPrefs();
 
-  NetworkService _networkService = NetworkMockup();
+  NetworkService networkService = NetworkMockup();
 
   GetIt.instance.registerSingleton<UserProfileRepository>(
-    _userProfileRepositories
+    userProfileRepositories
   );
-  GetIt.instance.registerSingleton<NetworkService>(_networkService);
+  GetIt.instance.registerSingleton<NetworkService>(networkService);
 
   var store = Store<AppState>(
     appReducer,
     initialState: AppState.initState,
     middleware: [
       ExtraArgumentThunkMiddleware<AppState, UserProfileRepository>(
-        _userProfileRepositories
+        userProfileRepositories
       ),
-      ExtraArgumentThunkMiddleware<AppState, NetworkService>(_networkService)
+      ExtraArgumentThunkMiddleware<AppState, NetworkService>(networkService)
     ]
   );
 

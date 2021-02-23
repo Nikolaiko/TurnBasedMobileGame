@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../redux/app_state.dart';
-import '../redux/auth/thunks/on_logout_user.dart';
+import '../redux/auth/thunks/on_logout_user_action.dart';
 import 'mission/init_widgets/init_mission_widget.dart';
 
 ///Main game screen widget
@@ -34,7 +34,7 @@ class MainScreen extends StatelessWidget {
               child: const Text("Logout", style: TextStyle(color: Colors.red)),
               onPressed: () {
                 var store = StoreProvider.of<AppState>(context);
-                store.dispatch(OnLogoutUser());
+                store.dispatch(OnLogoutUserAction());
               }
             )
           ]      

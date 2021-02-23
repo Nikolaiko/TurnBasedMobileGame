@@ -108,7 +108,7 @@ class AuthProcessState with ChangeNotifier {
   }
 
   ///Login function
-  void tryToLogin() async {
+  void tryToLogin() {
     _isLoginLoading = true;
     notifyListeners();
 
@@ -126,7 +126,7 @@ class AuthProcessState with ChangeNotifier {
   }
 
   ///Register user function
-  void tryToRegister() async {
+  void tryToRegister() {
     _isRegisterLoading = true;
     notifyListeners();
 

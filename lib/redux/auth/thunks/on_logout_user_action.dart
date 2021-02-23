@@ -5,7 +5,7 @@ import '../../app_state.dart';
 import '../../base_thunks.dart';
 import '../auth_action.dart';
 
-class OnLogoutUser extends BaseUserRepositoryThunk {
+class OnLogoutUserAction extends BaseUserRepositoryThunk {
   @override
   Future<void> execute(
     Store<AppState> store, UserProfileRepository repository) async {

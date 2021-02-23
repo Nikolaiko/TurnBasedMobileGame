@@ -23,16 +23,16 @@ class UserProfileRepository {
     return currentProfile;
   }
 
-  Future<bool> setLoggedUser(UserProfile profile) async {
+  Future<bool> setLoggedUser(UserProfile profile) {
     var stringJson = json.encode(profile.toJson());
-    return await _prefs.setString(_loggedUserKey, stringJson);
+    return _prefs.setString(_loggedUserKey, stringJson);
   }
 
-  Future logoutUser() async {
-    return await _prefs.remove(_loggedUserKey);
+  Future logoutUser() {
+    return _prefs.remove(_loggedUserKey);
   }
 
-  Future initPrefs() async {
+  Future<void> initPrefs() async {
     _prefs = await SharedPreferences.getInstance();
   }
 }

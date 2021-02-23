@@ -29,15 +29,15 @@ void tryToLogin(SendPort sendPort) {
             return null;
           }
         );
-        if (user == null) {        
-          return NetworkResponse(
+        var response = (user == null) 
+          ? NetworkResponse(
             const NotLoggedUser(), 
             success: false, 
             message: "Wrong credentials"
-          );
-        } else {        
-          return NetworkResponse(user, success: true, message: "Success");
-        }      
+          )
+          : NetworkResponse(user, success: true, message: "Success");
+          
+        return response;      
       });
       sendPort.send(result);
     }
