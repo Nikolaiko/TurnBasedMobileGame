@@ -1,2 +1,5 @@
-const String LOGIN_ROUTE = "login_route";
-const String REGISTER_ROUTE = "register_route";
+///Name for login route
+const String loginRoute = "login_route";
+
+///Name for register roue
+const String registerRoute = "register_route";

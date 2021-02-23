@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:turn_based_game/auth_process/state/auth_process_state.dart';
-import 'package:turn_based_game/auth_process/widgets/auth_navigator.dart';
-import 'package:turn_based_game/network/network_service.dart';
-import 'package:turn_based_game/redux/app_state.dart';
-import 'package:turn_based_game/repositories/user_profile_repository.dart';
 
+import '../network/network_service.dart';
+import '../redux/app_state.dart';
+import '../repositories/user_profile_repository.dart';
+import 'state/auth_process_state.dart';
+import 'widgets/auth_navigator.dart';
+
+///Widget for preparing auth screens
 class LoginScreenWidget extends StatelessWidget {  
   @override
   Widget build(BuildContext context) {

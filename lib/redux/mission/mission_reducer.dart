@@ -1,7 +1,7 @@
-import 'package:turn_based_game/redux/mission/mission_action.dart';
-import 'package:turn_based_game/redux/mission/mission_state.dart';
-
 import 'package:redux/redux.dart';
+
+import 'mission_action.dart';
+import 'mission_state.dart';
 
 final missionReducer = combineReducers<MissionState>([
    TypedReducer<MissionState, PrepareMissionAction>(_prepareMission),

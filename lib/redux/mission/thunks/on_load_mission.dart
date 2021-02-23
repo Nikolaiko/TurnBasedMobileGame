@@ -1,12 +1,12 @@
 import 'package:redux/redux.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
-import 'package:turn_based_game/model/mission/unit.dart';
-import 'package:turn_based_game/model/mission/unit_type.dart';
-import 'package:turn_based_game/network/network_service.dart';
-import 'package:turn_based_game/redux/app_state.dart';
-import 'package:turn_based_game/redux/mission/mission_action.dart';
 
+import '../../../model/mission/conflict_side.dart';
+import '../../../model/mission/unit.dart';
+import '../../../model/mission/unit_type.dart';
+import '../../../network/network_service.dart';
+import '../../app_state.dart';
 import '../../base_thunks.dart';
+import '../mission_action.dart';
 
 class OnLoadMission extends BaseNetworkThunk {
   List<List<int>> map = [

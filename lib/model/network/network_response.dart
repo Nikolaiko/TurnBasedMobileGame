@@ -4,8 +4,10 @@ class NetworkResponse<T> {
   final String message;
 
   NetworkResponse(
-    this.result,
-    this.success,
-    { this.message = "" }
+    this.result,    
+    { 
+      this.success = false,
+      this.message = "" 
+    }
   );
 }

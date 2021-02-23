@@ -1,29 +1,12 @@
-# Specify analysis options.
-#
-# Until there are meta linter rules, each desired lint must be explicitly enabled.
-# See: https://github.com/dart-lang/linter/issues/288
-#
-# For a list of lints, see: http://dart-lang.github.io/linter/lints/
-# See the configuration guide for more
-# https://github.com/dart-lang/sdk/tree/master/pkg/analyzer#configuring-the-analyzer
-#
-# There are other similar analysis options files in the flutter repos,
-# which should be kept in sync with this file:
-#
-#   - analysis_options.yaml (this file)
-#   - packages/flutter/lib/analysis_options_user.yaml
-#   - https://github.com/flutter/plugins/blob/master/analysis_options.yaml
-#   - https://github.com/flutter/engine/blob/master/analysis_options.yaml
-#
-# This file contains the analysis options used by Flutter tools, such as IntelliJ,
-# Android Studio, and the `flutter analyze` command.
+include: package:effective_dart/analysis_options.yaml
+
 
 analyzer:
   strong-mode:
     implicit-casts: true
     implicit-dynamic: true
   errors:
-    # treat missing required parameters as a warning (not a hint)
+    public_member_api_docs: ignore
     missing_required_param: warning
     # treat missing returns as a warning (not a hint)
     missing_return: warning
@@ -47,7 +30,7 @@ analyzer:
     - lib/**/*.freezed.dart
     - test/**
 
-linter:
+linter:    
   rules:
     # these rules are documented on and in the same order as
     # the Dart Lint rules page to make maintenance easier
@@ -160,7 +143,7 @@ linter:
     - prefer_equal_for_default_values
     # - prefer_expression_function_bodies # conflicts with https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo#consider-using--for-short-functions-and-methods
     - prefer_final_fields
-    - prefer_final_in_for_each
+    # - prefer_final_in_for_each
     # - prefer_final_locals
     - prefer_for_elements_to_map_fromIterable
     - prefer_foreach

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turn_based_game/const/map_consts.dart';
-import 'package:turn_based_game/game_screens/mission/factories/unit_factory.dart';
-import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
-import 'package:turn_based_game/model/mission/unit.dart';
-import 'package:turn_based_game/model/mission/unit_action.dart';
-import 'package:turn_based_game/model/mission/unit_animation_type.dart';
 
+import '../../../const/map_consts.dart';
+import '../../../model/mission/conflict_side.dart';
+import '../../../model/mission/unit.dart';
+import '../../../model/mission/unit_action.dart';
+import '../../../model/mission/unit_animation_type.dart';
+import '../factories/unit_factory.dart';
+import '../state/game_state.dart';
+
+///Widget for displaying all units on map
 class UnitsWidget extends StatefulWidget {
   @override
   _UnitsWidgetState createState() => _UnitsWidgetState();
 }
 
-class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStateMixin { 
+class _UnitsWidgetState extends State<UnitsWidget> 
+                  with SingleTickerProviderStateMixin { 
   final  UnitFactory _factory = UnitFactory(); 
   GameState _state;
   AnimationController _controller;
@@ -39,8 +42,8 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     _state = Provider.of<GameState>(context, listen: false);
     return SizedBox(      
-      height: MapConsts.TILE_SIDE * _state.missionMap.length,
-      width: MapConsts.TILE_SIDE * _state.missionMap.first.length,
+      height: MapConsts.tileSide * _state.missionMap.length,
+      width: MapConsts.tileSide * _state.missionMap.first.length,
       child: StreamBuilder<Object>(
         initialData: const UnitAction.empty(),
         stream: _state.actionsStream,
@@ -58,8 +61,8 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
   }
 
   List<Widget> _buildUnitsStack(UnitAction action) {    
-    List<Widget> units = [];    
-    for (final Unit unit in _state.missionUnits) {      
+    var units = [];    
+    for (var unit in _state.missionUnits) {      
       action.maybeWhen(
         move: (actionUnit, destRow, destCol, row, col) {
           if (unit == actionUnit) {            
@@ -70,8 +73,12 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
                 animation: _controller,
                 builder: (context, child) {
                   return Positioned(                                  
-                    left: destCol == col ? MapConsts.TILE_SIDE * col : MapConsts.TILE_SIDE * col + _animation.value,
-                    top: destRow == row ? MapConsts.TILE_SIDE * row : MapConsts.TILE_SIDE * row + _animation.value,
+                    left: destCol == col 
+                      ? MapConsts.tileSide * col 
+                      : MapConsts.tileSide * col + _animation.value,
+                    top: destRow == row 
+                      ? MapConsts.tileSide * row 
+                      : MapConsts.tileSide * row + _animation.value,
                       child: GestureDetector(
                         onTap: () {
                           _state.unitTap(unit);
@@ -101,8 +108,8 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
 
   Widget _buildUnitWidget(Unit unit) {
     return Positioned(                                  
-      left: MapConsts.TILE_SIDE * unit.column,
-      top: MapConsts.TILE_SIDE * unit.row,
+      left: MapConsts.tileSide * unit.column,
+      top: MapConsts.tileSide * unit.row,
       child: GestureDetector(
         onTap: () {
           _state.unitTap(unit);
@@ -117,12 +124,17 @@ class _UnitsWidgetState extends State<UnitsWidget> with SingleTickerProviderStat
     );
   }
 
-  Animation<double> _buildMoveAnimationTween(int startRow, int startCol, int endRow, int endCol) {
-    double endValue = 0.0;
+  Animation<double> _buildMoveAnimationTween(
+    int startRow, 
+    int startCol, 
+    int endRow, 
+    int endCol
+  ) {
+    var endValue = 0.0;
     if (startRow == endRow) {
-      endValue = (MapConsts.TILE_SIDE * (endCol - startCol)).toDouble();
+      endValue = (MapConsts.tileSide * (endCol - startCol)).toDouble();
     } else {
-      endValue = (MapConsts.TILE_SIDE * (endRow - startRow)).toDouble();
+      endValue = (MapConsts.tileSide * (endRow - startRow)).toDouble();
     }
 
     return Tween<double>(

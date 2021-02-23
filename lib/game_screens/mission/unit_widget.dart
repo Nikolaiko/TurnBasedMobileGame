@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/const/map_consts.dart';
+import '../../const/map_consts.dart';
 
 class UnitWidget extends StatefulWidget {
   final List<String> animationFrames;
@@ -12,7 +12,8 @@ class UnitWidget extends StatefulWidget {
   _UnitWidgetState createState() => _UnitWidgetState();
 }
 
-class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderStateMixin {
+class _UnitWidgetState extends State<UnitWidget>  
+                       with SingleTickerProviderStateMixin {
   Animation<double> _animation;
   AnimationController _controller;  
   
@@ -39,12 +40,14 @@ class _UnitWidgetState extends State<UnitWidget>  with SingleTickerProviderState
       builder: (context, child) {        
         return Transform(
           alignment: Alignment.center,
-          transform: widget.flip ? Matrix4.rotationY(math.pi) : Matrix4.rotationY(0),
+          transform: widget.flip 
+            ? Matrix4.rotationY(math.pi) 
+            : Matrix4.rotationY(0),
           child: Image.asset(
             widget.animationFrames[_animation.value.toInt()],
             fit: BoxFit.scaleDown,
-            width: MapConsts.TILE_SIDE,
-            height: MapConsts.TILE_SIDE,
+            width: MapConsts.tileSide,
+            height: MapConsts.tileSide,
             gaplessPlayback: true,
           ),
         );

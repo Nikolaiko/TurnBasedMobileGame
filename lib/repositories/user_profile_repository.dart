@@ -1,22 +1,22 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:turn_based_game/model/user_profile/user_profile.dart';
+import '../model/user_profile/user_profile.dart';
 
 class UserProfileRepository {
-  static const String _LOGGED_USER_KEY = "logged_user";
+  static const String _loggedUserKey = "logged_user";
 
   SharedPreferences _prefs;
 
   UserProfile getLoggedUser() {
     UserProfile currentProfile = const NotLoggedUser();
 
-    if (_prefs.containsKey(_LOGGED_USER_KEY)) {
+    if (_prefs.containsKey(_loggedUserKey)) {
       try {
-        String userStringProfile = _prefs.getString(_LOGGED_USER_KEY);
+        var userStringProfile = _prefs.getString(_loggedUserKey);
         Map<String, dynamic> jsonMap = json.decode(userStringProfile);
         currentProfile = UserProfile.fromJson(jsonMap);      
-      } catch(error) {
+      } on Exception catch(error) {
         print(error);        
       }
     }
@@ -24,12 +24,12 @@ class UserProfileRepository {
   }
 
   Future<bool> setLoggedUser(UserProfile profile) async {
-    String stringJson = json.encode(profile.toJson());
-    return await _prefs.setString(_LOGGED_USER_KEY, stringJson);
+    var stringJson = json.encode(profile.toJson());
+    return await _prefs.setString(_loggedUserKey, stringJson);
   }
 
   Future logoutUser() async {
-    return await _prefs.remove(_LOGGED_USER_KEY);
+    return await _prefs.remove(_loggedUserKey);
   }
 
   Future initPrefs() async {

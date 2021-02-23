@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:turn_based_game/model/mission/unit.dart';
+import '../../model/mission/unit.dart';
 
 part 'mission_state.freezed.dart';
 

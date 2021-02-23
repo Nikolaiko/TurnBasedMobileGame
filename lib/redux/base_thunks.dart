@@ -1,10 +1,10 @@
 
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
-import 'package:turn_based_game/network/network_service.dart';
 
-import 'package:turn_based_game/redux/app_state.dart';
-import 'package:turn_based_game/repositories/user_profile_repository.dart';
+import '../network/network_service.dart';
+import '../repositories/user_profile_repository.dart';
+import 'app_state.dart';
 
 abstract class BaseUserRepositoryThunk
     implements

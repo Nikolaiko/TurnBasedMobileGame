@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turn_based_game/auth_process/consts/auth_process_routes.dart';
-import 'package:turn_based_game/auth_process/state/auth_process_state.dart';
+import '../consts/auth_process_routes.dart';
+import '../state/auth_process_state.dart';
 
+///Login form widget
 class LoginFormWidget extends StatefulWidget {
   @override
   _LoginFormWidgetState createState() => _LoginFormWidgetState();
@@ -11,7 +12,7 @@ class LoginFormWidget extends StatefulWidget {
 class _LoginFormWidgetState extends State<LoginFormWidget> {  
   @override
   Widget build(BuildContext context) {
-    final AuthProcessState _state = Provider.of<AuthProcessState>(context);
+    var _state = Provider.of<AuthProcessState>(context);
 
     return Scaffold(
       appBar: AppBar(title: const Text("Login User")),
@@ -26,7 +27,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                   hintText: "Enter user name",
                   filled: true
                 ),
-                onChanged: (String value) {
+                onChanged: (value) {
                   _state.setUsername(value);
                 }
               ),
@@ -37,14 +38,16 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                   filled: true
                 ),
                 obscureText: true,
-                onChanged: (String value) { 
+                onChanged: (value) { 
                   _state.setPassword(value);
                 }
               ),
               ButtonBar(
                 children: [
                   RaisedButton(                  
-                    onPressed: _state.isLoginEnabled ? () { _state.tryToLogin(); } : null, 
+                    onPressed: _state.isLoginEnabled 
+                      ? () { _state.tryToLogin(); } 
+                      : null, 
                     child: const Text("Login")
                   ),
                   FlatButton(                  
@@ -60,6 +63,6 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   }
 
   void _registerUser(BuildContext context) {
-    Navigator.of(context).pushNamed(REGISTER_ROUTE);   
+    Navigator.of(context).pushNamed(registerRoute);   
   }
 }

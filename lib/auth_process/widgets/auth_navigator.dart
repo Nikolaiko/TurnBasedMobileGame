@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/auth_process/consts/auth_process_routes.dart';
-import 'package:turn_based_game/auth_process/widgets/login_form_widget.dart';
-import 'package:turn_based_game/auth_process/widgets/register_form_widget.dart';
-import 'package:turn_based_game/service_screens/unknown_route_screen.dart';
 
+import '../../service_screens/unknown_route_screen.dart';
+import '../consts/auth_process_routes.dart';
+import 'login_form_widget.dart';
+import 'register_form_widget.dart';
+
+///Navigator for login screens
 class AuthNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      initialRoute: LOGIN_ROUTE,
+      initialRoute: loginRoute,
       onGenerateInitialRoutes: _buildStartScreenRoute,
       onGenerateRoute: _buildRoute,
     );
   }
-
-  List<MaterialPageRoute> _buildStartScreenRoute(NavigatorState navigator, String initialRoute) {
+  
+  List<MaterialPageRoute> _buildStartScreenRoute(
+    NavigatorState navigator, 
+    String initialRoute) 
+  {
     return [
       MaterialPageRoute<dynamic>(
           settings: RouteSettings(name: initialRoute),
-          builder: (BuildContext context) {
+          builder: (context) {
             return LoginFormWidget();
           }
       )
@@ -28,7 +33,7 @@ class AuthNavigator extends StatelessWidget {
   Route _buildRoute(RouteSettings settings) {
     Route route;
     switch(settings.name) {
-      case LOGIN_ROUTE:
+      case loginRoute:
         route = PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
@@ -36,7 +41,7 @@ class AuthNavigator extends StatelessWidget {
             transitionsBuilder: _buildTransition
         );
         break;
-      case REGISTER_ROUTE:
+      case registerRoute:
         route = PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (context, animation, secondaryAnimation) =>
@@ -56,7 +61,12 @@ class AuthNavigator extends StatelessWidget {
     return route;
   }
 
-  Widget _buildTransition(BuildContext context, Animation animation, Animation secondaryAnimation, Widget child) {
+  Widget _buildTransition(
+    BuildContext context, 
+    Animation animation, 
+    Animation secondaryAnimation,
+     Widget child
+  ) {
     var begin = const Offset(1.0, 0.0);
     var end = Offset.zero;
     var tween = Tween(begin: begin, end: end);

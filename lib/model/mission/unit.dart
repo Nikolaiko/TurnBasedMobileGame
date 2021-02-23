@@ -1,5 +1,5 @@
-import 'package:turn_based_game/model/mission/conflict_side.dart';
-import 'package:turn_based_game/model/mission/unit_type.dart';
+import 'conflict_side.dart';
+import 'unit_type.dart';
 
 class Unit {
   final ConflictSide conflictSide;

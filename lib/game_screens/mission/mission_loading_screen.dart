@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/model/system/screen_dimensions.dart';
+import '../../model/system/screen_dimensions.dart';
 
 class MissionLoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenDimensions dimen = ScreenDimensions(context);    
+    var dimen = ScreenDimensions(context);    
     return Scaffold(
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

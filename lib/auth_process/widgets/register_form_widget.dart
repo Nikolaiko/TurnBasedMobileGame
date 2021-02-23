@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turn_based_game/auth_process/state/auth_process_state.dart';
+import '../state/auth_process_state.dart';
 
+///Register form widget
 class RegisterFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final AuthProcessState _state = Provider.of<AuthProcessState>(context);
+    var _state = Provider.of<AuthProcessState>(context);
     
     return Scaffold(      
       appBar: AppBar(title: const Text("Register user")),
@@ -20,7 +21,7 @@ class RegisterFormWidget extends StatelessWidget {
                 hintText: "Enter user name",
                 filled: true
               ),
-              onChanged: (String value) { 
+              onChanged: (value) { 
                 _state.setNewUsername(value);
               }
             ),
@@ -31,7 +32,7 @@ class RegisterFormWidget extends StatelessWidget {
                 filled: true
               ),
               obscureText: true,
-              onChanged: (String value) { 
+              onChanged: (value) { 
                 _state.setNewPassword(value);
               }
             ),

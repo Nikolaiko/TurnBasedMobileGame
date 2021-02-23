@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:turn_based_game/game_screens/mission/init_widgets/init_mission_widget.dart';
-import 'package:turn_based_game/redux/app_state.dart';
-import 'package:turn_based_game/redux/auth/thunks/on_logout_user.dart';
 
+import '../redux/app_state.dart';
+import '../redux/auth/thunks/on_logout_user.dart';
+import 'mission/init_widgets/init_mission_widget.dart';
+
+///Main game screen widget
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {    
@@ -14,7 +16,10 @@ class MainScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RaisedButton(
-              child: const Text("Start game", style: TextStyle(color: Colors.red)),
+              child: const Text(
+                "Start game", 
+                style: TextStyle(color: Colors.red)
+              ),
               onPressed: () {
                 Navigator.push(context, 
                   MaterialPageRoute<dynamic>(

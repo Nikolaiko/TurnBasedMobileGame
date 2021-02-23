@@ -1,14 +1,28 @@
+
+///Constants for game map
 class MapConsts {
-  static const WATER_TILE_LABEL = "water_tile";
-  static const TERRAIN_TILE_LABEL = "terrain_tile";
 
-  static const int TERRAIN_TILE = 1;
-  static const int WATER_TILE = 2;
+  ///Semantic label for water tile
+  static const waterTileLabel = "water_tile";
 
-  static const double TILE_SIDE = 80;
+  ///Semantic label for terrain tile
+  static const terrainTileLabel = "terrain_tile";
 
-  static const TERRAIN_TILE_IMAGE = "assets/images/mission/tiles/terrain_tile.png";
-  static const WATER_TILE_IMAGE = "assets/images/mission/tiles/water_tile.png";
+  ///Terrain tile value in map
+  static const int terrainTile = 1;
 
-  static const SELECTED_TILE_IMAGE = "assets/images/mission/ui/check.png";
+  ///Water tile value in map
+  static const int waterTile = 2;
+
+  ///Tile side
+  static const double tileSide = 80;
+
+  ///Terrain tile image name
+  static const terrainTileImage = "assets/images/mission/tiles/terrain_tile.png";
+
+  ///Water tile image name
+  static const waterTileImage = "assets/images/mission/tiles/water_tile.png";
+
+  ///Selected tile image name
+  static const selectedTileImage = "assets/images/mission/ui/check.png";
 }

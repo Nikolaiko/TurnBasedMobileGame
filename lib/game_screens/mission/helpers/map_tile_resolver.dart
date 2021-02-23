@@ -1,15 +1,18 @@
-import 'package:turn_based_game/const/map_consts.dart';
+import '../../../const/map_consts.dart';
 
+///Resolve map tile to image name
 class MapTileResolver {
+
+  ///Resolve map tile to image name
   String getMapImageName(int tileId) {
-    String tileImageName = "";
+    var tileImageName = "";
     switch(tileId) {
-      case MapConsts.TERRAIN_TILE: {
-        tileImageName = MapConsts.TERRAIN_TILE_IMAGE;
+      case MapConsts.terrainTile: {
+        tileImageName = MapConsts.terrainTileImage;
         break;
       }
-      case MapConsts.WATER_TILE: {
-        tileImageName = MapConsts.WATER_TILE_IMAGE;
+      case MapConsts.waterTile: {
+        tileImageName = MapConsts.waterTileImage;
         break;
       }
     }

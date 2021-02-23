@@ -1,6 +1,6 @@
 enum UnitType {
   infranty,
-  rocket_infranty,
+  rocketInfranty,
   motocycle,
   tank
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turn_based_game/const/map_consts.dart';
-import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
-import 'package:turn_based_game/model/mission/ui_tile.dart';
 
+import '../../../const/map_consts.dart';
+import '../state/game_state.dart';
+
+///Widget for ui marks on mission map
 class UITilesWidget extends StatefulWidget {
   @override
   _UITilesWidgetState createState() => _UITilesWidgetState();
@@ -16,8 +17,8 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   Widget build(BuildContext context) {
     _state = Provider.of<GameState>(context);
     return SizedBox(
-      width: MapConsts.TILE_SIDE * _state.missionMap.length,
-      height: MapConsts.TILE_SIDE * _state.missionMap.first.length,
+      width: MapConsts.tileSide * _state.missionMap.length,
+      height: MapConsts.tileSide * _state.missionMap.first.length,
       child: Stack(
         children: _buildUIStack()
       ),
@@ -25,19 +26,19 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   }
 
   List<Widget> _buildUIStack() {
-    List<Widget> units = []; 
-    for (final UITile uiTile in _state.uiMap) {
+    var units = []; 
+    for (var uiTile in _state.uiMap) {
       units.add(
         Positioned(
-          left: MapConsts.TILE_SIDE * uiTile.column,
-          top: MapConsts.TILE_SIDE * uiTile.row,
+          left: MapConsts.tileSide * uiTile.column,
+          top: MapConsts.tileSide * uiTile.row,
           child: IgnorePointer(
             ignoring: true,
             child: Image.asset(
-              MapConsts.SELECTED_TILE_IMAGE,
+              MapConsts.selectedTileImage,
               fit: BoxFit.contain,
-              width: MapConsts.TILE_SIDE,
-              height: MapConsts.TILE_SIDE
+              width: MapConsts.tileSide,
+              height: MapConsts.tileSide
             ),
           ),
         )

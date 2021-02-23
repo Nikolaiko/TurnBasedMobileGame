@@ -1,9 +1,13 @@
-import 'package:turn_based_game/game_screens/mission/unit_widget.dart';
-import 'package:turn_based_game/model/mission/conflict_side.dart';
-import 'package:turn_based_game/model/mission/unit_animation_type.dart';
-import 'package:turn_based_game/model/mission/unit_type.dart';
+import '../../../model/mission/conflict_side.dart';
+import '../../../model/mission/unit_animation_type.dart';
+import '../../../model/mission/unit_type.dart';
+import '../unit_widget.dart';
 
+
+///Factory for creating units
 class UnitFactory {
+
+  ///Build unit function
   UnitWidget buildUnit(
     UnitType unitType,
     ConflictSide side,
@@ -11,15 +15,16 @@ class UnitFactory {
     { bool flipped = false }
   ) {
 
-    String pathPart = (side == ConflictSide.player) 
+    var pathPart = (side == ConflictSide.player) 
     ? "assets/images/mission/units/player/${unitType.getName()}/"
     : "assets/images/mission/units/ai/${unitType.getName()}/";
 
-    String frameName = "${unitType.getName()}_${unitAnimationType.getName()}";
-    int animationLength = _getAnimationLengthForType(unitType, unitAnimationType);
+    var frameName = "${unitType.getName()}_${unitAnimationType.getName()}";
+    var animationLength = 
+    _getAnimationLengthForType(unitType, unitAnimationType);
 
-    List<String> animationFrames = [];
-    for (int i = 1; i <= animationLength; i++) {
+    var animationFrames = [];
+    for (var i = 1; i <= animationLength; i++) {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
@@ -30,14 +35,14 @@ class UnitFactory {
     UnitType unitType,
     UnitAnimationType unitAnimationType
   ) {
-    int frameCount = 1;
+    var frameCount = 1;
 
     switch(unitType) {
       case UnitType.infranty: {
         frameCount = _getAnimationForSoldier(unitAnimationType);
         break;
       }
-      case UnitType.rocket_infranty: {
+      case UnitType.rocketInfranty: {
         frameCount = _getAnimationForSoldier(unitAnimationType);
         break;
       }
@@ -54,7 +59,7 @@ class UnitFactory {
   }
 
   int _getAnimationForSoldier(UnitAnimationType animationType) {
-    int frameCount = 1;
+    var frameCount = 1;
 
     switch(animationType) {
       case UnitAnimationType.move: {

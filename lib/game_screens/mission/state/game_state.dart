@@ -1,15 +1,17 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:turn_based_game/game_screens/mission/helpers/turn_logic_resolver.dart';
-import 'package:turn_based_game/model/mission/ui_tile.dart';
-import 'package:turn_based_game/model/mission/ui_tile_type.dart';
-import 'package:turn_based_game/model/mission/unit.dart';
-import 'package:turn_based_game/model/mission/unit_action.dart';
 
+import '../../../model/mission/ui_tile.dart';
+import '../../../model/mission/ui_tile_type.dart';
+import '../../../model/mission/unit.dart';
+import '../../../model/mission/unit_action.dart';
+import '../helpers/turn_logic_resolver.dart';
+
+// ignore: prefer_mixin
 class GameState with ChangeNotifier {
-  final StreamController<UnitAction> _actionsStream = StreamController.broadcast();
+  final StreamController<UnitAction> _actionsStream 
+  = StreamController.broadcast();
 
   Unit _selectedUnit;
   TurnLogicResolver _logicResolver;  
@@ -32,8 +34,9 @@ class GameState with ChangeNotifier {
 
     if (tappedUnit != _selectedUnit) {      
       _selectedUnit = tappedUnit;
-      List<Point<int>> tiles = _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
-      for(final Point<int> point in tiles) {
+      var tiles = 
+          _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
+      for(var point in tiles) {
         _uiMap.add(
           UITile(
             UITileType.checkmark,
@@ -54,7 +57,7 @@ class GameState with ChangeNotifier {
       if (_tileIsAvailable(row, column)) {
         uiMap.clear();
 
-        UnitAction action = UnitAction.move(
+        var action = UnitAction.move(
           _selectedUnit,
           row,
           column,
@@ -77,7 +80,7 @@ class GameState with ChangeNotifier {
   }
 
   bool _tileIsAvailable(int row, int column) {
-    UITile selectedTile = _uiMap.firstWhere((uiTile) {
+    var selectedTile = _uiMap.firstWhere((uiTile) {
       return uiTile.column == column && uiTile.row == row;
     }, orElse: () {
       return null;
