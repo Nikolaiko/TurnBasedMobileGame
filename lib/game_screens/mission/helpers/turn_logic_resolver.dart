@@ -9,7 +9,7 @@ class TurnLogicResolver {
   TurnLogicResolver(this._map);
 
   List<Point<int>> getAvailableTiles(Unit unit, List<Unit> unitsMap) {
-    var tiles = [];
+    var tiles = List<Point<int>>();
     if (_isTileAvailable(unit.row, unit.column + 1, unitsMap)) {
       tiles.add(Point<int>(unit.row, unit.column + 1));
     }

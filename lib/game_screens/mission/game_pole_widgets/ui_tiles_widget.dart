@@ -26,7 +26,7 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   }
 
   List<Widget> _buildUIStack() {
-    var units = []; 
+    var units = List<Widget>(); 
     for (var uiTile in _state.uiMap) {
       units.add(
         Positioned(

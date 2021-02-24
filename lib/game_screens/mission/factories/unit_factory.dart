@@ -23,7 +23,7 @@ class UnitFactory {
     var animationLength = 
     _getAnimationLengthForType(unitType, unitAnimationType);
 
-    var animationFrames = [];
+    var animationFrames = List<String>();
     for (var i = 1; i <= animationLength; i++) {
       animationFrames.add("$pathPart$frameName$i.png");
     }

@@ -23,7 +23,7 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildGamePoleRows() {
-    var rows = [];
+    var rows = List<Widget>();
     for (var i = 0; i < _state.missionMap.length; i++) {
       var row = Row(  
         children: _buildRowTiles(i),
@@ -34,7 +34,7 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildRowTiles(int rowIndex) {
-    var tiles = [];
+    var tiles = List<Widget>();
     for (var i = 0; i < _state.missionMap.first.length; i++) {      
       tiles.add(GestureDetector(
         onTap: () {

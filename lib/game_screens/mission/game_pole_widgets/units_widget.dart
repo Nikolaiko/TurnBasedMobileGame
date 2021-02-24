@@ -61,7 +61,7 @@ class _UnitsWidgetState extends State<UnitsWidget>
   }
 
   List<Widget> _buildUnitsStack(UnitAction action) {    
-    var units = [];    
+    var units = List<Widget>();    
     for (var unit in _state.missionUnits) {      
       action.maybeWhen(
         move: (actionUnit, destRow, destCol, row, col) {
