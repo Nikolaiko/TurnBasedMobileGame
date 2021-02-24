@@ -12,6 +12,52 @@ class TurnLogicResolver {
 
   TurnLogicResolver(this._map);
 
+  List<Point<int>> getPath(
+    Unit unit,
+    Point<int> start, 
+    Point<int> end,
+    List<AvailableTile> availableCells
+  ) {
+    var tiles = [];
+    var cameFrom = {};
+
+    tiles.add(start);
+    cameFrom[start] = null;
+
+    while (tiles.isNotEmpty) {
+      var currentTile = tiles.removeAt(0);
+
+      var rightTile = Point<int>(currentTile.x, currentTile.y + 1);
+      var leftTile = Point<int>(currentTile.x, currentTile.y - 1);
+      var bottomTile = Point<int>(currentTile.x + 1, currentTile.y);
+      var topTile = Point<int>(currentTile.x - 1, currentTile.y);
+
+      
+
+      var neighbors = [rightTile, leftTile, bottomTile, topTile];
+      for (final Point<int> neighbor in neighbors) {
+        if (!cameFrom.keys.contains(neighbor)) {
+          tiles.add(neighbor);
+          cameFrom[neighbor] = currentTile; 
+        }
+      }
+    }
+
+    _getAllTilesFromPosition(
+      unit,
+      Point<int>(unit.row, unit.column), 
+      turnDepth,
+      tiles,
+      unitsMap
+    );
+
+    return tiles;
+  }
+
+  void _checkCell(int row, int column, List<Point<int>> cellsQueue, Map<Point<int>, Point<int>> path) {
+
+  }
+
   List<AvailableTile> getAvailableTiles(Unit unit, List<Unit> unitsMap) {
     List<AvailableTile> tiles = [];
     int turnDepth = _getUnitBaseMoveDistance(unit);

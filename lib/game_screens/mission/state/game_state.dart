@@ -64,7 +64,19 @@ class GameState with ChangeNotifier {
     notifyListeners();
   }
 
-  void tileTap(int row, int column) {
+  void clearSelection() {
+    uiMap.clear();
+    _selectedUnit = null;
+    notifyListeners();
+  }
+
+  void attackTap(int row, int column) {
+    if (_selectedUnit != null) {
+      
+    }
+  }
+
+  void moveTileTap(int row, int column) {
     if (_selectedUnit != null) {
       
       if (_tileIsAvailable(row, column)) {

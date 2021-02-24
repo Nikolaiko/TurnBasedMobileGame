@@ -36,8 +36,14 @@ class _UITilesWidgetState extends State<UITilesWidget> {
         Positioned(
           left: MapConsts.TILE_SIDE * uiTile.column,
           top: MapConsts.TILE_SIDE * uiTile.row,
-          child: IgnorePointer(
-            ignoring: true,
+          child: GestureDetector(
+            onTap: () { 
+              _uiTileCallback(
+                uiTile.type,
+                uiTile.row,
+                uiTile.column
+              ); 
+            },
             child: Image.asset(
               name,
               fit: BoxFit.contain,
@@ -49,5 +55,21 @@ class _UITilesWidgetState extends State<UITilesWidget> {
       );  
     }
     return units;
+  }
+
+  void _uiTileCallback(UITileType type, int row, int column) {
+    switch(type) {
+      case UITileType.attack: {
+        _state.attackTap(row, column);
+        break;
+      }
+      case UITileType.checkmark: {
+        _state.moveTileTap(row, column);
+        break;
+      }
+      case UITileType.empty: {
+        print("Empty tap");
+      }
+    }
   }
 }
