@@ -37,9 +37,7 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
     var tiles = List<Widget>();
     for (var i = 0; i < _state.missionMap.first.length; i++) {      
       tiles.add(GestureDetector(
-        onTap: () {
-          _state.tileTap(rowIndex, i);
-        },
+        onTap: () => _state.clearSelection(),
         child: Image.asset(
           _tileResolver.getMapImageName(_state.missionMap[rowIndex][i]),
           fit: BoxFit.fill,

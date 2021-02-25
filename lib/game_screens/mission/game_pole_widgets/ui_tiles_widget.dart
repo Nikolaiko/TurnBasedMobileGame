@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../const/map_consts.dart';
-import '../state/game_state.dart';
+import 'package:turn_based_game/const/map_consts.dart';
+import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
+import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
+import 'package:turn_based_game/model/mission/ui_tile.dart';
 
 ///Widget for ui marks on mission map
 class UITilesWidget extends StatefulWidget {
@@ -26,16 +27,26 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   }
 
   List<Widget> _buildUIStack() {
-    var units = List<Widget>(); 
-    for (var uiTile in _state.uiMap) {
+    List<Widget> units = []; 
+    for (final UITile uiTile in _state.uiMap) {
+      String name = uiTile.type == UITileType.checkmark 
+        ? MapConsts.SELECTED_TILE_IMAGE
+        : MapConsts.ATTACK_TILE_IMAGE;
+
       units.add(
         Positioned(
           left: MapConsts.tileSide * uiTile.column,
           top: MapConsts.tileSide * uiTile.row,
-          child: IgnorePointer(
-            ignoring: true,
+          child: GestureDetector(
+            onTap: () { 
+              _uiTileCallback(
+                uiTile.type,
+                uiTile.row,
+                uiTile.column
+              ); 
+            },
             child: Image.asset(
-              MapConsts.selectedTileImage,
+              name,
               fit: BoxFit.contain,
               width: MapConsts.tileSide,
               height: MapConsts.tileSide
@@ -45,5 +56,21 @@ class _UITilesWidgetState extends State<UITilesWidget> {
       );  
     }
     return units;
+  }
+
+  void _uiTileCallback(UITileType type, int row, int column) {
+    switch(type) {
+      case UITileType.attack: {
+        _state.attackTap(row, column);
+        break;
+      }
+      case UITileType.checkmark: {
+        _state.moveTileTap(row, column);
+        break;
+      }
+      case UITileType.empty: {
+        print("Empty tap");
+      }
+    }
   }
 }

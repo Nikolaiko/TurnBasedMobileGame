@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'ui_tile_type.dart';
+import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
 
 part 'ui_tile.freezed.dart';
 

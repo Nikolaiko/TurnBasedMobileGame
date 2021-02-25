@@ -1,5 +1,5 @@
-import 'conflict_side.dart';
-import 'unit_type.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
+import 'package:turn_based_game/model/mission/enums/unit_type.dart';
 
 class Unit {
   final ConflictSide conflictSide;
@@ -8,6 +8,7 @@ class Unit {
   int column;
   int health;
   int attack;
+  bool alreadyMoved;
 
   Unit(
     this.conflictSide,
@@ -15,6 +16,7 @@ class Unit {
     this.row,
     this.column,
     this.health,
-    this.attack
+    this.attack,
+    { this.alreadyMoved = false }
   );
 }

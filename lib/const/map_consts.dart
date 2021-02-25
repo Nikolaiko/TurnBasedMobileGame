@@ -25,4 +25,7 @@ class MapConsts {
 
   ///Selected tile image name
   static const selectedTileImage = "assets/images/mission/ui/check.png";
+
+  static const SELECTED_TILE_IMAGE = "assets/images/mission/ui/check.png";
+  static const ATTACK_TILE_IMAGE = "assets/images/mission/ui/red_cross.png";
 }

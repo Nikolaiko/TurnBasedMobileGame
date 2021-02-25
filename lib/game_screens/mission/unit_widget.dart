@@ -5,8 +5,14 @@ import '../../const/map_consts.dart';
 class UnitWidget extends StatefulWidget {
   final List<String> animationFrames;
   final bool flip;
+  final bool alreadyMoved;
 
-  const UnitWidget(this.animationFrames, { this.flip = false });
+  const UnitWidget(
+    this.animationFrames, 
+    { 
+      this.flip = false, 
+      this.alreadyMoved = false 
+    });
 
   @override
   _UnitWidgetState createState() => _UnitWidgetState();
@@ -35,6 +41,12 @@ class _UnitWidgetState extends State<UnitWidget>
 
   @override
   Widget build(BuildContext context) {
+    return widget.alreadyMoved 
+    ? Stack(children: [_buildUnitAnimation(), const Icon(Icons.check)])
+    : _buildUnitAnimation();
+  }
+
+  Widget _buildUnitAnimation() {
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {        

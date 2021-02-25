@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../const/map_consts.dart';
-import '../../../model/mission/conflict_side.dart';
-import '../../../model/mission/unit.dart';
-import '../../../model/mission/unit_action.dart';
-import '../../../model/mission/unit_animation_type.dart';
-import '../factories/unit_factory.dart';
-import '../state/game_state.dart';
+import 'package:turn_based_game/const/map_consts.dart';
+import 'package:turn_based_game/game_screens/mission/factories/unit_factory.dart';
+import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
+import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
+import 'package:turn_based_game/model/mission/unit.dart';
+import 'package:turn_based_game/model/mission/unit_action.dart';
+import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
 
 ///Widget for displaying all units on map
 class UnitsWidget extends StatefulWidget {
@@ -88,8 +88,8 @@ class _UnitsWidgetState extends State<UnitsWidget>
                         unit.conflictSide,
                         UnitAnimationType.move,
                         flipped: destCol < col
-                      )                      
-                    ),
+                      ),
+                    )
                   );
                 }
               )
@@ -118,7 +118,8 @@ class _UnitsWidgetState extends State<UnitsWidget>
           unit.type, 
           unit.conflictSide,
           UnitAnimationType.idle,
-          flipped: unit.conflictSide == ConflictSide.enemy
+          flipped: unit.conflictSide == ConflictSide.enemy,
+          alreadyMoved: unit.alreadyMoved
         )   
       ),
     );
