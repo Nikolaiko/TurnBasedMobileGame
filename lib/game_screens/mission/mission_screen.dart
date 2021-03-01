@@ -24,7 +24,9 @@ class _MissionScreenState extends State<MissionScreen> {
               _state.endTurn();
             },
             child: const Text("End turn"),
-            shape: const CircleBorder(side: BorderSide(color: Colors.transparent)),
+            shape: const CircleBorder(
+              side: BorderSide(color: Colors.transparent)
+            ),
           ),
         ]
       ),     

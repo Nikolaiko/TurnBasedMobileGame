@@ -30,7 +30,10 @@ class UnitFactory {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
-    return UnitWidget(animationFrames, flip: flipped, alreadyMoved: alreadyMoved,);
+    return UnitWidget(animationFrames, 
+      flip: flipped, 
+      alreadyMoved: alreadyMoved
+    );
   }
 
   int _getAnimationLengthForType(

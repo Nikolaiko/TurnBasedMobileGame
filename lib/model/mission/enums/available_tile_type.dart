@@ -1,7 +1,7 @@
 import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
 
 enum AvaliableTileType {
-  not_available,
+  notAvailable,
   forMove,
   forAttack
 }
@@ -10,7 +10,7 @@ extension ParseToUIType on AvaliableTileType {
   UITileType convertToUIType() {
     UITileType uiType = UITileType.empty;
     switch(this) {
-      case AvaliableTileType.not_available: {
+      case AvaliableTileType.notAvailable: {
         uiType = UITileType.empty;
         break;
       }

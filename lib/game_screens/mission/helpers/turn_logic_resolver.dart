@@ -16,7 +16,7 @@ class TurnLogicResolver {
     Unit unit,
     Point<int> start, 
     Point<int> end,
-    List<AvailableTile> availableCells
+    List<Point<int>> availableCells
   ) {
     var tiles = [];
     var cameFrom = {};
@@ -31,14 +31,48 @@ class TurnLogicResolver {
       var bottomTile = Point<int>(currentTile.x + 1, currentTile.y);
       var topTile = Point<int>(currentTile.x - 1, currentTile.y);  
 
-      var neighbors = [rightTile, leftTile, bottomTile, topTile];
+      var neighbors = [];
+      if (availableCells.contains(rightTile)) {
+        neighbors.add(rightTile);
+      }
+
+      if (availableCells.contains(leftTile)) {
+        neighbors.add(leftTile);
+      }
+
+      if (availableCells.contains(topTile)) {
+        neighbors.add(topTile);
+      }
+
+      if (availableCells.contains(bottomTile)) {
+        neighbors.add(bottomTile);
+      }
+       
       for (final Point<int> neighbor in neighbors) {
         if (!cameFrom.keys.contains(neighbor)) {
           tiles.add(neighbor);
-          cameFrom[neighbor] = currentTile; 
+          cameFrom[neighbor] = currentTile;
+
+          if (neighbor == end) {
+            tiles.clear();
+            break;
+          }
         }
       }
     }
+
+    var finalPath = List<Point<int>>();
+    var current = cameFrom[end];
+    while (current != start) {
+      finalPath.add(current);
+      current = cameFrom[current];
+    }    
+    finalPath = finalPath.reversed.toList();
+
+    for (var item in finalPath) {
+      print("Item : ${item.x}, ${item.y}");
+    }
+
 
     // _getAllTilesFromPosition(
     //   unit,
@@ -48,7 +82,7 @@ class TurnLogicResolver {
     //   unitsMap
     // );
 
-    return tiles;
+    return finalPath;
   }
 
   void _checkCell(int row, int column, List<Point<int>> cellsQueue, Map<Point<int>, Point<int>> path) {
@@ -73,7 +107,7 @@ class TurnLogicResolver {
   AvaliableTileType _isTileAvailable(Unit unit, int row, int column, List<Unit> unitsMap) {    
     bool freeToMove = _isTileAvailableForMove(row, column, unitsMap);
     bool canAttacked = _isTileAvailableForAttack(unit, row, column, unitsMap);
-    AvaliableTileType tileType = AvaliableTileType.not_available;
+    AvaliableTileType tileType = AvaliableTileType.notAvailable;
     
     if (freeToMove) {
       tileType = AvaliableTileType.forMove;
@@ -137,7 +171,7 @@ class TurnLogicResolver {
     }
     
     AvaliableTileType rightTileType = _isTileAvailable(unit, position.x, position.y + 1, unitsMap);
-    if (rightTileType != AvaliableTileType.not_available) {
+    if (rightTileType != AvaliableTileType.notAvailable) {
       Point<int> rightPosition = Point<int>(position.x, position.y + 1);
       AvailableTile rightTile = AvailableTile(rightPosition, rightTileType);
       
@@ -154,7 +188,7 @@ class TurnLogicResolver {
     }
 
     AvaliableTileType leftTileType = _isTileAvailable(unit, position.x, position.y - 1, unitsMap);
-    if (leftTileType != AvaliableTileType.not_available) {
+    if (leftTileType != AvaliableTileType.notAvailable) {
       Point<int> leftPosition = Point<int>(position.x, position.y - 1);
       AvailableTile leftTile = AvailableTile(leftPosition, leftTileType);
 
@@ -171,7 +205,7 @@ class TurnLogicResolver {
     }
     
     AvaliableTileType topTileType = _isTileAvailable(unit, position.x - 1, position.y, unitsMap);
-    if (topTileType != AvaliableTileType.not_available) {
+    if (topTileType != AvaliableTileType.notAvailable) {
       Point<int> topPosition = Point<int>(position.x - 1, position.y);
       AvailableTile topTile = AvailableTile(topPosition, topTileType);
 
@@ -188,7 +222,7 @@ class TurnLogicResolver {
     }
 
     AvaliableTileType bottomTileType = _isTileAvailable(unit, position.x + 1, position.y, unitsMap);
-    if (bottomTileType != AvaliableTileType.not_available) {
+    if (bottomTileType != AvaliableTileType.notAvailable) {
       Point<int> bottomPosition = Point<int>(position.x + 1, position.y);
       AvailableTile bottomTile = AvailableTile(bottomPosition, bottomTileType);
 
@@ -208,10 +242,10 @@ class TurnLogicResolver {
   int _getUnitBaseMoveDistance(Unit unit) {
     switch(unit.type) {
       case UnitType.infranty: {
-        return INFRANTY_TURN_LENGTH;        
+        return soldierTurnLength;        
       }
       default: {
-        return INFRANTY_TURN_LENGTH;
+        return soldierTurnLength;
       }
     }
   }

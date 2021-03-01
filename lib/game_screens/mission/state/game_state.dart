@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,6 @@ import 'package:turn_based_game/model/mission/available_tile.dart';
 import 'package:turn_based_game/model/mission/enums/available_tile_type.dart';
 import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/ui_tile.dart';
-import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_action.dart';
 
@@ -24,6 +24,7 @@ class GameState with ChangeNotifier {
   final List<Unit> _missionUnits;
   final List<UITile> _uiMap = [];
   final List<UnitAction> _currentActions = [];
+  List<Point<int>> _tiles = [];
 
   List<UITile> get uiMap => _uiMap;
   List<List<int>> get missionMap => _missionMap;
@@ -47,11 +48,13 @@ class GameState with ChangeNotifier {
     }
 
     _uiMap.clear();
+    _tiles.clear();
 
     if (tappedUnit != _selectedUnit) {      
       _selectedUnit = tappedUnit;
-      List<AvailableTile> tiles = _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
-      for(final AvailableTile tile in tiles) {        
+      List<AvailableTile> availableTiles = 
+        _logicResolver.getAvailableTiles(tappedUnit, _missionUnits);
+      for(final AvailableTile tile in availableTiles) {        
         _uiMap.add(
           UITile(
             tile.type.convertToUIType(),
@@ -59,6 +62,7 @@ class GameState with ChangeNotifier {
             tile.position.y
           )
         );
+        _tiles.add(tile.position);
       }      
     } else {
       _selectedUnit = null;
@@ -74,7 +78,35 @@ class GameState with ChangeNotifier {
 
   void attackTap(int row, int column) {
     if (_selectedUnit != null) {
-      
+      var path = _logicResolver.getPath(_selectedUnit, Point<int>(_selectedUnit.row, _selectedUnit.column), Point<int>(row, column), _tiles);
+
+      uiMap.clear();
+      _currentActions.clear();
+
+      var lx = _selectedUnit.row;
+      var ly = _selectedUnit.column;
+
+      for (var item in path) {
+        _currentActions.add(
+            UnitAction.move(
+              _selectedUnit,
+              item.x,
+              item.y,
+              lx,
+              ly,
+            )
+          );
+        lx = item.x;
+        ly = item.y;
+      }
+
+      _selectedUnit.alreadyMoved = true;
+       _selectedUnit.column = ly;
+       _selectedUnit.row = lx;
+      _selectedUnit = null;
+
+      notifyListeners();        
+      _actionsStream.add(_currentActions.removeAt(0));  
     }
   }
 

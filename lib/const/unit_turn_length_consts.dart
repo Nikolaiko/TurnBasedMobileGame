@@ -1,1 +1,1 @@
-const int INFRANTY_TURN_LENGTH = 4;
+const int soldierTurnLength = 4;

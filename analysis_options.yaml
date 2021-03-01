@@ -8,12 +8,13 @@ analyzer:
   errors:
     public_member_api_docs: ignore
     prefer_single_quotes: ignore
-
-    missing_required_param: warning
-    # treat missing returns as a warning (not a hint)
+    missing_required_param: warning    
     missing_return: warning
-    # allow having TODOs in the code
     todo: ignore
+    prefer_relative_imports: ignore
+    omit_local_variable_types: ignore
+    prefer_collection_literals: ignore
+
     # allow self-reference to deprecated members (we do this because otherwise we have
     # to annotate every member in every test, assert, etc, when we deprecate something)
     deprecated_member_use_from_same_package: ignore

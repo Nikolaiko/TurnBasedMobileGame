@@ -30,8 +30,8 @@ class _UITilesWidgetState extends State<UITilesWidget> {
     List<Widget> units = []; 
     for (final UITile uiTile in _state.uiMap) {
       String name = uiTile.type == UITileType.checkmark 
-        ? MapConsts.SELECTED_TILE_IMAGE
-        : MapConsts.ATTACK_TILE_IMAGE;
+        ? MapConsts.selectedTileImage
+        : MapConsts.attackTileImage;
 
       units.add(
         Positioned(
