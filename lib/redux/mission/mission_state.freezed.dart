@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'mission_state.dart';
 
@@ -9,11 +9,13 @@ part of 'mission_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MissionStateTearOff {
   const _$MissionStateTearOff();
 
-// ignore: unused_element
   _MissionState call(List<List<int>> missionMap, List<Unit> missionUnits) {
     return _MissionState(
       missionMap,
@@ -21,40 +23,44 @@ class _$MissionStateTearOff {
     );
   }
 
-// ignore: unused_element
   MissionNotStarted notStarted() {
     return const MissionNotStarted();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MissionState = _$MissionStateTearOff();
 
 /// @nodoc
 mixin _$MissionState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    @required TResult notStarted(),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)
+        $default, {
+    required TResult Function() notStarted,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    TResult notStarted(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        $default, {
+    TResult Function()? notStarted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    @required TResult notStarted(MissionNotStarted value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(_MissionState value) $default, {
+    required TResult Function(MissionNotStarted value) notStarted,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    TResult notStarted(MissionNotStarted value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MissionState value)? $default, {
+    TResult Function(MissionNotStarted value)? notStarted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -93,23 +99,26 @@ class __$MissionStateCopyWithImpl<$Res> extends _$MissionStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object missionMap = freezed,
-    Object missionUnits = freezed,
+    Object? missionMap = freezed,
+    Object? missionUnits = freezed,
   }) {
     return _then(_MissionState(
-      missionMap == freezed ? _value.missionMap : missionMap as List<List<int>>,
+      missionMap == freezed
+          ? _value.missionMap
+          : missionMap // ignore: cast_nullable_to_non_nullable
+              as List<List<int>>,
       missionUnits == freezed
           ? _value.missionUnits
-          : missionUnits as List<Unit>,
+          : missionUnits // ignore: cast_nullable_to_non_nullable
+              as List<Unit>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_MissionState implements _MissionState {
-  const _$_MissionState(this.missionMap, this.missionUnits)
-      : assert(missionMap != null),
-        assert(missionUnits != null);
+  const _$_MissionState(this.missionMap, this.missionUnits);
 
   @override
   final List<List<int>> missionMap;
@@ -146,23 +155,22 @@ class _$_MissionState implements _MissionState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    @required TResult notStarted(),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)
+        $default, {
+    required TResult Function() notStarted,
   }) {
-    assert($default != null);
-    assert(notStarted != null);
     return $default(missionMap, missionUnits);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    TResult notStarted(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        $default, {
+    TResult Function()? notStarted,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(missionMap, missionUnits);
     }
@@ -171,23 +179,20 @@ class _$_MissionState implements _MissionState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    @required TResult notStarted(MissionNotStarted value),
+  TResult map<TResult extends Object?>(
+    TResult Function(_MissionState value) $default, {
+    required TResult Function(MissionNotStarted value) notStarted,
   }) {
-    assert($default != null);
-    assert(notStarted != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    TResult notStarted(MissionNotStarted value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MissionState value)? $default, {
+    TResult Function(MissionNotStarted value)? notStarted,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -199,10 +204,11 @@ abstract class _MissionState implements MissionState {
   const factory _MissionState(
       List<List<int>> missionMap, List<Unit> missionUnits) = _$_MissionState;
 
-  List<List<int>> get missionMap;
-  List<Unit> get missionUnits;
+  List<List<int>> get missionMap => throw _privateConstructorUsedError;
+  List<Unit> get missionUnits => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MissionStateCopyWith<_MissionState> get copyWith;
+  _$MissionStateCopyWith<_MissionState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -225,6 +231,7 @@ class _$MissionNotStartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$MissionNotStarted implements MissionNotStarted {
   const _$MissionNotStarted();
 
@@ -243,23 +250,22 @@ class _$MissionNotStarted implements MissionNotStarted {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    @required TResult notStarted(),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)
+        $default, {
+    required TResult Function() notStarted,
   }) {
-    assert($default != null);
-    assert(notStarted != null);
     return notStarted();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(List<List<int>> missionMap, List<Unit> missionUnits), {
-    TResult notStarted(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        $default, {
+    TResult Function()? notStarted,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notStarted != null) {
       return notStarted();
     }
@@ -268,23 +274,20 @@ class _$MissionNotStarted implements MissionNotStarted {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    @required TResult notStarted(MissionNotStarted value),
+  TResult map<TResult extends Object?>(
+    TResult Function(_MissionState value) $default, {
+    required TResult Function(MissionNotStarted value) notStarted,
   }) {
-    assert($default != null);
-    assert(notStarted != null);
     return notStarted(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(_MissionState value), {
-    TResult notStarted(MissionNotStarted value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MissionState value)? $default, {
+    TResult Function(MissionNotStarted value)? notStarted,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notStarted != null) {
       return notStarted(this);
     }

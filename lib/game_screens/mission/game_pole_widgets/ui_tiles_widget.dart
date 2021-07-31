@@ -12,14 +12,14 @@ class UITilesWidget extends StatefulWidget {
 }
 
 class _UITilesWidgetState extends State<UITilesWidget> {
-  GameState _state;
+  GameState? _state;
 
   @override
   Widget build(BuildContext context) {
     _state = Provider.of<GameState>(context);
     return SizedBox(
-      width: MapConsts.tileSide * _state.missionMap.length,
-      height: MapConsts.tileSide * _state.missionMap.first.length,
+      width: MapConsts.tileSide * _state!.missionMap.length,
+      height: MapConsts.tileSide * _state!.missionMap.first.length,
       child: Stack(
         children: _buildUIStack()
       ),
@@ -28,7 +28,7 @@ class _UITilesWidgetState extends State<UITilesWidget> {
 
   List<Widget> _buildUIStack() {
     List<Widget> units = []; 
-    for (final UITile uiTile in _state.uiMap) {
+    for (final UITile uiTile in _state!.uiMap) {
       String name = uiTile.type == UITileType.checkmark 
         ? MapConsts.selectedTileImage
         : MapConsts.attackTileImage;
@@ -61,11 +61,11 @@ class _UITilesWidgetState extends State<UITilesWidget> {
   void _uiTileCallback(UITileType type, int row, int column) {
     switch(type) {
       case UITileType.attack: {
-        _state.attackTap(row, column);
+        _state!.attackTap(row, column);
         break;
       }
       case UITileType.checkmark: {
-        _state.moveTileTap(row, column);
+        _state!.moveTileTap(row, column);
         break;
       }
       case UITileType.empty: {

@@ -18,9 +18,9 @@ class UnitsWidget extends StatefulWidget {
 class _UnitsWidgetState extends State<UnitsWidget> 
                   with SingleTickerProviderStateMixin { 
   final  UnitFactory _factory = UnitFactory(); 
-  GameState _state;
-  AnimationController _controller;
-  Animation<double> _animation;
+  GameState? _state;
+  AnimationController? _controller;
+  Animation<double>? _animation;
 
   @override
   void initState() {
@@ -31,9 +31,9 @@ class _UnitsWidgetState extends State<UnitsWidget>
       duration: const Duration(milliseconds: 800)
     ); 
 
-    _controller.addStatusListener( (status) {
+    _controller?.addStatusListener( (status) {
       if (status == AnimationStatus.completed) {
-        _state.actionDone();
+        _state?.actionDone();
       }
     });  
   }
@@ -42,11 +42,11 @@ class _UnitsWidgetState extends State<UnitsWidget>
   Widget build(BuildContext context) {
     _state = Provider.of<GameState>(context, listen: false);
     return SizedBox(      
-      height: MapConsts.tileSide * _state.missionMap.length,
-      width: MapConsts.tileSide * _state.missionMap.first.length,
+      height: MapConsts.tileSide * _state!.missionMap.length,
+      width: MapConsts.tileSide * _state!.missionMap.first.length,
       child: StreamBuilder<Object>(
         initialData: const UnitAction.empty(),
-        stream: _state.actionsStream,
+        stream: _state!.actionsStream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Stack(
@@ -61,27 +61,27 @@ class _UnitsWidgetState extends State<UnitsWidget>
   }
 
   List<Widget> _buildUnitsStack(UnitAction action) {    
-    var units = List<Widget>();    
-    for (var unit in _state.missionUnits) {      
+    var units = List<Widget>.empty(growable: true);    
+    for (var unit in _state!.missionUnits) {      
       action.maybeWhen(
         move: (actionUnit, destRow, destCol, row, col) {
           if (unit == actionUnit) {            
             _animation = _buildMoveAnimationTween(row, col, destRow, destCol);
-            _controller.forward(from: 0);
+            _controller!.forward(from: 0);
             units.add(
               AnimatedBuilder(
-                animation: _controller,
+                animation: _controller!,
                 builder: (context, child) {
                   return Positioned(                                  
                     left: destCol == col 
                       ? MapConsts.tileSide * col 
-                      : MapConsts.tileSide * col + _animation.value,
+                      : MapConsts.tileSide * col + _animation!.value,
                     top: destRow == row 
                       ? MapConsts.tileSide * row 
-                      : MapConsts.tileSide * row + _animation.value,
+                      : MapConsts.tileSide * row + _animation!.value,
                       child: GestureDetector(
                         onTap: () {
-                          _state.unitTap(unit);
+                          _state!.unitTap(unit);
                         },
                       child: _factory.buildUnit(
                         unit.type, 
@@ -97,9 +97,11 @@ class _UnitsWidgetState extends State<UnitsWidget>
           } else {
             units.add(_buildUnitWidget(unit));  
           }
+          return Object();
         },
         orElse: () {
           units.add(_buildUnitWidget(unit));
+          return Object();
         } 
       );        
     }
@@ -112,7 +114,7 @@ class _UnitsWidgetState extends State<UnitsWidget>
       top: MapConsts.tileSide * unit.row,
       child: GestureDetector(
         onTap: () {
-          _state.unitTap(unit);
+          _state!.unitTap(unit);
         },
         child: _factory.buildUnit(
           unit.type, 
@@ -141,12 +143,12 @@ class _UnitsWidgetState extends State<UnitsWidget>
     return Tween<double>(
       begin: 0, 
       end: endValue
-    ).animate(_controller);    
+    ).animate(_controller!);    
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 }

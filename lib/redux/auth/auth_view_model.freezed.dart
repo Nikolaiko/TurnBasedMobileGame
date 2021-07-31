@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'auth_view_model.dart';
 
@@ -9,58 +9,61 @@ part of 'auth_view_model.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AuthViewModelTearOff {
   const _$AuthViewModelTearOff();
 
-// ignore: unused_element
   InitAuthState init() {
     return const InitAuthState();
   }
 
-// ignore: unused_element
   LoggedAuthState logged() {
     return const LoggedAuthState();
   }
 
-// ignore: unused_element
   NotLoggedAuthState notLogged() {
     return const NotLoggedAuthState();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AuthViewModel = _$AuthViewModelTearOff();
 
 /// @nodoc
 mixin _$AuthViewModel {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult init(),
-    @required TResult logged(),
-    @required TResult notLogged(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logged,
+    required TResult Function() notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult init(),
-    TResult logged(),
-    TResult notLogged(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logged,
+    TResult Function()? notLogged,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult init(InitAuthState value),
-    @required TResult logged(LoggedAuthState value),
-    @required TResult notLogged(NotLoggedAuthState value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAuthState value) init,
+    required TResult Function(LoggedAuthState value) logged,
+    required TResult Function(NotLoggedAuthState value) notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult init(InitAuthState value),
-    TResult logged(LoggedAuthState value),
-    TResult notLogged(NotLoggedAuthState value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAuthState value)? init,
+    TResult Function(LoggedAuthState value)? logged,
+    TResult Function(NotLoggedAuthState value)? notLogged,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -100,6 +103,7 @@ class _$InitAuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InitAuthState implements InitAuthState {
   const _$InitAuthState();
 
@@ -118,26 +122,22 @@ class _$InitAuthState implements InitAuthState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult init(),
-    @required TResult logged(),
-    @required TResult notLogged(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logged,
+    required TResult Function() notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return init();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult init(),
-    TResult logged(),
-    TResult notLogged(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logged,
+    TResult Function()? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (init != null) {
       return init();
     }
@@ -146,26 +146,22 @@ class _$InitAuthState implements InitAuthState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult init(InitAuthState value),
-    @required TResult logged(LoggedAuthState value),
-    @required TResult notLogged(NotLoggedAuthState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAuthState value) init,
+    required TResult Function(LoggedAuthState value) logged,
+    required TResult Function(NotLoggedAuthState value) notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return init(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult init(InitAuthState value),
-    TResult logged(LoggedAuthState value),
-    TResult notLogged(NotLoggedAuthState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAuthState value)? init,
+    TResult Function(LoggedAuthState value)? logged,
+    TResult Function(NotLoggedAuthState value)? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (init != null) {
       return init(this);
     }
@@ -197,6 +193,7 @@ class _$LoggedAuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoggedAuthState implements LoggedAuthState {
   const _$LoggedAuthState();
 
@@ -215,26 +212,22 @@ class _$LoggedAuthState implements LoggedAuthState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult init(),
-    @required TResult logged(),
-    @required TResult notLogged(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logged,
+    required TResult Function() notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return logged();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult init(),
-    TResult logged(),
-    TResult notLogged(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logged,
+    TResult Function()? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (logged != null) {
       return logged();
     }
@@ -243,26 +236,22 @@ class _$LoggedAuthState implements LoggedAuthState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult init(InitAuthState value),
-    @required TResult logged(LoggedAuthState value),
-    @required TResult notLogged(NotLoggedAuthState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAuthState value) init,
+    required TResult Function(LoggedAuthState value) logged,
+    required TResult Function(NotLoggedAuthState value) notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return logged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult init(InitAuthState value),
-    TResult logged(LoggedAuthState value),
-    TResult notLogged(NotLoggedAuthState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAuthState value)? init,
+    TResult Function(LoggedAuthState value)? logged,
+    TResult Function(NotLoggedAuthState value)? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (logged != null) {
       return logged(this);
     }
@@ -294,6 +283,7 @@ class _$NotLoggedAuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$NotLoggedAuthState implements NotLoggedAuthState {
   const _$NotLoggedAuthState();
 
@@ -312,26 +302,22 @@ class _$NotLoggedAuthState implements NotLoggedAuthState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult init(),
-    @required TResult logged(),
-    @required TResult notLogged(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logged,
+    required TResult Function() notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return notLogged();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult init(),
-    TResult logged(),
-    TResult notLogged(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logged,
+    TResult Function()? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notLogged != null) {
       return notLogged();
     }
@@ -340,26 +326,22 @@ class _$NotLoggedAuthState implements NotLoggedAuthState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult init(InitAuthState value),
-    @required TResult logged(LoggedAuthState value),
-    @required TResult notLogged(NotLoggedAuthState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAuthState value) init,
+    required TResult Function(LoggedAuthState value) logged,
+    required TResult Function(NotLoggedAuthState value) notLogged,
   }) {
-    assert(init != null);
-    assert(logged != null);
-    assert(notLogged != null);
     return notLogged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult init(InitAuthState value),
-    TResult logged(LoggedAuthState value),
-    TResult notLogged(NotLoggedAuthState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAuthState value)? init,
+    TResult Function(LoggedAuthState value)? logged,
+    TResult Function(NotLoggedAuthState value)? notLogged,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notLogged != null) {
       return notLogged(this);
     }

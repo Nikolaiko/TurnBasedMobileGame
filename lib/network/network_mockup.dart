@@ -25,8 +25,7 @@ class NetworkMockup implements NetworkService {
         receivedData.send(userData);
       }
       else if (receivedData is NetworkResponse<UserProfile>) {        
-        isolate.kill(priority: Isolate.immediate);
-        isolate = null;
+        isolate.kill(priority: Isolate.immediate);        
         receivePort.close();
 
         callback(receivedData);
@@ -51,8 +50,7 @@ class NetworkMockup implements NetworkService {
         receivedData.send(userData);
       }
       else if (receivedData is NetworkResponse<UserProfile>) {        
-        isolate.kill(priority: Isolate.immediate);
-        isolate = null;
+        isolate.kill(priority: Isolate.immediate);        
         receivePort.close();
 
         callback(receivedData);

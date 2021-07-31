@@ -3,7 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 import '../network/network_service.dart';
-import '../repositories/user_profile_repository.dart';
+import '../repositories/user_profile/user_profile_repository.dart';
 import 'app_state.dart';
 
 abstract class BaseUserRepositoryThunk

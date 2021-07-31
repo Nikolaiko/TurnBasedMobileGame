@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../network/network_service.dart';
 import '../redux/app_state.dart';
-import '../repositories/user_profile_repository.dart';
+import '../repositories/user_profile/user_profile_repository.dart';
 import 'state/auth_process_state.dart';
 import 'widgets/auth_navigator.dart';
 

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'start_mission_data.dart';
 
@@ -8,6 +8,10 @@ part of 'start_mission_data.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 StartMissionData _$StartMissionDataFromJson(Map<String, dynamic> json) {
   return _StartMissionData.fromJson(json);
 }
@@ -16,7 +20,6 @@ StartMissionData _$StartMissionDataFromJson(Map<String, dynamic> json) {
 class _$StartMissionDataTearOff {
   const _$StartMissionDataTearOff();
 
-// ignore: unused_element
   _StartMissionData call(List<UnitStartMissionData> enemyUnits,
       List<UnitStartMissionData> playerUnits, List<List<String>> tilemap) {
     return _StartMissionData(
@@ -26,25 +29,26 @@ class _$StartMissionDataTearOff {
     );
   }
 
-// ignore: unused_element
   StartMissionData fromJson(Map<String, Object> json) {
     return StartMissionData.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $StartMissionData = _$StartMissionDataTearOff();
 
 /// @nodoc
 mixin _$StartMissionData {
-  List<UnitStartMissionData> get enemyUnits;
-  List<UnitStartMissionData> get playerUnits;
-  List<List<String>> get tilemap;
+  List<UnitStartMissionData> get enemyUnits =>
+      throw _privateConstructorUsedError;
+  List<UnitStartMissionData> get playerUnits =>
+      throw _privateConstructorUsedError;
+  List<List<String>> get tilemap => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StartMissionDataCopyWith<StartMissionData> get copyWith;
+  $StartMissionDataCopyWith<StartMissionData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -69,19 +73,23 @@ class _$StartMissionDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object enemyUnits = freezed,
-    Object playerUnits = freezed,
-    Object tilemap = freezed,
+    Object? enemyUnits = freezed,
+    Object? playerUnits = freezed,
+    Object? tilemap = freezed,
   }) {
     return _then(_value.copyWith(
       enemyUnits: enemyUnits == freezed
           ? _value.enemyUnits
-          : enemyUnits as List<UnitStartMissionData>,
+          : enemyUnits // ignore: cast_nullable_to_non_nullable
+              as List<UnitStartMissionData>,
       playerUnits: playerUnits == freezed
           ? _value.playerUnits
-          : playerUnits as List<UnitStartMissionData>,
-      tilemap:
-          tilemap == freezed ? _value.tilemap : tilemap as List<List<String>>,
+          : playerUnits // ignore: cast_nullable_to_non_nullable
+              as List<UnitStartMissionData>,
+      tilemap: tilemap == freezed
+          ? _value.tilemap
+          : tilemap // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>,
     ));
   }
 }
@@ -112,30 +120,31 @@ class __$StartMissionDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object enemyUnits = freezed,
-    Object playerUnits = freezed,
-    Object tilemap = freezed,
+    Object? enemyUnits = freezed,
+    Object? playerUnits = freezed,
+    Object? tilemap = freezed,
   }) {
     return _then(_StartMissionData(
       enemyUnits == freezed
           ? _value.enemyUnits
-          : enemyUnits as List<UnitStartMissionData>,
+          : enemyUnits // ignore: cast_nullable_to_non_nullable
+              as List<UnitStartMissionData>,
       playerUnits == freezed
           ? _value.playerUnits
-          : playerUnits as List<UnitStartMissionData>,
-      tilemap == freezed ? _value.tilemap : tilemap as List<List<String>>,
+          : playerUnits // ignore: cast_nullable_to_non_nullable
+              as List<UnitStartMissionData>,
+      tilemap == freezed
+          ? _value.tilemap
+          : tilemap // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_StartMissionData implements _StartMissionData {
-  const _$_StartMissionData(this.enemyUnits, this.playerUnits, this.tilemap)
-      : assert(enemyUnits != null),
-        assert(playerUnits != null),
-        assert(tilemap != null);
+  const _$_StartMissionData(this.enemyUnits, this.playerUnits, this.tilemap);
 
   factory _$_StartMissionData.fromJson(Map<String, dynamic> json) =>
       _$_$_StartMissionDataFromJson(json);
@@ -194,12 +203,15 @@ abstract class _StartMissionData implements StartMissionData {
       _$_StartMissionData.fromJson;
 
   @override
-  List<UnitStartMissionData> get enemyUnits;
+  List<UnitStartMissionData> get enemyUnits =>
+      throw _privateConstructorUsedError;
   @override
-  List<UnitStartMissionData> get playerUnits;
+  List<UnitStartMissionData> get playerUnits =>
+      throw _privateConstructorUsedError;
   @override
-  List<List<String>> get tilemap;
+  List<List<String>> get tilemap => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StartMissionDataCopyWith<_StartMissionData> get copyWith;
+  _$StartMissionDataCopyWith<_StartMissionData> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ class GamePoleWidget extends StatefulWidget {
 
 class _GamePoleWidgetState extends State<GamePoleWidget> {  
   final MapTileResolver _tileResolver = MapTileResolver();
-  GameState _state;
+  GameState? _state;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildGamePoleRows() {
-    var rows = List<Widget>();
-    for (var i = 0; i < _state.missionMap.length; i++) {
+    var rows = List<Widget>.empty(growable: true);
+    for (var i = 0; i < _state!.missionMap.length; i++) {
       var row = Row(  
         children: _buildRowTiles(i),
       );
@@ -34,16 +34,16 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
   }
 
   List<Widget> _buildRowTiles(int rowIndex) {
-    var tiles = List<Widget>();
-    for (var i = 0; i < _state.missionMap.first.length; i++) {      
+    var tiles = List<Widget>.empty(growable: true);
+    for (var i = 0; i < _state!.missionMap.first.length; i++) {      
       tiles.add(GestureDetector(
-        onTap: () => _state.clearSelection(),
+        onTap: () => _state!.clearSelection(),
         child: Image.asset(
-          _tileResolver.getMapImageName(_state.missionMap[rowIndex][i]),
+          _tileResolver.getMapImageName(_state!.missionMap[rowIndex][i]),
           fit: BoxFit.fill,
           width: MapConsts.tileSide,
           height: MapConsts.tileSide,
-          semanticLabel: _state.missionMap[rowIndex][i] == MapConsts.waterTile 
+          semanticLabel: _state!.missionMap[rowIndex][i] == MapConsts.waterTile 
           ? MapConsts.waterTileLabel 
           : MapConsts.terrainTileLabel,
         ),

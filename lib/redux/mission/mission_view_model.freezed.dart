@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'mission_view_model.dart';
 
@@ -9,21 +9,21 @@ part of 'mission_view_model.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MissionViewModelTearOff {
   const _$MissionViewModelTearOff();
 
-// ignore: unused_element
   MissionNotStartedViewModel notStarted() {
     return const MissionNotStartedViewModel();
   }
 
-// ignore: unused_element
   LoadingMissionState loading() {
     return const LoadingMissionState();
   }
 
-// ignore: unused_element
   MissionReadyViewModel ready(
       List<List<int>> missionMap, List<Unit> missionUnits) {
     return MissionReadyViewModel(
@@ -34,38 +34,43 @@ class _$MissionViewModelTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MissionViewModel = _$MissionViewModelTearOff();
 
 /// @nodoc
 mixin _$MissionViewModel {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult notStarted(),
-    @required TResult loading(),
-    @required
-        TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() notStarted,
+    required TResult Function() loading,
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        ready,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult notStarted(),
-    TResult loading(),
-    TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notStarted,
+    TResult Function()? loading,
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        ready,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult notStarted(MissionNotStartedViewModel value),
-    @required TResult loading(LoadingMissionState value),
-    @required TResult ready(MissionReadyViewModel value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(MissionNotStartedViewModel value) notStarted,
+    required TResult Function(LoadingMissionState value) loading,
+    required TResult Function(MissionReadyViewModel value) ready,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult notStarted(MissionNotStartedViewModel value),
-    TResult loading(LoadingMissionState value),
-    TResult ready(MissionReadyViewModel value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MissionNotStartedViewModel value)? notStarted,
+    TResult Function(LoadingMissionState value)? loading,
+    TResult Function(MissionReadyViewModel value)? ready,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -106,6 +111,7 @@ class _$MissionNotStartedViewModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$MissionNotStartedViewModel implements MissionNotStartedViewModel {
   const _$MissionNotStartedViewModel();
 
@@ -124,27 +130,25 @@ class _$MissionNotStartedViewModel implements MissionNotStartedViewModel {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult notStarted(),
-    @required TResult loading(),
-    @required
-        TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
+  TResult when<TResult extends Object?>({
+    required TResult Function() notStarted,
+    required TResult Function() loading,
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return notStarted();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult notStarted(),
-    TResult loading(),
-    TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notStarted,
+    TResult Function()? loading,
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notStarted != null) {
       return notStarted();
     }
@@ -153,26 +157,22 @@ class _$MissionNotStartedViewModel implements MissionNotStartedViewModel {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult notStarted(MissionNotStartedViewModel value),
-    @required TResult loading(LoadingMissionState value),
-    @required TResult ready(MissionReadyViewModel value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MissionNotStartedViewModel value) notStarted,
+    required TResult Function(LoadingMissionState value) loading,
+    required TResult Function(MissionReadyViewModel value) ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return notStarted(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult notStarted(MissionNotStartedViewModel value),
-    TResult loading(LoadingMissionState value),
-    TResult ready(MissionReadyViewModel value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MissionNotStartedViewModel value)? notStarted,
+    TResult Function(LoadingMissionState value)? loading,
+    TResult Function(MissionReadyViewModel value)? ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notStarted != null) {
       return notStarted(this);
     }
@@ -204,6 +204,7 @@ class _$LoadingMissionStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoadingMissionState implements LoadingMissionState {
   const _$LoadingMissionState();
 
@@ -222,27 +223,25 @@ class _$LoadingMissionState implements LoadingMissionState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult notStarted(),
-    @required TResult loading(),
-    @required
-        TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
+  TResult when<TResult extends Object?>({
+    required TResult Function() notStarted,
+    required TResult Function() loading,
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult notStarted(),
-    TResult loading(),
-    TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notStarted,
+    TResult Function()? loading,
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -251,26 +250,22 @@ class _$LoadingMissionState implements LoadingMissionState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult notStarted(MissionNotStartedViewModel value),
-    @required TResult loading(LoadingMissionState value),
-    @required TResult ready(MissionReadyViewModel value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MissionNotStartedViewModel value) notStarted,
+    required TResult Function(LoadingMissionState value) loading,
+    required TResult Function(MissionReadyViewModel value) ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult notStarted(MissionNotStartedViewModel value),
-    TResult loading(LoadingMissionState value),
-    TResult ready(MissionReadyViewModel value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MissionNotStartedViewModel value)? notStarted,
+    TResult Function(LoadingMissionState value)? loading,
+    TResult Function(MissionReadyViewModel value)? ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -303,23 +298,26 @@ class _$MissionReadyViewModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object missionMap = freezed,
-    Object missionUnits = freezed,
+    Object? missionMap = freezed,
+    Object? missionUnits = freezed,
   }) {
     return _then(MissionReadyViewModel(
-      missionMap == freezed ? _value.missionMap : missionMap as List<List<int>>,
+      missionMap == freezed
+          ? _value.missionMap
+          : missionMap // ignore: cast_nullable_to_non_nullable
+              as List<List<int>>,
       missionUnits == freezed
           ? _value.missionUnits
-          : missionUnits as List<Unit>,
+          : missionUnits // ignore: cast_nullable_to_non_nullable
+              as List<Unit>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$MissionReadyViewModel implements MissionReadyViewModel {
-  const _$MissionReadyViewModel(this.missionMap, this.missionUnits)
-      : assert(missionMap != null),
-        assert(missionUnits != null);
+  const _$MissionReadyViewModel(this.missionMap, this.missionUnits);
 
   @override
   final List<List<int>> missionMap;
@@ -357,27 +355,25 @@ class _$MissionReadyViewModel implements MissionReadyViewModel {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult notStarted(),
-    @required TResult loading(),
-    @required
-        TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
+  TResult when<TResult extends Object?>({
+    required TResult Function() notStarted,
+    required TResult Function() loading,
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return ready(missionMap, missionUnits);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult notStarted(),
-    TResult loading(),
-    TResult ready(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notStarted,
+    TResult Function()? loading,
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (ready != null) {
       return ready(missionMap, missionUnits);
     }
@@ -386,26 +382,22 @@ class _$MissionReadyViewModel implements MissionReadyViewModel {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult notStarted(MissionNotStartedViewModel value),
-    @required TResult loading(LoadingMissionState value),
-    @required TResult ready(MissionReadyViewModel value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(MissionNotStartedViewModel value) notStarted,
+    required TResult Function(LoadingMissionState value) loading,
+    required TResult Function(MissionReadyViewModel value) ready,
   }) {
-    assert(notStarted != null);
-    assert(loading != null);
-    assert(ready != null);
     return ready(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult notStarted(MissionNotStartedViewModel value),
-    TResult loading(LoadingMissionState value),
-    TResult ready(MissionReadyViewModel value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MissionNotStartedViewModel value)? notStarted,
+    TResult Function(LoadingMissionState value)? loading,
+    TResult Function(MissionReadyViewModel value)? ready,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (ready != null) {
       return ready(this);
     }
@@ -418,8 +410,9 @@ abstract class MissionReadyViewModel implements MissionViewModel {
           List<List<int>> missionMap, List<Unit> missionUnits) =
       _$MissionReadyViewModel;
 
-  List<List<int>> get missionMap;
-  List<Unit> get missionUnits;
+  List<List<int>> get missionMap => throw _privateConstructorUsedError;
+  List<Unit> get missionUnits => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MissionReadyViewModelCopyWith<MissionReadyViewModel> get copyWith;
+  $MissionReadyViewModelCopyWith<MissionReadyViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }

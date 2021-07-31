@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'mission_action.dart';
 
@@ -9,11 +9,13 @@ part of 'mission_action.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MissionActionTearOff {
   const _$MissionActionTearOff();
 
-// ignore: unused_element
   PrepareMissionAction prepareMission(
       List<List<int>> missionMap, List<Unit> missionUnits) {
     return PrepareMissionAction(
@@ -24,37 +26,42 @@ class _$MissionActionTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MissionAction = _$MissionActionTearOff();
 
 /// @nodoc
 mixin _$MissionAction {
-  List<List<int>> get missionMap;
-  List<Unit> get missionUnits;
+  List<List<int>> get missionMap => throw _privateConstructorUsedError;
+  List<Unit> get missionUnits => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult prepareMission(
-            List<List<int>> missionMap, List<Unit> missionUnits),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        prepareMission,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult prepareMission(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        prepareMission,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult prepareMission(PrepareMissionAction value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(PrepareMissionAction value) prepareMission,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult prepareMission(PrepareMissionAction value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PrepareMissionAction value)? prepareMission,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MissionActionCopyWith<MissionAction> get copyWith;
+  $MissionActionCopyWith<MissionAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -76,16 +83,18 @@ class _$MissionActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object missionMap = freezed,
-    Object missionUnits = freezed,
+    Object? missionMap = freezed,
+    Object? missionUnits = freezed,
   }) {
     return _then(_value.copyWith(
       missionMap: missionMap == freezed
           ? _value.missionMap
-          : missionMap as List<List<int>>,
+          : missionMap // ignore: cast_nullable_to_non_nullable
+              as List<List<int>>,
       missionUnits: missionUnits == freezed
           ? _value.missionUnits
-          : missionUnits as List<Unit>,
+          : missionUnits // ignore: cast_nullable_to_non_nullable
+              as List<Unit>,
     ));
   }
 }
@@ -113,23 +122,26 @@ class _$PrepareMissionActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object missionMap = freezed,
-    Object missionUnits = freezed,
+    Object? missionMap = freezed,
+    Object? missionUnits = freezed,
   }) {
     return _then(PrepareMissionAction(
-      missionMap == freezed ? _value.missionMap : missionMap as List<List<int>>,
+      missionMap == freezed
+          ? _value.missionMap
+          : missionMap // ignore: cast_nullable_to_non_nullable
+              as List<List<int>>,
       missionUnits == freezed
           ? _value.missionUnits
-          : missionUnits as List<Unit>,
+          : missionUnits // ignore: cast_nullable_to_non_nullable
+              as List<Unit>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$PrepareMissionAction implements PrepareMissionAction {
-  const _$PrepareMissionAction(this.missionMap, this.missionUnits)
-      : assert(missionMap != null),
-        assert(missionUnits != null);
+  const _$PrepareMissionAction(this.missionMap, this.missionUnits);
 
   @override
   final List<List<int>> missionMap;
@@ -167,22 +179,21 @@ class _$PrepareMissionAction implements PrepareMissionAction {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required
-        TResult prepareMission(
-            List<List<int>> missionMap, List<Unit> missionUnits),
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<List<int>> missionMap, List<Unit> missionUnits)
+        prepareMission,
   }) {
-    assert(prepareMission != null);
     return prepareMission(missionMap, missionUnits);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult prepareMission(List<List<int>> missionMap, List<Unit> missionUnits),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<List<int>> missionMap, List<Unit> missionUnits)?
+        prepareMission,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (prepareMission != null) {
       return prepareMission(missionMap, missionUnits);
     }
@@ -191,20 +202,18 @@ class _$PrepareMissionAction implements PrepareMissionAction {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult prepareMission(PrepareMissionAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(PrepareMissionAction value) prepareMission,
   }) {
-    assert(prepareMission != null);
     return prepareMission(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult prepareMission(PrepareMissionAction value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PrepareMissionAction value)? prepareMission,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (prepareMission != null) {
       return prepareMission(this);
     }
@@ -218,10 +227,11 @@ abstract class PrepareMissionAction implements MissionAction {
       _$PrepareMissionAction;
 
   @override
-  List<List<int>> get missionMap;
+  List<List<int>> get missionMap => throw _privateConstructorUsedError;
   @override
-  List<Unit> get missionUnits;
+  List<Unit> get missionUnits => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PrepareMissionActionCopyWith<PrepareMissionAction> get copyWith;
+  $PrepareMissionActionCopyWith<PrepareMissionAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }

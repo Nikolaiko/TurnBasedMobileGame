@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'app_state.dart';
 
@@ -9,11 +9,13 @@ part of 'app_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppStateTearOff {
   const _$AppStateTearOff();
 
-// ignore: unused_element
   _AppState call(AuthState authState, MissionState missionState) {
     return _AppState(
       authState,
@@ -23,16 +25,16 @@ class _$AppStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppState = _$AppStateTearOff();
 
 /// @nodoc
 mixin _$AppState {
-  AuthState get authState;
-  MissionState get missionState;
+  AuthState get authState => throw _privateConstructorUsedError;
+  MissionState get missionState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppStateCopyWith<AppState> get copyWith;
+  $AppStateCopyWith<AppState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,23 +57,23 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object authState = freezed,
-    Object missionState = freezed,
+    Object? authState = freezed,
+    Object? missionState = freezed,
   }) {
     return _then(_value.copyWith(
-      authState:
-          authState == freezed ? _value.authState : authState as AuthState,
+      authState: authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
       missionState: missionState == freezed
           ? _value.missionState
-          : missionState as MissionState,
+          : missionState // ignore: cast_nullable_to_non_nullable
+              as MissionState,
     ));
   }
 
   @override
   $AuthStateCopyWith<$Res> get authState {
-    if (_value.authState == null) {
-      return null;
-    }
     return $AuthStateCopyWith<$Res>(_value.authState, (value) {
       return _then(_value.copyWith(authState: value));
     });
@@ -79,9 +81,6 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 
   @override
   $MissionStateCopyWith<$Res> get missionState {
-    if (_value.missionState == null) {
-      return null;
-    }
     return $MissionStateCopyWith<$Res>(_value.missionState, (value) {
       return _then(_value.copyWith(missionState: value));
     });
@@ -112,23 +111,26 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object authState = freezed,
-    Object missionState = freezed,
+    Object? authState = freezed,
+    Object? missionState = freezed,
   }) {
     return _then(_AppState(
-      authState == freezed ? _value.authState : authState as AuthState,
+      authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
       missionState == freezed
           ? _value.missionState
-          : missionState as MissionState,
+          : missionState // ignore: cast_nullable_to_non_nullable
+              as MissionState,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_AppState implements _AppState {
-  const _$_AppState(this.authState, this.missionState)
-      : assert(authState != null),
-        assert(missionState != null);
+  const _$_AppState(this.authState, this.missionState);
 
   @override
   final AuthState authState;
@@ -169,10 +171,11 @@ abstract class _AppState implements AppState {
       _$_AppState;
 
   @override
-  AuthState get authState;
+  AuthState get authState => throw _privateConstructorUsedError;
   @override
-  MissionState get missionState;
+  MissionState get missionState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppStateCopyWith<_AppState> get copyWith;
+  _$AppStateCopyWith<_AppState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

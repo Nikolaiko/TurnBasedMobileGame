@@ -17,7 +17,7 @@ class GameState with ChangeNotifier {
   = StreamController.broadcast();
 
   ConflictSide _activeSide = ConflictSide.player;
-  Unit _selectedUnit;
+  Unit? _selectedUnit;
   TurnLogicResolver _logicResolver;  
 
   final List<List<int>> _missionMap;
@@ -31,9 +31,15 @@ class GameState with ChangeNotifier {
   List<Unit> get missionUnits => _missionUnits;  
   Stream<UnitAction> get actionsStream => _actionsStream.stream;
 
-  GameState(this._missionMap, this._missionUnits) {    
-    _logicResolver = TurnLogicResolver(_missionMap);
-  }
+  GameState(
+    this._missionMap, 
+    this._missionUnits,
+    this._logicResolver
+  ); 
+  
+  // {    
+  //   _logicResolver = TurnLogicResolver(_missionMap);
+  // }
 
   void endTurn() {    
     for (final Unit currentUnit in _missionUnits) {
@@ -78,18 +84,18 @@ class GameState with ChangeNotifier {
 
   void attackTap(int row, int column) {
     if (_selectedUnit != null) {
-      var path = _logicResolver.getPath(_selectedUnit, Point<int>(_selectedUnit.row, _selectedUnit.column), Point<int>(row, column), _tiles);
+      var path = _logicResolver.getPath(_selectedUnit!, Point<int>(_selectedUnit!.row, _selectedUnit!.column), Point<int>(row, column), _tiles);
 
       uiMap.clear();
       _currentActions.clear();
 
-      var lx = _selectedUnit.row;
-      var ly = _selectedUnit.column;
+      var lx = _selectedUnit!.row;
+      var ly = _selectedUnit!.column;
 
       for (var item in path) {
         _currentActions.add(
             UnitAction.move(
-              _selectedUnit,
+              _selectedUnit!,
               item.x,
               item.y,
               lx,
@@ -100,9 +106,9 @@ class GameState with ChangeNotifier {
         ly = item.y;
       }
 
-      _selectedUnit.alreadyMoved = true;
-       _selectedUnit.column = ly;
-       _selectedUnit.row = lx;
+      _selectedUnit!.alreadyMoved = true;
+       _selectedUnit!.column = ly;
+       _selectedUnit!.row = lx;
       _selectedUnit = null;
 
       notifyListeners();        
@@ -117,41 +123,41 @@ class GameState with ChangeNotifier {
         uiMap.clear();
         _currentActions.clear();
 
-        if (_selectedUnit.row == row || _selectedUnit.column == column) {
+        if (_selectedUnit!.row == row || _selectedUnit!.column == column) {
           _currentActions.add(
             UnitAction.move(
-              _selectedUnit,
+              _selectedUnit!,
               row,
               column,
-              _selectedUnit.row,
-              _selectedUnit.column,
+              _selectedUnit!.row,
+              _selectedUnit!.column,
             )
           );
         } else {
           _currentActions.add(
             UnitAction.move(
-              _selectedUnit,
-              _selectedUnit.row,
+              _selectedUnit!,
+              _selectedUnit!.row,
               column,
-              _selectedUnit.row,
-              _selectedUnit.column,
+              _selectedUnit!.row,
+              _selectedUnit!.column,
             )
           );
 
           _currentActions.add(
             UnitAction.move(
-              _selectedUnit,
+              _selectedUnit!,
               row,
               column,
-              _selectedUnit.row,
+              _selectedUnit!.row,
               column,
             )
           );
         }  
 
-        _selectedUnit.alreadyMoved = true;
-        _selectedUnit.column = column;
-        _selectedUnit.row = row;
+        _selectedUnit!.alreadyMoved = true;
+        _selectedUnit!.column = column;
+        _selectedUnit!.row = row;
         _selectedUnit = null;
 
         notifyListeners();        
@@ -171,8 +177,6 @@ class GameState with ChangeNotifier {
   bool _tileIsAvailable(int row, int column) {
     var selectedTile = _uiMap.firstWhere((uiTile) {
       return uiTile.column == column && uiTile.row == row;
-    }, orElse: () {
-      return null;
     });
     return selectedTile != null;
   }

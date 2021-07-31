@@ -24,9 +24,6 @@ void tryToLogin(SendPort sendPort) {
           (item) {          
             return item.password == receivedData.password && 
                    item.name == receivedData.name;
-          },
-          orElse: () {          
-            return null;
           }
         );
         var response = (user == null) 
@@ -55,9 +52,6 @@ void tryToRegister(SendPort sendPort) {
           (item) {
             return item.password == receivedData.password && 
                    item.name == receivedData.name;
-          }, 
-          orElse: () {
-            return null;
           }
         );
         if (user == null) {

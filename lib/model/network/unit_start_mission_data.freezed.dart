@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'unit_start_mission_data.dart';
 
@@ -8,6 +8,10 @@ part of 'unit_start_mission_data.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 UnitStartMissionData _$UnitStartMissionDataFromJson(Map<String, dynamic> json) {
   return _UnitStartMissionData.fromJson(json);
 }
@@ -16,7 +20,6 @@ UnitStartMissionData _$UnitStartMissionDataFromJson(Map<String, dynamic> json) {
 class _$UnitStartMissionDataTearOff {
   const _$UnitStartMissionDataTearOff();
 
-// ignore: unused_element
   _UnitStartMissionData call(String type, int x, int y) {
     return _UnitStartMissionData(
       type,
@@ -25,25 +28,24 @@ class _$UnitStartMissionDataTearOff {
     );
   }
 
-// ignore: unused_element
   UnitStartMissionData fromJson(Map<String, Object> json) {
     return UnitStartMissionData.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UnitStartMissionData = _$UnitStartMissionDataTearOff();
 
 /// @nodoc
 mixin _$UnitStartMissionData {
-  String get type;
-  int get x;
-  int get y;
+  String get type => throw _privateConstructorUsedError;
+  int get x => throw _privateConstructorUsedError;
+  int get y => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UnitStartMissionDataCopyWith<UnitStartMissionData> get copyWith;
+  $UnitStartMissionDataCopyWith<UnitStartMissionData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -65,14 +67,23 @@ class _$UnitStartMissionDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object type = freezed,
-    Object x = freezed,
-    Object y = freezed,
+    Object? type = freezed,
+    Object? x = freezed,
+    Object? y = freezed,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed ? _value.type : type as String,
-      x: x == freezed ? _value.x : x as int,
-      y: y == freezed ? _value.y : y as int,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as int,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -100,26 +111,31 @@ class __$UnitStartMissionDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object type = freezed,
-    Object x = freezed,
-    Object y = freezed,
+    Object? type = freezed,
+    Object? x = freezed,
+    Object? y = freezed,
   }) {
     return _then(_UnitStartMissionData(
-      type == freezed ? _value.type : type as String,
-      x == freezed ? _value.x : x as int,
-      y == freezed ? _value.y : y as int,
+      type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as int,
+      y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_UnitStartMissionData implements _UnitStartMissionData {
-  const _$_UnitStartMissionData(this.type, this.x, this.y)
-      : assert(type != null),
-        assert(x != null),
-        assert(y != null);
+  const _$_UnitStartMissionData(this.type, this.x, this.y);
 
   factory _$_UnitStartMissionData.fromJson(Map<String, dynamic> json) =>
       _$_$_UnitStartMissionDataFromJson(json);
@@ -175,12 +191,13 @@ abstract class _UnitStartMissionData implements UnitStartMissionData {
       _$_UnitStartMissionData.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  int get x;
+  int get x => throw _privateConstructorUsedError;
   @override
-  int get y;
+  int get y => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UnitStartMissionDataCopyWith<_UnitStartMissionData> get copyWith;
+  _$UnitStartMissionDataCopyWith<_UnitStartMissionData> get copyWith =>
+      throw _privateConstructorUsedError;
 }

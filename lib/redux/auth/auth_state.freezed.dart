@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'auth_state.dart';
 
@@ -9,11 +9,13 @@ part of 'auth_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
-// ignore: unused_element
   _AuthState call(UserProfile user) {
     return _AuthState(
       user,
@@ -22,15 +24,15 @@ class _$AuthStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AuthState = _$AuthStateTearOff();
 
 /// @nodoc
 mixin _$AuthState {
-  UserProfile get user;
+  UserProfile get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AuthStateCopyWith<AuthState> get copyWith;
+  $AuthStateCopyWith<AuthState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -52,18 +54,18 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object user = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      user: user == freezed ? _value.user : user as UserProfile,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserProfile,
     ));
   }
 
   @override
   $UserProfileCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
     return $UserProfileCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
@@ -93,17 +95,21 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
+    Object? user = freezed,
   }) {
     return _then(_AuthState(
-      user == freezed ? _value.user : user as UserProfile,
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserProfile,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_AuthState implements _AuthState {
-  const _$_AuthState(this.user) : assert(user != null);
+  const _$_AuthState(this.user);
 
   @override
   final UserProfile user;
@@ -135,8 +141,9 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(UserProfile user) = _$_AuthState;
 
   @override
-  UserProfile get user;
+  UserProfile get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AuthStateCopyWith<_AuthState> get copyWith;
+  _$AuthStateCopyWith<_AuthState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

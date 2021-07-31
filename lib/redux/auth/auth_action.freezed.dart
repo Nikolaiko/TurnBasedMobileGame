@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'auth_action.dart';
 
@@ -9,51 +9,55 @@ part of 'auth_action.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AuthActionTearOff {
   const _$AuthActionTearOff();
 
-// ignore: unused_element
   LogUserInAction logUserIn(UserProfile userToLogin) {
     return LogUserInAction(
       userToLogin,
     );
   }
 
-// ignore: unused_element
   SetNotLoggedInAction setNotLoggedInUser() {
     return const SetNotLoggedInAction();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AuthAction = _$AuthActionTearOff();
 
 /// @nodoc
 mixin _$AuthAction {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult logUserIn(UserProfile userToLogin),
-    @required TResult setNotLoggedInUser(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserProfile userToLogin) logUserIn,
+    required TResult Function() setNotLoggedInUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult logUserIn(UserProfile userToLogin),
-    TResult setNotLoggedInUser(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserProfile userToLogin)? logUserIn,
+    TResult Function()? setNotLoggedInUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult logUserIn(LogUserInAction value),
-    @required TResult setNotLoggedInUser(SetNotLoggedInAction value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(LogUserInAction value) logUserIn,
+    required TResult Function(SetNotLoggedInAction value) setNotLoggedInUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult logUserIn(LogUserInAction value),
-    TResult setNotLoggedInUser(SetNotLoggedInAction value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LogUserInAction value)? logUserIn,
+    TResult Function(SetNotLoggedInAction value)? setNotLoggedInUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -94,18 +98,18 @@ class _$LogUserInActionCopyWithImpl<$Res> extends _$AuthActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object userToLogin = freezed,
+    Object? userToLogin = freezed,
   }) {
     return _then(LogUserInAction(
-      userToLogin == freezed ? _value.userToLogin : userToLogin as UserProfile,
+      userToLogin == freezed
+          ? _value.userToLogin
+          : userToLogin // ignore: cast_nullable_to_non_nullable
+              as UserProfile,
     ));
   }
 
   @override
   $UserProfileCopyWith<$Res> get userToLogin {
-    if (_value.userToLogin == null) {
-      return null;
-    }
     return $UserProfileCopyWith<$Res>(_value.userToLogin, (value) {
       return _then(_value.copyWith(userToLogin: value));
     });
@@ -113,8 +117,9 @@ class _$LogUserInActionCopyWithImpl<$Res> extends _$AuthActionCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LogUserInAction implements LogUserInAction {
-  const _$LogUserInAction(this.userToLogin) : assert(userToLogin != null);
+  const _$LogUserInAction(this.userToLogin);
 
   @override
   final UserProfile userToLogin;
@@ -144,23 +149,20 @@ class _$LogUserInAction implements LogUserInAction {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult logUserIn(UserProfile userToLogin),
-    @required TResult setNotLoggedInUser(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserProfile userToLogin) logUserIn,
+    required TResult Function() setNotLoggedInUser,
   }) {
-    assert(logUserIn != null);
-    assert(setNotLoggedInUser != null);
     return logUserIn(userToLogin);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult logUserIn(UserProfile userToLogin),
-    TResult setNotLoggedInUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserProfile userToLogin)? logUserIn,
+    TResult Function()? setNotLoggedInUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (logUserIn != null) {
       return logUserIn(userToLogin);
     }
@@ -169,23 +171,20 @@ class _$LogUserInAction implements LogUserInAction {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult logUserIn(LogUserInAction value),
-    @required TResult setNotLoggedInUser(SetNotLoggedInAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LogUserInAction value) logUserIn,
+    required TResult Function(SetNotLoggedInAction value) setNotLoggedInUser,
   }) {
-    assert(logUserIn != null);
-    assert(setNotLoggedInUser != null);
     return logUserIn(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult logUserIn(LogUserInAction value),
-    TResult setNotLoggedInUser(SetNotLoggedInAction value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LogUserInAction value)? logUserIn,
+    TResult Function(SetNotLoggedInAction value)? setNotLoggedInUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (logUserIn != null) {
       return logUserIn(this);
     }
@@ -196,9 +195,10 @@ class _$LogUserInAction implements LogUserInAction {
 abstract class LogUserInAction implements AuthAction {
   const factory LogUserInAction(UserProfile userToLogin) = _$LogUserInAction;
 
-  UserProfile get userToLogin;
+  UserProfile get userToLogin => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LogUserInActionCopyWith<LogUserInAction> get copyWith;
+  $LogUserInActionCopyWith<LogUserInAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -221,6 +221,7 @@ class _$SetNotLoggedInActionCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SetNotLoggedInAction implements SetNotLoggedInAction {
   const _$SetNotLoggedInAction();
 
@@ -239,23 +240,20 @@ class _$SetNotLoggedInAction implements SetNotLoggedInAction {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult logUserIn(UserProfile userToLogin),
-    @required TResult setNotLoggedInUser(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserProfile userToLogin) logUserIn,
+    required TResult Function() setNotLoggedInUser,
   }) {
-    assert(logUserIn != null);
-    assert(setNotLoggedInUser != null);
     return setNotLoggedInUser();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult logUserIn(UserProfile userToLogin),
-    TResult setNotLoggedInUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserProfile userToLogin)? logUserIn,
+    TResult Function()? setNotLoggedInUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setNotLoggedInUser != null) {
       return setNotLoggedInUser();
     }
@@ -264,23 +262,20 @@ class _$SetNotLoggedInAction implements SetNotLoggedInAction {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult logUserIn(LogUserInAction value),
-    @required TResult setNotLoggedInUser(SetNotLoggedInAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LogUserInAction value) logUserIn,
+    required TResult Function(SetNotLoggedInAction value) setNotLoggedInUser,
   }) {
-    assert(logUserIn != null);
-    assert(setNotLoggedInUser != null);
     return setNotLoggedInUser(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult logUserIn(LogUserInAction value),
-    TResult setNotLoggedInUser(SetNotLoggedInAction value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LogUserInAction value)? logUserIn,
+    TResult Function(SetNotLoggedInAction value)? setNotLoggedInUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setNotLoggedInUser != null) {
       return setNotLoggedInUser(this);
     }

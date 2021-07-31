@@ -61,7 +61,7 @@ class TurnLogicResolver {
       }
     }
 
-    var finalPath = List<Point<int>>();
+    var finalPath = List<Point<int>>.empty(growable: true);
     var current = cameFrom[end];
     while (current != start) {
       finalPath.add(current);
@@ -123,11 +123,7 @@ class TurnLogicResolver {
         return element.column == column && 
           element.row == row && 
           element.conflictSide != unit.conflictSide;
-      },
-      orElse: () {
-        return null;
-      }      
-    );
+      });
 
     return _isTileInsideMap(row, column) &&
       _map[row][column] != null &&       

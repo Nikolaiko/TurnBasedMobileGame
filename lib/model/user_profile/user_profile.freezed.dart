@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'user_profile.dart';
 
@@ -8,6 +8,10 @@ part of 'user_profile.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType'] as String) {
     case 'default':
@@ -26,7 +30,6 @@ UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
 class _$UserProfileTearOff {
   const _$UserProfileTearOff();
 
-// ignore: unused_element
   LoggedUser call(String id, String name, String password) {
     return LoggedUser(
       id,
@@ -35,55 +38,55 @@ class _$UserProfileTearOff {
     );
   }
 
-// ignore: unused_element
   NotLoggedUser notLoggedIn() {
     return const NotLoggedUser();
   }
 
-// ignore: unused_element
   InitialUser initialUser() {
     return const InitialUser();
   }
 
-// ignore: unused_element
   UserProfile fromJson(Map<String, Object> json) {
     return UserProfile.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserProfile = _$UserProfileTearOff();
 
 /// @nodoc
 mixin _$UserProfile {
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    @required TResult notLoggedIn(),
-    @required TResult initialUser(),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String password) $default, {
+    required TResult Function() notLoggedIn,
+    required TResult Function() initialUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    TResult notLoggedIn(),
-    TResult initialUser(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String name, String password)? $default, {
+    TResult Function()? notLoggedIn,
+    TResult Function()? initialUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    @required TResult notLoggedIn(NotLoggedUser value),
-    @required TResult initialUser(InitialUser value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(LoggedUser value) $default, {
+    required TResult Function(NotLoggedUser value) notLoggedIn,
+    required TResult Function(InitialUser value) initialUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    TResult notLoggedIn(NotLoggedUser value),
-    TResult initialUser(InitialUser value),
-    @required TResult orElse(),
-  });
-  Map<String, dynamic> toJson();
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(LoggedUser value)? $default, {
+    TResult Function(NotLoggedUser value)? notLoggedIn,
+    TResult Function(InitialUser value)? initialUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -121,26 +124,31 @@ class _$LoggedUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object password = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? password = freezed,
   }) {
     return _then(LoggedUser(
-      id == freezed ? _value.id : id as String,
-      name == freezed ? _value.name : name as String,
-      password == freezed ? _value.password : password as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$LoggedUser implements LoggedUser {
-  const _$LoggedUser(this.id, this.name, this.password)
-      : assert(id != null),
-        assert(name != null),
-        assert(password != null);
+  const _$LoggedUser(this.id, this.name, this.password);
 
   factory _$LoggedUser.fromJson(Map<String, dynamic> json) =>
       _$_$LoggedUserFromJson(json);
@@ -184,26 +192,22 @@ class _$LoggedUser implements LoggedUser {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    @required TResult notLoggedIn(),
-    @required TResult initialUser(),
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String password) $default, {
+    required TResult Function() notLoggedIn,
+    required TResult Function() initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return $default(id, name, password);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    TResult notLoggedIn(),
-    TResult initialUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String name, String password)? $default, {
+    TResult Function()? notLoggedIn,
+    TResult Function()? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(id, name, password);
     }
@@ -212,26 +216,22 @@ class _$LoggedUser implements LoggedUser {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    @required TResult notLoggedIn(NotLoggedUser value),
-    @required TResult initialUser(InitialUser value),
+  TResult map<TResult extends Object?>(
+    TResult Function(LoggedUser value) $default, {
+    required TResult Function(NotLoggedUser value) notLoggedIn,
+    required TResult Function(InitialUser value) initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    TResult notLoggedIn(NotLoggedUser value),
-    TResult initialUser(InitialUser value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(LoggedUser value)? $default, {
+    TResult Function(NotLoggedUser value)? notLoggedIn,
+    TResult Function(InitialUser value)? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -251,11 +251,12 @@ abstract class LoggedUser implements UserProfile {
   factory LoggedUser.fromJson(Map<String, dynamic> json) =
       _$LoggedUser.fromJson;
 
-  String get id;
-  String get name;
-  String get password;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LoggedUserCopyWith<LoggedUser> get copyWith;
+  $LoggedUserCopyWith<LoggedUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -276,9 +277,8 @@ class _$NotLoggedUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
   NotLoggedUser get _value => super._value as NotLoggedUser;
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$NotLoggedUser implements NotLoggedUser {
   const _$NotLoggedUser();
 
@@ -300,26 +300,22 @@ class _$NotLoggedUser implements NotLoggedUser {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    @required TResult notLoggedIn(),
-    @required TResult initialUser(),
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String password) $default, {
+    required TResult Function() notLoggedIn,
+    required TResult Function() initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return notLoggedIn();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    TResult notLoggedIn(),
-    TResult initialUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String name, String password)? $default, {
+    TResult Function()? notLoggedIn,
+    TResult Function()? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notLoggedIn != null) {
       return notLoggedIn();
     }
@@ -328,26 +324,22 @@ class _$NotLoggedUser implements NotLoggedUser {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    @required TResult notLoggedIn(NotLoggedUser value),
-    @required TResult initialUser(InitialUser value),
+  TResult map<TResult extends Object?>(
+    TResult Function(LoggedUser value) $default, {
+    required TResult Function(NotLoggedUser value) notLoggedIn,
+    required TResult Function(InitialUser value) initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return notLoggedIn(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    TResult notLoggedIn(NotLoggedUser value),
-    TResult initialUser(InitialUser value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(LoggedUser value)? $default, {
+    TResult Function(NotLoggedUser value)? notLoggedIn,
+    TResult Function(InitialUser value)? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (notLoggedIn != null) {
       return notLoggedIn(this);
     }
@@ -385,9 +377,8 @@ class _$InitialUserCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
   InitialUser get _value => super._value as InitialUser;
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$InitialUser implements InitialUser {
   const _$InitialUser();
 
@@ -409,26 +400,22 @@ class _$InitialUser implements InitialUser {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    @required TResult notLoggedIn(),
-    @required TResult initialUser(),
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String password) $default, {
+    required TResult Function() notLoggedIn,
+    required TResult Function() initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return initialUser();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(String id, String name, String password), {
-    TResult notLoggedIn(),
-    TResult initialUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String name, String password)? $default, {
+    TResult Function()? notLoggedIn,
+    TResult Function()? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initialUser != null) {
       return initialUser();
     }
@@ -437,26 +424,22 @@ class _$InitialUser implements InitialUser {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    @required TResult notLoggedIn(NotLoggedUser value),
-    @required TResult initialUser(InitialUser value),
+  TResult map<TResult extends Object?>(
+    TResult Function(LoggedUser value) $default, {
+    required TResult Function(NotLoggedUser value) notLoggedIn,
+    required TResult Function(InitialUser value) initialUser,
   }) {
-    assert($default != null);
-    assert(notLoggedIn != null);
-    assert(initialUser != null);
     return initialUser(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(LoggedUser value), {
-    TResult notLoggedIn(NotLoggedUser value),
-    TResult initialUser(InitialUser value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(LoggedUser value)? $default, {
+    TResult Function(NotLoggedUser value)? notLoggedIn,
+    TResult Function(InitialUser value)? initialUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initialUser != null) {
       return initialUser(this);
     }

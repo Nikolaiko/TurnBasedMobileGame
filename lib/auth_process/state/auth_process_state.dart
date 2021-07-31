@@ -5,7 +5,7 @@ import '../../model/network/user_auth_data.dart';
 import '../../network/network_service.dart';
 import '../../redux/app_state.dart';
 import '../../redux/auth/auth_action.dart';
-import '../../repositories/user_profile_repository.dart';
+import '../../repositories/user_profile/user_profile_repository.dart';
 
 ///State for auth process
 // ignore: prefer_mixin

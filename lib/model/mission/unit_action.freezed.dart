@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'unit_action.dart';
 
@@ -9,16 +9,17 @@ part of 'unit_action.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$UnitActionTearOff {
   const _$UnitActionTearOff();
 
-// ignore: unused_element
   UnitEmptyAction empty() {
     return const UnitEmptyAction();
   }
 
-// ignore: unused_element
   UnitMove move(
       Unit unit, int destRow, int destColumn, int startRow, int startColumn) {
     return UnitMove(
@@ -30,14 +31,12 @@ class _$UnitActionTearOff {
     );
   }
 
-// ignore: unused_element
   UnitAttack attack(Unit unit) {
     return UnitAttack(
       unit,
     );
   }
 
-// ignore: unused_element
   UnitDie die(Unit unit) {
     return UnitDie(
       unit,
@@ -46,44 +45,48 @@ class _$UnitActionTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UnitAction = _$UnitActionTearOff();
 
 /// @nodoc
 mixin _$UnitAction {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(),
-    @required
-        TResult move(Unit unit, int destRow, int destColumn, int startRow,
-            int startColumn),
-    @required TResult attack(Unit unit),
-    @required TResult die(Unit unit),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(Unit unit, int destRow, int destColumn,
+            int startRow, int startColumn)
+        move,
+    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit unit) die,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(),
-    TResult move(
-        Unit unit, int destRow, int destColumn, int startRow, int startColumn),
-    TResult attack(Unit unit),
-    TResult die(Unit unit),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(Unit unit, int destRow, int destColumn, int startRow,
+            int startColumn)?
+        move,
+    TResult Function(Unit unit)? attack,
+    TResult Function(Unit unit)? die,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(UnitEmptyAction value),
-    @required TResult move(UnitMove value),
-    @required TResult attack(UnitAttack value),
-    @required TResult die(UnitDie value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnitEmptyAction value) empty,
+    required TResult Function(UnitMove value) move,
+    required TResult Function(UnitAttack value) attack,
+    required TResult Function(UnitDie value) die,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(UnitEmptyAction value),
-    TResult move(UnitMove value),
-    TResult attack(UnitAttack value),
-    TResult die(UnitDie value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnitEmptyAction value)? empty,
+    TResult Function(UnitMove value)? move,
+    TResult Function(UnitAttack value)? attack,
+    TResult Function(UnitDie value)? die,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -121,6 +124,7 @@ class _$UnitEmptyActionCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UnitEmptyAction implements UnitEmptyAction {
   const _$UnitEmptyAction();
 
@@ -139,32 +143,28 @@ class _$UnitEmptyAction implements UnitEmptyAction {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(),
-    @required
-        TResult move(Unit unit, int destRow, int destColumn, int startRow,
-            int startColumn),
-    @required TResult attack(Unit unit),
-    @required TResult die(Unit unit),
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(Unit unit, int destRow, int destColumn,
+            int startRow, int startColumn)
+        move,
+    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit unit) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return empty();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(),
-    TResult move(
-        Unit unit, int destRow, int destColumn, int startRow, int startColumn),
-    TResult attack(Unit unit),
-    TResult die(Unit unit),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(Unit unit, int destRow, int destColumn, int startRow,
+            int startColumn)?
+        move,
+    TResult Function(Unit unit)? attack,
+    TResult Function(Unit unit)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty();
     }
@@ -173,29 +173,24 @@ class _$UnitEmptyAction implements UnitEmptyAction {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(UnitEmptyAction value),
-    @required TResult move(UnitMove value),
-    @required TResult attack(UnitAttack value),
-    @required TResult die(UnitDie value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnitEmptyAction value) empty,
+    required TResult Function(UnitMove value) move,
+    required TResult Function(UnitAttack value) attack,
+    required TResult Function(UnitDie value) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return empty(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(UnitEmptyAction value),
-    TResult move(UnitMove value),
-    TResult attack(UnitAttack value),
-    TResult die(UnitDie value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnitEmptyAction value)? empty,
+    TResult Function(UnitMove value)? move,
+    TResult Function(UnitAttack value)? attack,
+    TResult Function(UnitDie value)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty(this);
     }
@@ -226,31 +221,42 @@ class _$UnitMoveCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object unit = freezed,
-    Object destRow = freezed,
-    Object destColumn = freezed,
-    Object startRow = freezed,
-    Object startColumn = freezed,
+    Object? unit = freezed,
+    Object? destRow = freezed,
+    Object? destColumn = freezed,
+    Object? startRow = freezed,
+    Object? startColumn = freezed,
   }) {
     return _then(UnitMove(
-      unit == freezed ? _value.unit : unit as Unit,
-      destRow == freezed ? _value.destRow : destRow as int,
-      destColumn == freezed ? _value.destColumn : destColumn as int,
-      startRow == freezed ? _value.startRow : startRow as int,
-      startColumn == freezed ? _value.startColumn : startColumn as int,
+      unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as Unit,
+      destRow == freezed
+          ? _value.destRow
+          : destRow // ignore: cast_nullable_to_non_nullable
+              as int,
+      destColumn == freezed
+          ? _value.destColumn
+          : destColumn // ignore: cast_nullable_to_non_nullable
+              as int,
+      startRow == freezed
+          ? _value.startRow
+          : startRow // ignore: cast_nullable_to_non_nullable
+              as int,
+      startColumn == freezed
+          ? _value.startColumn
+          : startColumn // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+
 class _$UnitMove implements UnitMove {
-  const _$UnitMove(
-      this.unit, this.destRow, this.destColumn, this.startRow, this.startColumn)
-      : assert(unit != null),
-        assert(destRow != null),
-        assert(destColumn != null),
-        assert(startRow != null),
-        assert(startColumn != null);
+  const _$UnitMove(this.unit, this.destRow, this.destColumn, this.startRow,
+      this.startColumn);
 
   @override
   final Unit unit;
@@ -304,32 +310,28 @@ class _$UnitMove implements UnitMove {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(),
-    @required
-        TResult move(Unit unit, int destRow, int destColumn, int startRow,
-            int startColumn),
-    @required TResult attack(Unit unit),
-    @required TResult die(Unit unit),
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(Unit unit, int destRow, int destColumn,
+            int startRow, int startColumn)
+        move,
+    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit unit) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return move(unit, destRow, destColumn, startRow, startColumn);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(),
-    TResult move(
-        Unit unit, int destRow, int destColumn, int startRow, int startColumn),
-    TResult attack(Unit unit),
-    TResult die(Unit unit),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(Unit unit, int destRow, int destColumn, int startRow,
+            int startColumn)?
+        move,
+    TResult Function(Unit unit)? attack,
+    TResult Function(Unit unit)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (move != null) {
       return move(unit, destRow, destColumn, startRow, startColumn);
     }
@@ -338,29 +340,24 @@ class _$UnitMove implements UnitMove {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(UnitEmptyAction value),
-    @required TResult move(UnitMove value),
-    @required TResult attack(UnitAttack value),
-    @required TResult die(UnitDie value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnitEmptyAction value) empty,
+    required TResult Function(UnitMove value) move,
+    required TResult Function(UnitAttack value) attack,
+    required TResult Function(UnitDie value) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return move(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(UnitEmptyAction value),
-    TResult move(UnitMove value),
-    TResult attack(UnitAttack value),
-    TResult die(UnitDie value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnitEmptyAction value)? empty,
+    TResult Function(UnitMove value)? move,
+    TResult Function(UnitAttack value)? attack,
+    TResult Function(UnitDie value)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (move != null) {
       return move(this);
     }
@@ -372,13 +369,14 @@ abstract class UnitMove implements UnitAction {
   const factory UnitMove(Unit unit, int destRow, int destColumn, int startRow,
       int startColumn) = _$UnitMove;
 
-  Unit get unit;
-  int get destRow;
-  int get destColumn;
-  int get startRow;
-  int get startColumn;
+  Unit get unit => throw _privateConstructorUsedError;
+  int get destRow => throw _privateConstructorUsedError;
+  int get destColumn => throw _privateConstructorUsedError;
+  int get startRow => throw _privateConstructorUsedError;
+  int get startColumn => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UnitMoveCopyWith<UnitMove> get copyWith;
+  $UnitMoveCopyWith<UnitMove> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -400,17 +398,21 @@ class _$UnitAttackCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object unit = freezed,
+    Object? unit = freezed,
   }) {
     return _then(UnitAttack(
-      unit == freezed ? _value.unit : unit as Unit,
+      unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as Unit,
     ));
   }
 }
 
 /// @nodoc
+
 class _$UnitAttack implements UnitAttack {
-  const _$UnitAttack(this.unit) : assert(unit != null);
+  const _$UnitAttack(this.unit);
 
   @override
   final Unit unit;
@@ -439,32 +441,28 @@ class _$UnitAttack implements UnitAttack {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(),
-    @required
-        TResult move(Unit unit, int destRow, int destColumn, int startRow,
-            int startColumn),
-    @required TResult attack(Unit unit),
-    @required TResult die(Unit unit),
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(Unit unit, int destRow, int destColumn,
+            int startRow, int startColumn)
+        move,
+    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit unit) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return attack(unit);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(),
-    TResult move(
-        Unit unit, int destRow, int destColumn, int startRow, int startColumn),
-    TResult attack(Unit unit),
-    TResult die(Unit unit),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(Unit unit, int destRow, int destColumn, int startRow,
+            int startColumn)?
+        move,
+    TResult Function(Unit unit)? attack,
+    TResult Function(Unit unit)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (attack != null) {
       return attack(unit);
     }
@@ -473,29 +471,24 @@ class _$UnitAttack implements UnitAttack {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(UnitEmptyAction value),
-    @required TResult move(UnitMove value),
-    @required TResult attack(UnitAttack value),
-    @required TResult die(UnitDie value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnitEmptyAction value) empty,
+    required TResult Function(UnitMove value) move,
+    required TResult Function(UnitAttack value) attack,
+    required TResult Function(UnitDie value) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return attack(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(UnitEmptyAction value),
-    TResult move(UnitMove value),
-    TResult attack(UnitAttack value),
-    TResult die(UnitDie value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnitEmptyAction value)? empty,
+    TResult Function(UnitMove value)? move,
+    TResult Function(UnitAttack value)? attack,
+    TResult Function(UnitDie value)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (attack != null) {
       return attack(this);
     }
@@ -506,9 +499,10 @@ class _$UnitAttack implements UnitAttack {
 abstract class UnitAttack implements UnitAction {
   const factory UnitAttack(Unit unit) = _$UnitAttack;
 
-  Unit get unit;
+  Unit get unit => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UnitAttackCopyWith<UnitAttack> get copyWith;
+  $UnitAttackCopyWith<UnitAttack> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -529,17 +523,21 @@ class _$UnitDieCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object unit = freezed,
+    Object? unit = freezed,
   }) {
     return _then(UnitDie(
-      unit == freezed ? _value.unit : unit as Unit,
+      unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as Unit,
     ));
   }
 }
 
 /// @nodoc
+
 class _$UnitDie implements UnitDie {
-  const _$UnitDie(this.unit) : assert(unit != null);
+  const _$UnitDie(this.unit);
 
   @override
   final Unit unit;
@@ -568,32 +566,28 @@ class _$UnitDie implements UnitDie {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(),
-    @required
-        TResult move(Unit unit, int destRow, int destColumn, int startRow,
-            int startColumn),
-    @required TResult attack(Unit unit),
-    @required TResult die(Unit unit),
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(Unit unit, int destRow, int destColumn,
+            int startRow, int startColumn)
+        move,
+    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit unit) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return die(unit);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(),
-    TResult move(
-        Unit unit, int destRow, int destColumn, int startRow, int startColumn),
-    TResult attack(Unit unit),
-    TResult die(Unit unit),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(Unit unit, int destRow, int destColumn, int startRow,
+            int startColumn)?
+        move,
+    TResult Function(Unit unit)? attack,
+    TResult Function(Unit unit)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (die != null) {
       return die(unit);
     }
@@ -602,29 +596,24 @@ class _$UnitDie implements UnitDie {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(UnitEmptyAction value),
-    @required TResult move(UnitMove value),
-    @required TResult attack(UnitAttack value),
-    @required TResult die(UnitDie value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnitEmptyAction value) empty,
+    required TResult Function(UnitMove value) move,
+    required TResult Function(UnitAttack value) attack,
+    required TResult Function(UnitDie value) die,
   }) {
-    assert(empty != null);
-    assert(move != null);
-    assert(attack != null);
-    assert(die != null);
     return die(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(UnitEmptyAction value),
-    TResult move(UnitMove value),
-    TResult attack(UnitAttack value),
-    TResult die(UnitDie value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnitEmptyAction value)? empty,
+    TResult Function(UnitMove value)? move,
+    TResult Function(UnitAttack value)? attack,
+    TResult Function(UnitDie value)? die,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (die != null) {
       return die(this);
     }
@@ -635,7 +624,7 @@ class _$UnitDie implements UnitDie {
 abstract class UnitDie implements UnitAction {
   const factory UnitDie(Unit unit) = _$UnitDie;
 
-  Unit get unit;
+  Unit get unit => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UnitDieCopyWith<UnitDie> get copyWith;
+  $UnitDieCopyWith<UnitDie> get copyWith => throw _privateConstructorUsedError;
 }
