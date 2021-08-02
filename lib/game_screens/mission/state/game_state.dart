@@ -111,6 +111,8 @@ class GameState with ChangeNotifier {
         ly = item.y;
       }
 
+      _currentActions.add(UnitAction.attack(_selectedUnit!));
+
       _selectedUnit!.alreadyMoved = true;
       _selectedUnit!.column = ly;
       _selectedUnit!.row = lx;
@@ -158,7 +160,7 @@ class GameState with ChangeNotifier {
               column,
             )
           );
-        }  
+        }        
 
         _selectedUnit!.alreadyMoved = true;
         _selectedUnit!.column = column;

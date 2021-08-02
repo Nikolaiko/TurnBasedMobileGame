@@ -1,17 +1,20 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import '../../const/map_consts.dart';
+import 'package:turn_based_game/const/map_consts.dart';
+
 
 class UnitWidget extends StatefulWidget {
   final List<String> animationFrames;
   final bool flip;
   final bool alreadyMoved;
+  final VoidCallback? animationCallback;
 
   const UnitWidget(
     this.animationFrames, 
     { 
       this.flip = false, 
-      this.alreadyMoved = false 
+      this.alreadyMoved = false,
+      this.animationCallback
     });
 
   @override
@@ -26,12 +29,27 @@ class _UnitWidgetState extends State<UnitWidget>
   @override
   void initState() {
     super.initState();
-    
+
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: widget.animationCallback == null
+        ? const Duration(milliseconds: 200)
+        : const Duration(milliseconds: 400),
       vsync: this
     );
-    _controller.repeat();
+
+    print(_controller.duration);
+
+    if (widget.animationCallback == null) {
+      _controller.repeat();
+    } else {            
+      _controller.addStatusListener((status) {
+        if (status == AnimationStatus.completed) {          
+          widget.animationCallback?.call();  
+        }        
+      });
+      _controller.forward(from: 0);
+    }
+
 
     _animation = Tween<double>(
       begin: 0, 

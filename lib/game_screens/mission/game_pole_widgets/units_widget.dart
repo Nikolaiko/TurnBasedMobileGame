@@ -61,7 +61,8 @@ class _UnitsWidgetState extends State<UnitsWidget>
 
   List<Widget> _buildUnitsStack(UnitAction action) {    
     var units = List<Widget>.empty(growable: true);    
-    for (var unit in _state.missionUnits) {      
+    print(action);
+    for (var unit in _state.missionUnits) {            
       action.maybeWhen(
         move: (actionUnit, destRow, destCol, row, col) {
           if (unit == actionUnit) {            
@@ -93,6 +94,27 @@ class _UnitsWidgetState extends State<UnitsWidget>
                 }
               )
             );                          
+          } else {
+            units.add(_buildUnitWidget(unit));  
+          }
+          return Object();
+        },
+        attack: (attackingUnit) {
+          if (unit == attackingUnit) {     
+            units.add(
+              Positioned(
+                left: MapConsts.tileSide * attackingUnit.column,
+                top: MapConsts.tileSide * attackingUnit.row,
+                child: _factory.buildUnit(
+                  attackingUnit.type, 
+                  attackingUnit.conflictSide,
+                  UnitAnimationType.attack,
+                  animationCallback: () {                    
+                    _state.actionDone();
+                  }
+                )
+              )
+            );                        
           } else {
             units.add(_buildUnitWidget(unit));  
           }

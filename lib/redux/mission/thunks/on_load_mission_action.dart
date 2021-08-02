@@ -21,9 +21,9 @@ class OnLoadMissionAction extends BaseNetworkThunk {
   ];
 
   List<Unit> units = [
-    Unit(ConflictSide.player, UnitType.infranty, 1, 1, 30, 10),
-    Unit(ConflictSide.player, UnitType.infranty, 4, 1, 30, 10),
-    Unit(ConflictSide.player, UnitType.infranty, 2, 5, 30, 10),
+    Unit(ConflictSide.player, UnitType.infranty, 1, 1, 30, 30),
+    Unit(ConflictSide.player, UnitType.infranty, 4, 1, 30, 30),
+    Unit(ConflictSide.player, UnitType.infranty, 2, 5, 30, 30),
     Unit(ConflictSide.enemy, UnitType.infranty, 6, 5, 30, 10),
     Unit(ConflictSide.enemy, UnitType.infranty, 0, 5, 30, 10)
   ];

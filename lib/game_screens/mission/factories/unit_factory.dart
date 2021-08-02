@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:turn_based_game/game_screens/mission/unit_widget.dart';
 import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
@@ -11,10 +12,12 @@ class UnitFactory {
     UnitAnimationType unitAnimationType,
     { 
       bool flipped = false,
-      bool alreadyMoved = false
+      bool alreadyMoved = false,
+      VoidCallback? animationCallback
     }
   ) {
 
+    print(unitAnimationType);
     var pathPart = (side == ConflictSide.player) 
       ? "assets/images/mission/units/player/${unitType.getName()}/"
       : "assets/images/mission/units/ai/${unitType.getName()}/";
@@ -28,10 +31,15 @@ class UnitFactory {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
+    if (unitAnimationType == UnitAnimationType.attack) {
+      print(animationFrames);
+    }
+    
     return UnitWidget(
       animationFrames, 
       flip: flipped, 
-      alreadyMoved: alreadyMoved
+      alreadyMoved: alreadyMoved,
+      animationCallback: animationCallback,
     );
   }
 
@@ -75,7 +83,7 @@ class UnitFactory {
         break;
       }
       case UnitAnimationType.attack: {
-        frameCount = 8;
+        frameCount = 6;
         break;
       }
       case UnitAnimationType.die: {

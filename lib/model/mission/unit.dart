@@ -7,7 +7,7 @@ class Unit {
   int row;
   int column;
   int health;
-  int attack;
+  int attack;  
   bool alreadyMoved;
 
   Unit(
