@@ -1,9 +1,6 @@
-import '../../../const/map_consts.dart';
+import 'package:turn_based_game/const/map_consts.dart';
 
-///Resolve map tile to image name
-class MapTileResolver {
-
-  ///Resolve map tile to image name
+class MapTileResolver {  
   String getMapImageName(int tileId) {
     var tileImageName = "";
     switch(tileId) {

@@ -3,10 +3,8 @@ import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
 import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
 import 'package:turn_based_game/model/mission/enums/unit_type.dart';
 
-///Factory for creating units
 class UnitFactory {
 
-  ///Build unit function
   UnitWidget buildUnit(
     UnitType unitType,
     ConflictSide side,
@@ -18,19 +16,20 @@ class UnitFactory {
   ) {
 
     var pathPart = (side == ConflictSide.player) 
-    ? "assets/images/mission/units/player/${unitType.getName()}/"
-    : "assets/images/mission/units/ai/${unitType.getName()}/";
+      ? "assets/images/mission/units/player/${unitType.getName()}/"
+      : "assets/images/mission/units/ai/${unitType.getName()}/";
 
     var frameName = "${unitType.getName()}_${unitAnimationType.getName()}";
     var animationLength = 
-    _getAnimationLengthForType(unitType, unitAnimationType);
+      _getAnimationLengthForType(unitType, unitAnimationType);
 
     var animationFrames = List<String>.empty(growable: true);
     for (var i = 1; i <= animationLength; i++) {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
-    return UnitWidget(animationFrames, 
+    return UnitWidget(
+      animationFrames, 
       flip: flipped, 
       alreadyMoved: alreadyMoved
     );

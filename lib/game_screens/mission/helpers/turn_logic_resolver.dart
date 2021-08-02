@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:turn_based_game/const/map_consts.dart';
 import 'package:turn_based_game/const/unit_turn_length_consts.dart';
 import 'package:turn_based_game/model/mission/available_tile.dart';
@@ -104,7 +105,12 @@ class TurnLogicResolver {
     return tiles;
   }
 
-  AvaliableTileType _isTileAvailable(Unit unit, int row, int column, List<Unit> unitsMap) {    
+  AvaliableTileType _isTileAvailable(
+    Unit unit, 
+    int row, 
+    int column, 
+    List<Unit> unitsMap
+  ) {    
     bool freeToMove = _isTileAvailableForMove(row, column, unitsMap);
     bool canAttacked = _isTileAvailableForAttack(unit, row, column, unitsMap);
     AvaliableTileType tileType = AvaliableTileType.notAvailable;
@@ -117,22 +123,29 @@ class TurnLogicResolver {
     return tileType;
   }
 
-  bool _isTileAvailableForAttack(Unit unit, int row, int column, List<Unit> unitsMap) {
-    Unit enemyUnit = unitsMap.firstWhere(
+  bool _isTileAvailableForAttack(
+    Unit unit, 
+    int row, 
+    int column, 
+    List<Unit> unitsMap
+  ) {
+    Unit? enemyUnit = unitsMap.firstWhereOrNull(
       (element) {
         return element.column == column && 
           element.row == row && 
           element.conflictSide != unit.conflictSide;
       });
 
-    return _isTileInsideMap(row, column) &&
-      _map[row][column] != null &&       
+    return _isTileInsideMap(row, column) &&      
       enemyUnit != null;
   }
 
-  bool _isTileAvailableForMove(int row, int column, List<Unit> unitsMap) {
-    return _isTileInsideMap(row, column) &&
-      _map[row][column] != null && 
+  bool _isTileAvailableForMove(
+    int row, 
+    int column, 
+    List<Unit> unitsMap
+  ) {
+    return _isTileInsideMap(row, column) &&       
       _map[row][column] == MapConsts.terrainTile && 
       _isTileNotOccupied(row, column, unitsMap);    
   }
@@ -166,7 +179,13 @@ class TurnLogicResolver {
       return;
     }
     
-    AvaliableTileType rightTileType = _isTileAvailable(unit, position.x, position.y + 1, unitsMap);
+    AvaliableTileType rightTileType = _isTileAvailable(
+      unit, 
+      position.x, 
+      position.y + 1, 
+      unitsMap
+    );
+    
     if (rightTileType != AvaliableTileType.notAvailable) {
       Point<int> rightPosition = Point<int>(position.x, position.y + 1);
       AvailableTile rightTile = AvailableTile(rightPosition, rightTileType);

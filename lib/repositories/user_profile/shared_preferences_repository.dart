@@ -21,7 +21,7 @@ class SharedPreferencesRepository implements UserProfileRepository {
       try {
         String userStringProfile = _prefs.getString(_loggedUserKey)!;
         Map<String, dynamic> jsonMap = json.decode(userStringProfile);
-        currentProfile = UserProfile.fromJson(jsonMap);      
+        currentProfile = LoggedUser.fromJson(jsonMap);      
       } on Exception catch(error) {
         print(error);        
       }

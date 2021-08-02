@@ -84,7 +84,12 @@ class GameState with ChangeNotifier {
 
   void attackTap(int row, int column) {
     if (_selectedUnit != null) {
-      var path = _logicResolver.getPath(_selectedUnit!, Point<int>(_selectedUnit!.row, _selectedUnit!.column), Point<int>(row, column), _tiles);
+      var path = _logicResolver.getPath(
+        _selectedUnit!, 
+        Point<int>(_selectedUnit!.row, _selectedUnit!.column), 
+        Point<int>(row, column), 
+        _tiles
+      );
 
       uiMap.clear();
       _currentActions.clear();
@@ -107,8 +112,8 @@ class GameState with ChangeNotifier {
       }
 
       _selectedUnit!.alreadyMoved = true;
-       _selectedUnit!.column = ly;
-       _selectedUnit!.row = lx;
+      _selectedUnit!.column = ly;
+      _selectedUnit!.row = lx;
       _selectedUnit = null;
 
       notifyListeners();        

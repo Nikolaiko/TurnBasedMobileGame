@@ -20,8 +20,8 @@ class UnitWidget extends StatefulWidget {
 
 class _UnitWidgetState extends State<UnitWidget>  
                        with SingleTickerProviderStateMixin {
-  Animation<double>? _animation;
-  AnimationController? _controller;  
+  late Animation<double> _animation;
+  late AnimationController _controller;  
   
   @override
   void initState() {
@@ -31,24 +31,28 @@ class _UnitWidgetState extends State<UnitWidget>
       duration: const Duration(milliseconds: 200),
       vsync: this
     );
-    _controller?.repeat();
+    _controller.repeat();
 
     _animation = Tween<double>(
       begin: 0, 
       end: (widget.animationFrames.length - 1).toDouble(),
-    ).animate(_controller!);
+    ).animate(_controller);
   }
 
   @override
   Widget build(BuildContext context) {
     return widget.alreadyMoved 
-    ? Stack(children: [_buildUnitAnimation(), const Icon(Icons.check)])
+    ? Stack(
+        children: [
+        _buildUnitAnimation(), 
+        const Icon(Icons.check)]
+      )
     : _buildUnitAnimation();
   }
 
   Widget _buildUnitAnimation() {
     return AnimatedBuilder(
-      animation: _animation!,
+      animation: _animation,
       builder: (context, child) {        
         return Transform(
           alignment: Alignment.center,
@@ -56,7 +60,7 @@ class _UnitWidgetState extends State<UnitWidget>
             ? Matrix4.rotationY(math.pi) 
             : Matrix4.rotationY(0),
           child: Image.asset(
-            widget.animationFrames[_animation!.value.toInt()],
+            widget.animationFrames[_animation.value.toInt()],
             fit: BoxFit.scaleDown,
             width: MapConsts.tileSide,
             height: MapConsts.tileSide,
@@ -69,7 +73,7 @@ class _UnitWidgetState extends State<UnitWidget>
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _controller.dispose();
     super.dispose();
   }
 }

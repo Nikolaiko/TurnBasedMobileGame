@@ -30,12 +30,12 @@ class OnLoadMissionAction extends BaseNetworkThunk {
 
   @override
   Future<void> execute(
-      Store<AppState> store, NetworkService service) async {
+    Store<AppState> store, 
+    NetworkService service
+  ) async {
     
     Future.delayed(const Duration(seconds: 2), () {
-
       store.dispatch(PrepareMissionAction(map, units));
-
     });
   }
 }

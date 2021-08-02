@@ -1,10 +1,12 @@
 import 'dart:isolate';
 
+import 'package:collection/collection.dart';
+import 'package:turn_based_game/model/network/network_response.dart';
+import 'package:turn_based_game/model/network/user_auth_data.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
 import 'package:uuid/uuid_util.dart';
 
-import '../model/network/network_response.dart';
-import '../model/network/user_auth_data.dart';
-import '../model/user_profile/user_profile.dart';
+
 
 const String _id = "123";
 const String _username = "general";
@@ -19,12 +21,12 @@ void tryToLogin(SendPort sendPort) {
   var receivePort = ReceivePort();
   receivePort.listen((dynamic receivedData) async {
     if (receivedData is UserAuthData) {
-      var result = await Future.delayed(const Duration(seconds: 2), () {      
-        var  user = _userDB.firstWhere(
+      var result = await Future.delayed(const Duration(seconds: 2), () {
+        LoggedUser? user = _userDB.firstWhereOrNull(
           (item) {          
             return item.password == receivedData.password && 
                    item.name == receivedData.name;
-          }
+          }          
         );
         var response = (user == null) 
           ? NetworkResponse(
@@ -48,7 +50,7 @@ void tryToRegister(SendPort sendPort) {
   receivePort.listen((dynamic receivedData) async {
     if (receivedData is UserAuthData) {
       var result = await Future.delayed(const Duration(seconds: 2), () {      
-        var user = _userDB.firstWhere(
+        LoggedUser? user = _userDB.firstWhereOrNull(
           (item) {
             return item.password == receivedData.password && 
                    item.name == receivedData.name;

@@ -14,11 +14,11 @@ class NetworkMockup implements NetworkService {
     void Function(NetworkResponse<UserProfile>) callback
   ) async {
     var receivePort = ReceivePort();
-
     var isolate = await Isolate.spawn<SendPort>(
       tryToLogin, 
       receivePort.sendPort
     ); 
+    
     receivePort.listen((dynamic receivedData) {
       print('Получены новые данные из нового изолята : $receivedData');
       if (receivedData is SendPort) {

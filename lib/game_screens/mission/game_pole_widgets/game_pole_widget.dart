@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../const/map_consts.dart';
-import '../helpers/map_tile_resolver.dart';
-import '../state/game_state.dart';
+import 'package:turn_based_game/const/map_consts.dart';
+import 'package:turn_based_game/game_screens/mission/helpers/map_tile_resolver.dart';
+import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
 
-///Main mission pole widget
 class GamePoleWidget extends StatefulWidget {
   @override
   _GamePoleWidgetState createState() => _GamePoleWidgetState();
@@ -12,7 +11,7 @@ class GamePoleWidget extends StatefulWidget {
 
 class _GamePoleWidgetState extends State<GamePoleWidget> {  
   final MapTileResolver _tileResolver = MapTileResolver();
-  GameState? _state;
+  late GameState _state;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +23,8 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
 
   List<Widget> _buildGamePoleRows() {
     var rows = List<Widget>.empty(growable: true);
-    for (var i = 0; i < _state!.missionMap.length; i++) {
-      var row = Row(  
-        children: _buildRowTiles(i),
-      );
+    for (var i = 0; i < _state.missionMap.length; i++) {
+      var row = Row(children: _buildRowTiles(i));
       rows.add(row);        
     }
     return rows;
@@ -35,18 +32,18 @@ class _GamePoleWidgetState extends State<GamePoleWidget> {
 
   List<Widget> _buildRowTiles(int rowIndex) {
     var tiles = List<Widget>.empty(growable: true);
-    for (var i = 0; i < _state!.missionMap.first.length; i++) {      
+    for (var i = 0; i < _state.missionMap.first.length; i++) {      
       tiles.add(GestureDetector(
-        onTap: () => _state!.clearSelection(),
+        onTap: () => _state.clearSelection(),
         child: Image.asset(
-          _tileResolver.getMapImageName(_state!.missionMap[rowIndex][i]),
+          _tileResolver.getMapImageName(_state.missionMap[rowIndex][i]),
           fit: BoxFit.fill,
           width: MapConsts.tileSide,
           height: MapConsts.tileSide,
-          semanticLabel: _state!.missionMap[rowIndex][i] == MapConsts.waterTile 
-          ? MapConsts.waterTileLabel 
-          : MapConsts.terrainTileLabel,
-        ),
+          semanticLabel: _state.missionMap[rowIndex][i] == MapConsts.waterTile 
+            ? MapConsts.waterTileLabel 
+            : MapConsts.terrainTileLabel
+        )
       ));
     }
     return tiles;

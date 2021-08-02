@@ -8,15 +8,15 @@ import 'package:turn_based_game/repositories/user_profile/user_profile_repositor
 
 class OnLoggedUserCheckAction extends BaseUserRepositoryThunk {
   @override
-  Future<void> execute(
-      Store<AppState> store, UserProfileRepository repository) async {
-    
-    UserProfile loggedUser = repository.getLoggedUser(); 
-    loggedUser.maybeWhen(
-      (id, name, password) {
-        return store.dispatch(LogUserInAction(loggedUser)) as Object;
-      },
-      orElse: () => store.dispatch(const SetNotLoggedInAction()) as Object,
-    );
-  }
+  void execute(
+    Store<AppState> store, 
+    UserProfileRepository repository
+  ) {
+      UserProfile loggedUser = repository.getLoggedUser();
+      if (loggedUser is LoggedUser) {
+        store.dispatch(LogUserInAction(loggedUser));
+      } else {
+        store.dispatch(const SetNotLoggedInAction());
+      }
+    }
 }

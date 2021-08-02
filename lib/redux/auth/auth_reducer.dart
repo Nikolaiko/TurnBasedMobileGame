@@ -1,5 +1,6 @@
 import 'package:redux/redux.dart';
-import '../../model/user_profile/user_profile.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
+
 import 'auth_action.dart';
 import 'auth_state.dart';
 
@@ -8,7 +9,7 @@ final authReducer = combineReducers<AuthState>([
   TypedReducer<AuthState, SetNotLoggedInAction>(_setNotLoggedInUser),
 ]);
 
-AuthState _setNotLoggedInUser(AuthState state, SetNotLoggedInAction action) {  
+AuthState _setNotLoggedInUser(AuthState state, SetNotLoggedInAction action) {
   return const AuthState(NotLoggedUser());
 }
 
