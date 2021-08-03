@@ -16,10 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AppStateTearOff {
   const _$AppStateTearOff();
 
-  _AppState call(AuthState authState, MissionState missionState) {
+  _AppState call(AuthState authState, MissionState missionState,
+      MainScreenState mainScreenState) {
     return _AppState(
       authState,
       missionState,
+      mainScreenState,
     );
   }
 }
@@ -31,6 +33,7 @@ const $AppState = _$AppStateTearOff();
 mixin _$AppState {
   AuthState get authState => throw _privateConstructorUsedError;
   MissionState get missionState => throw _privateConstructorUsedError;
+  MainScreenState get mainScreenState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -41,10 +44,14 @@ mixin _$AppState {
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res>;
-  $Res call({AuthState authState, MissionState missionState});
+  $Res call(
+      {AuthState authState,
+      MissionState missionState,
+      MainScreenState mainScreenState});
 
   $AuthStateCopyWith<$Res> get authState;
   $MissionStateCopyWith<$Res> get missionState;
+  $MainScreenStateCopyWith<$Res> get mainScreenState;
 }
 
 /// @nodoc
@@ -59,6 +66,7 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   $Res call({
     Object? authState = freezed,
     Object? missionState = freezed,
+    Object? mainScreenState = freezed,
   }) {
     return _then(_value.copyWith(
       authState: authState == freezed
@@ -69,6 +77,10 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.missionState
           : missionState // ignore: cast_nullable_to_non_nullable
               as MissionState,
+      mainScreenState: mainScreenState == freezed
+          ? _value.mainScreenState
+          : mainScreenState // ignore: cast_nullable_to_non_nullable
+              as MainScreenState,
     ));
   }
 
@@ -85,6 +97,13 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
       return _then(_value.copyWith(missionState: value));
     });
   }
+
+  @override
+  $MainScreenStateCopyWith<$Res> get mainScreenState {
+    return $MainScreenStateCopyWith<$Res>(_value.mainScreenState, (value) {
+      return _then(_value.copyWith(mainScreenState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -92,12 +111,17 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   factory _$AppStateCopyWith(_AppState value, $Res Function(_AppState) then) =
       __$AppStateCopyWithImpl<$Res>;
   @override
-  $Res call({AuthState authState, MissionState missionState});
+  $Res call(
+      {AuthState authState,
+      MissionState missionState,
+      MainScreenState mainScreenState});
 
   @override
   $AuthStateCopyWith<$Res> get authState;
   @override
   $MissionStateCopyWith<$Res> get missionState;
+  @override
+  $MainScreenStateCopyWith<$Res> get mainScreenState;
 }
 
 /// @nodoc
@@ -113,6 +137,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
   $Res call({
     Object? authState = freezed,
     Object? missionState = freezed,
+    Object? mainScreenState = freezed,
   }) {
     return _then(_AppState(
       authState == freezed
@@ -123,6 +148,10 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.missionState
           : missionState // ignore: cast_nullable_to_non_nullable
               as MissionState,
+      mainScreenState == freezed
+          ? _value.mainScreenState
+          : mainScreenState // ignore: cast_nullable_to_non_nullable
+              as MainScreenState,
     ));
   }
 }
@@ -130,16 +159,18 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppState implements _AppState {
-  const _$_AppState(this.authState, this.missionState);
+  const _$_AppState(this.authState, this.missionState, this.mainScreenState);
 
   @override
   final AuthState authState;
   @override
   final MissionState missionState;
+  @override
+  final MainScreenState mainScreenState;
 
   @override
   String toString() {
-    return 'AppState(authState: $authState, missionState: $missionState)';
+    return 'AppState(authState: $authState, missionState: $missionState, mainScreenState: $mainScreenState)';
   }
 
   @override
@@ -151,14 +182,18 @@ class _$_AppState implements _AppState {
                     .equals(other.authState, authState)) &&
             (identical(other.missionState, missionState) ||
                 const DeepCollectionEquality()
-                    .equals(other.missionState, missionState)));
+                    .equals(other.missionState, missionState)) &&
+            (identical(other.mainScreenState, mainScreenState) ||
+                const DeepCollectionEquality()
+                    .equals(other.mainScreenState, mainScreenState)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(authState) ^
-      const DeepCollectionEquality().hash(missionState);
+      const DeepCollectionEquality().hash(missionState) ^
+      const DeepCollectionEquality().hash(mainScreenState);
 
   @JsonKey(ignore: true)
   @override
@@ -167,13 +202,15 @@ class _$_AppState implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState(AuthState authState, MissionState missionState) =
-      _$_AppState;
+  const factory _AppState(AuthState authState, MissionState missionState,
+      MainScreenState mainScreenState) = _$_AppState;
 
   @override
   AuthState get authState => throw _privateConstructorUsedError;
   @override
   MissionState get missionState => throw _privateConstructorUsedError;
+  @override
+  MainScreenState get mainScreenState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith =>

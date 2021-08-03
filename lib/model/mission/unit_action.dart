@@ -21,5 +21,11 @@ abstract class UnitAction with _$UnitAction {
       bool mirroredVictim
     }        
   ) = UnitAttack;
-  const factory UnitAction.die(Unit unit) = UnitDie;
+  const factory UnitAction.die(
+    Unit unit,
+    {
+      @Default(false)
+      bool mirrored
+    }
+  ) = UnitDie;
 }

@@ -42,6 +42,7 @@ void main() async {
     StoreProvider(
       store: store, 
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Turn Based App",
         theme: ThemeData(
           primarySwatch: Colors.blue,

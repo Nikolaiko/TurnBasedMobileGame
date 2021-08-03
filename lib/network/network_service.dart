@@ -1,5 +1,7 @@
-import '../const/callback_types.dart';
-import '../model/network/user_auth_data.dart';
+import 'package:turn_based_game/const/callback_types.dart';
+import 'package:turn_based_game/model/network/network_response.dart';
+import 'package:turn_based_game/model/network/user_auth_data.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
 
 abstract class NetworkService {
   static const String _versionNumber = "1";
@@ -10,10 +12,12 @@ abstract class NetworkService {
 
   Future<void> loginUser(
     UserAuthData userData, 
-    AuthResponseCallbacl callback
+    AuthResponseCallback callback
   );
   Future<void> registerUser(
     UserAuthData userData, 
-    AuthResponseCallbacl callback
+    AuthResponseCallback callback
   );
+
+  Future<NetworkResponse<UserProfile>> getUserData(String userId);
 }

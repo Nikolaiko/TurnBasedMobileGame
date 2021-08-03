@@ -11,10 +11,17 @@ class MissionScreen extends StatefulWidget {
 }
 
 class _MissionScreenState extends State<MissionScreen> {
-  
+  late GameState _state;
+
   @override
-  Widget build(BuildContext context) {    
-    GameState _state = Provider.of<GameState>(context);    
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _state = Provider.of<GameState>(context);
+    _state.winCallback = _showSuccessAlert;
+  }
+
+  @override
+  Widget build(BuildContext context) {        
     return Scaffold( 
       appBar: AppBar(
         actions: <Widget>[
@@ -31,20 +38,55 @@ class _MissionScreenState extends State<MissionScreen> {
         ]
       ),     
       body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Stack(
-              children: [
-                GamePoleWidget(),
-                UnitsWidget(),
-                UITilesWidget()
-              ]
-            )
-          ),
-        ),
+        child: _buildMainPart()          
       ),      
+    );
+  }
+
+  Future<void> _showSuccessAlert() {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Mission complete'),
+          content: Scrollbar(
+            child: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(
+                    'Counter-Terrorists Win!'                    
+                  )                  
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context, rootNavigator: true).popUntil((route) => route.isFirst);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildMainPart() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Stack(
+          children: [
+            GamePoleWidget(),
+            UnitsWidget(),
+            UITilesWidget()
+          ]
+        )
+      )
     );
   }
 }

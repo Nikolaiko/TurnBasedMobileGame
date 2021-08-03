@@ -5,12 +5,14 @@ import 'package:turn_based_game/const/map_consts.dart';
 
 class UnitWidget extends StatefulWidget {
   final List<String> animationFrames;
+  final int durationMs;
   final bool flip;
   final bool alreadyMoved;
   final VoidCallback? animationCallback;
 
   const UnitWidget(
     this.animationFrames,
+    this.durationMs,
     { 
       this.flip = false,
       this.alreadyMoved = false,
@@ -31,15 +33,9 @@ class _UnitWidgetState extends State<UnitWidget>
     super.initState();
 
     _controller = AnimationController(
-      duration: widget.animationCallback == null
-        ? const Duration(milliseconds: 200)
-        : const Duration(milliseconds: 400),
+      duration: Duration(milliseconds: widget.durationMs),
       vsync: this
     );
-
-    print(_controller.duration);
-    print(widget.animationCallback);
-    print(widget.animationFrames);
 
     if (widget.animationCallback == null) {
       _controller.repeat();
@@ -52,7 +48,6 @@ class _UnitWidgetState extends State<UnitWidget>
       _controller.forward(from: 0);
     }
 
-
     _animation = Tween<double>(
       begin: 0, 
       end: (widget.animationFrames.length - 1).toDouble(),
@@ -63,6 +58,26 @@ class _UnitWidgetState extends State<UnitWidget>
   void didUpdateWidget(UnitWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     
+    if (oldWidget.animationFrames.first != widget.animationFrames.first) {
+      _controller.duration = Duration(milliseconds: widget.durationMs);
+
+      if (widget.animationCallback == null) {
+        _controller.repeat();
+      } else {           
+        _controller.addStatusListener((status) {
+          if (status == AnimationStatus.completed) {          
+            widget.animationCallback?.call();  
+          }        
+        });
+        _controller.reset();
+        _controller.forward(from: 0);
+      }
+
+       _animation = Tween<double>(
+        begin: 0, 
+        end: (widget.animationFrames.length).toDouble(),
+      ).animate(_controller);
+    }
   }
 
   @override

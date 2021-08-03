@@ -5,7 +5,6 @@ import 'package:turn_based_game/game_screens/mission/state/game_state.dart';
 import 'package:turn_based_game/model/mission/enums/ui_tile_type.dart';
 import 'package:turn_based_game/model/mission/ui_tile.dart';
 
-///Widget for ui marks on mission map
 class UITilesWidget extends StatefulWidget {
   @override
   _UITilesWidgetState createState() => _UITilesWidgetState();

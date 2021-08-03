@@ -39,9 +39,10 @@ class _$UnitActionTearOff {
     );
   }
 
-  UnitDie die(Unit unit) {
+  UnitDie die(Unit unit, {bool mirrored = false}) {
     return UnitDie(
       unit,
+      mirrored: mirrored,
     );
   }
 }
@@ -59,7 +60,7 @@ mixin _$UnitAction {
         move,
     required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
         attack,
-    required TResult Function(Unit unit) die,
+    required TResult Function(Unit unit, bool mirrored) die,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,7 +70,7 @@ mixin _$UnitAction {
             int startColumn)?
         move,
     TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
-    TResult Function(Unit unit)? die,
+    TResult Function(Unit unit, bool mirrored)? die,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,7 +154,7 @@ class _$UnitEmptyAction implements UnitEmptyAction {
         move,
     required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
         attack,
-    required TResult Function(Unit unit) die,
+    required TResult Function(Unit unit, bool mirrored) die,
   }) {
     return empty();
   }
@@ -166,7 +167,7 @@ class _$UnitEmptyAction implements UnitEmptyAction {
             int startColumn)?
         move,
     TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
-    TResult Function(Unit unit)? die,
+    TResult Function(Unit unit, bool mirrored)? die,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -321,7 +322,7 @@ class _$UnitMove implements UnitMove {
         move,
     required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
         attack,
-    required TResult Function(Unit unit) die,
+    required TResult Function(Unit unit, bool mirrored) die,
   }) {
     return move(unit, destRow, destColumn, startRow, startColumn);
   }
@@ -334,7 +335,7 @@ class _$UnitMove implements UnitMove {
             int startColumn)?
         move,
     TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
-    TResult Function(Unit unit)? die,
+    TResult Function(Unit unit, bool mirrored)? die,
     required TResult orElse(),
   }) {
     if (move != null) {
@@ -477,7 +478,7 @@ class _$UnitAttack implements UnitAttack {
         move,
     required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
         attack,
-    required TResult Function(Unit unit) die,
+    required TResult Function(Unit unit, bool mirrored) die,
   }) {
     return attack(agressor, victim, mirroredVictim);
   }
@@ -490,7 +491,7 @@ class _$UnitAttack implements UnitAttack {
             int startColumn)?
         move,
     TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
-    TResult Function(Unit unit)? die,
+    TResult Function(Unit unit, bool mirrored)? die,
     required TResult orElse(),
   }) {
     if (attack != null) {
@@ -542,7 +543,7 @@ abstract class UnitAttack implements UnitAction {
 abstract class $UnitDieCopyWith<$Res> {
   factory $UnitDieCopyWith(UnitDie value, $Res Function(UnitDie) then) =
       _$UnitDieCopyWithImpl<$Res>;
-  $Res call({Unit unit});
+  $Res call({Unit unit, bool mirrored});
 }
 
 /// @nodoc
@@ -557,12 +558,17 @@ class _$UnitDieCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? unit = freezed,
+    Object? mirrored = freezed,
   }) {
     return _then(UnitDie(
       unit == freezed
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as Unit,
+      mirrored: mirrored == freezed
+          ? _value.mirrored
+          : mirrored // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -570,14 +576,17 @@ class _$UnitDieCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnitDie implements UnitDie {
-  const _$UnitDie(this.unit);
+  const _$UnitDie(this.unit, {this.mirrored = false});
 
   @override
   final Unit unit;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool mirrored;
 
   @override
   String toString() {
-    return 'UnitAction.die(unit: $unit)';
+    return 'UnitAction.die(unit: $unit, mirrored: $mirrored)';
   }
 
   @override
@@ -585,12 +594,17 @@ class _$UnitDie implements UnitDie {
     return identical(this, other) ||
         (other is UnitDie &&
             (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.mirrored, mirrored) ||
+                const DeepCollectionEquality()
+                    .equals(other.mirrored, mirrored)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(unit);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(mirrored);
 
   @JsonKey(ignore: true)
   @override
@@ -606,9 +620,9 @@ class _$UnitDie implements UnitDie {
         move,
     required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
         attack,
-    required TResult Function(Unit unit) die,
+    required TResult Function(Unit unit, bool mirrored) die,
   }) {
-    return die(unit);
+    return die(unit, mirrored);
   }
 
   @override
@@ -619,11 +633,11 @@ class _$UnitDie implements UnitDie {
             int startColumn)?
         move,
     TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
-    TResult Function(Unit unit)? die,
+    TResult Function(Unit unit, bool mirrored)? die,
     required TResult orElse(),
   }) {
     if (die != null) {
-      return die(unit);
+      return die(unit, mirrored);
     }
     return orElse();
   }
@@ -656,9 +670,10 @@ class _$UnitDie implements UnitDie {
 }
 
 abstract class UnitDie implements UnitAction {
-  const factory UnitDie(Unit unit) = _$UnitDie;
+  const factory UnitDie(Unit unit, {bool mirrored}) = _$UnitDie;
 
   Unit get unit => throw _privateConstructorUsedError;
+  bool get mirrored => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UnitDieCopyWith<UnitDie> get copyWith => throw _privateConstructorUsedError;
 }

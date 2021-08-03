@@ -1,8 +1,9 @@
 import 'dart:isolate';
 
-import '../model/network/network_response.dart';
-import '../model/network/user_auth_data.dart';
-import '../model/user_profile/user_profile.dart';
+import 'package:turn_based_game/model/network/network_response.dart';
+import 'package:turn_based_game/model/network/user_auth_data.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
+
 import 'isolate_functions.dart';
 import 'network_service.dart';
 
@@ -56,5 +57,10 @@ class NetworkMockup implements NetworkService {
         callback(receivedData);
       }
     });
+  }
+
+  @override
+  Future<NetworkResponse<UserProfile>> getUserData(String userId) {    
+    throw UnimplementedError();
   }
 }

@@ -16,35 +16,55 @@ class UnitFactory {
       VoidCallback? animationCallback
     }
   ) {
-
-    print(unitAnimationType);
+    
     var pathPart = (side == ConflictSide.player) 
       ? "assets/images/mission/units/player/${unitType.getName()}/"
       : "assets/images/mission/units/ai/${unitType.getName()}/";
 
     var frameName = "${unitType.getName()}_${unitAnimationType.getName()}";
     var animationLength = 
-      _getAnimationLengthForType(unitType, unitAnimationType);
+      _getAnimationFramesCount(unitType, unitAnimationType);
 
     var animationFrames = List<String>.empty(growable: true);
     for (var i = 1; i <= animationLength; i++) {
       animationFrames.add("$pathPart$frameName$i.png");
     }
-
-    if (unitAnimationType == UnitAnimationType.die) {
-      print(animationFrames);
-      print(animationCallback);
-    }
     
     return UnitWidget(
-      animationFrames, 
+      animationFrames,
+      _getAnimationDuration(unitAnimationType),
       flip: flipped, 
       alreadyMoved: alreadyMoved,
       animationCallback: animationCallback,
     );
   }
 
-  int _getAnimationLengthForType(
+  int _getAnimationDuration(
+    UnitAnimationType animationType
+  ) {
+    var duration = 0;
+    switch(animationType) {
+      case UnitAnimationType.move: {
+        duration = 400;
+        break;
+      }
+      case UnitAnimationType.idle: {
+        duration = 400;
+        break;
+      }
+      case UnitAnimationType.attack: {
+        duration = 600;
+        break;
+      }
+      case UnitAnimationType.die: {
+        duration = 1000;
+        break;
+      }
+    }
+    return duration;
+  }
+
+  int _getAnimationFramesCount(
     UnitType unitType,
     UnitAnimationType unitAnimationType
   ) {

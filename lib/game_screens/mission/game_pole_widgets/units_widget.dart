@@ -32,7 +32,7 @@ class _UnitsWidgetState extends State<UnitsWidget>
 
     _controller.addStatusListener( (status) {
       if (status == AnimationStatus.completed) {
-        _state.actionDone();
+        _state.actionDone(UnitAnimationType.move);
       }
     });  
   }
@@ -110,7 +110,10 @@ class _UnitsWidgetState extends State<UnitsWidget>
                   attackingUnit.conflictSide,
                   UnitAnimationType.attack,
                   animationCallback: () {                    
-                    _state.actionDone();
+                    _state.actionDone(
+                      UnitAnimationType.attack, 
+                      targetUnit: unit
+                    );
                   }
                 )
               )
@@ -134,9 +137,8 @@ class _UnitsWidgetState extends State<UnitsWidget>
           }
           return Object();
         },
-        die: (attackedUnit) {
-          if (unit == attackedUnit) {
-            print("Adding victim");
+        die: (attackedUnit, mirrored) {
+          if (unit == attackedUnit) {            
             units.add(
               Positioned(                                  
                 left: MapConsts.tileSide * unit.column,
@@ -146,9 +148,12 @@ class _UnitsWidgetState extends State<UnitsWidget>
                   unit.conflictSide,
                   UnitAnimationType.die,              
                   alreadyMoved: unit.alreadyMoved,
-                  animationCallback: () { 
-                    print("DIED");
-                    _state.actionDone(); 
+                  flipped: mirrored,
+                  animationCallback: () {                     
+                    _state.actionDone(
+                      UnitAnimationType.die,
+                      targetUnit: unit
+                    ); 
                   }
                 )
               )

@@ -8,6 +8,7 @@ import 'package:turn_based_game/game_screens/mission/helpers/turn_logic_resolver
 import 'package:turn_based_game/model/mission/available_tile.dart';
 import 'package:turn_based_game/model/mission/enums/available_tile_type.dart';
 import 'package:turn_based_game/model/mission/enums/conflict_side.dart';
+import 'package:turn_based_game/model/mission/enums/unit_animation_type.dart';
 import 'package:turn_based_game/model/mission/ui_tile.dart';
 import 'package:turn_based_game/model/mission/unit.dart';
 import 'package:turn_based_game/model/mission/unit_action.dart';
@@ -15,17 +16,21 @@ import 'package:turn_based_game/model/mission/unit_action.dart';
 // ignore: prefer_mixin
 class GameState with ChangeNotifier {
   final StreamController<UnitAction> _actionsStream 
-  = StreamController.broadcast();
+                        = StreamController.broadcast();
 
-  ConflictSide _activeSide = ConflictSide.player;
+  final TurnLogicResolver _logicResolver;  
+  final ConflictSide _activeSide = ConflictSide.player;
+
+  VoidCallback? _winCallback;
   Unit? _selectedUnit;
-  TurnLogicResolver _logicResolver;  
+  List<Point<int>> _tiles = [];  
 
   final List<List<int>> _missionMap;
   final List<Unit> _missionUnits;
   final List<UITile> _uiMap = [];
-  final List<UnitAction> _currentActions = [];
-  List<Point<int>> _tiles = [];
+  final List<UnitAction> _currentActions = [];  
+  
+  set winCallback(VoidCallback callback) => _winCallback = callback;
 
   List<UITile> get uiMap => _uiMap;
   List<List<int>> get missionMap => _missionMap;
@@ -37,7 +42,7 @@ class GameState with ChangeNotifier {
     this._missionUnits,
     this._logicResolver
   ); 
-  
+
   void endTurn() {    
     for (final Unit currentUnit in _missionUnits) {
       currentUnit.alreadyMoved = false;
@@ -86,7 +91,7 @@ class GameState with ChangeNotifier {
         Point<int>(_selectedUnit!.row, _selectedUnit!.column), 
         Point<int>(row, column), 
         _tiles
-      );
+      );      
 
       uiMap.clear();
       _currentActions.clear();
@@ -94,19 +99,23 @@ class GameState with ChangeNotifier {
       var lx = _selectedUnit!.row;
       var ly = _selectedUnit!.column;
 
-      for (var item in path) {
-        _currentActions.add(
-            UnitAction.move(
-              _selectedUnit!,
-              item.x,
-              item.y,
-              lx,
-              ly,
-            )
-          );
-        lx = item.x;
-        ly = item.y;
+      if (path.isNotEmpty) {        
+        for (var item in path) {
+          _currentActions.add(
+              UnitAction.move(
+                _selectedUnit!,
+                item.x,
+                item.y,
+                lx,
+                ly,
+              )
+            );
+          lx = item.x;
+          ly = item.y;
+        }
       }
+
+
 
       Unit attackedUnit = _missionUnits.firstWhere(
         (element) => element.column == column && element.row == row
@@ -116,14 +125,18 @@ class GameState with ChangeNotifier {
         UnitAction.attack(
           _selectedUnit!,
           attackedUnit,
-          mirroredVictim: column < path.last.y
+          mirroredVictim: column <= attackedUnit.column
         )
       );
 
       attackedUnit.health -= _selectedUnit!.attack;
       if (attackedUnit.health <= 0) {
-        _currentActions.add(UnitDie(attackedUnit));
-        //_missionUnits.remove(attackedUnit);
+        _currentActions.add(
+          UnitDie(
+            attackedUnit,
+            mirrored: column <= attackedUnit.column
+          )
+        );        
       }
 
       _selectedUnit!.alreadyMoved = true;
@@ -186,9 +199,21 @@ class GameState with ChangeNotifier {
     }
   }
 
-  void actionDone() {
+  void actionDone(
+    UnitAnimationType actionType, 
+    { Unit? targetUnit }
+  ) {
+
+    if (actionType == UnitAnimationType.die) {
+      _missionUnits.remove(targetUnit);
+    }
+
     if (_currentActions.isEmpty) {
       _actionsStream.add(const UnitAction.empty());
+      if (_isMissionComplete()) {
+        _winCallback?.call();
+        notifyListeners();
+      }
     } else {
       _actionsStream.add(_currentActions.removeAt(0));
     }    
@@ -199,6 +224,13 @@ class GameState with ChangeNotifier {
       return uiTile.column == column && uiTile.row == row;
     });
     return selectedTile != null;
+  }
+
+  bool _isMissionComplete() {
+    Unit? enemyUnit = _missionUnits.firstWhereOrNull(
+      (element) => element.conflictSide == ConflictSide.enemy
+    );
+    return enemyUnit == null;
   }
 
   @override
