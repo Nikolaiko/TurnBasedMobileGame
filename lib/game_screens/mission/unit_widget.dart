@@ -10,9 +10,9 @@ class UnitWidget extends StatefulWidget {
   final VoidCallback? animationCallback;
 
   const UnitWidget(
-    this.animationFrames, 
+    this.animationFrames,
     { 
-      this.flip = false, 
+      this.flip = false,
       this.alreadyMoved = false,
       this.animationCallback
     });
@@ -38,6 +38,8 @@ class _UnitWidgetState extends State<UnitWidget>
     );
 
     print(_controller.duration);
+    print(widget.animationCallback);
+    print(widget.animationFrames);
 
     if (widget.animationCallback == null) {
       _controller.repeat();
@@ -55,6 +57,12 @@ class _UnitWidgetState extends State<UnitWidget>
       begin: 0, 
       end: (widget.animationFrames.length - 1).toDouble(),
     ).animate(_controller);
+  }
+
+  @override
+  void didUpdateWidget(UnitWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    
   }
 
   @override

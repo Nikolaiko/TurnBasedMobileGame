@@ -31,9 +31,11 @@ class _$UnitActionTearOff {
     );
   }
 
-  UnitAttack attack(Unit unit) {
+  UnitAttack attack(Unit agressor, Unit victim, {bool mirroredVictim = false}) {
     return UnitAttack(
-      unit,
+      agressor,
+      victim,
+      mirroredVictim: mirroredVictim,
     );
   }
 
@@ -55,7 +57,8 @@ mixin _$UnitAction {
     required TResult Function(Unit unit, int destRow, int destColumn,
             int startRow, int startColumn)
         move,
-    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
+        attack,
     required TResult Function(Unit unit) die,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,7 +68,7 @@ mixin _$UnitAction {
     TResult Function(Unit unit, int destRow, int destColumn, int startRow,
             int startColumn)?
         move,
-    TResult Function(Unit unit)? attack,
+    TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
     TResult Function(Unit unit)? die,
     required TResult orElse(),
   }) =>
@@ -148,7 +151,8 @@ class _$UnitEmptyAction implements UnitEmptyAction {
     required TResult Function(Unit unit, int destRow, int destColumn,
             int startRow, int startColumn)
         move,
-    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
+        attack,
     required TResult Function(Unit unit) die,
   }) {
     return empty();
@@ -161,7 +165,7 @@ class _$UnitEmptyAction implements UnitEmptyAction {
     TResult Function(Unit unit, int destRow, int destColumn, int startRow,
             int startColumn)?
         move,
-    TResult Function(Unit unit)? attack,
+    TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
     TResult Function(Unit unit)? die,
     required TResult orElse(),
   }) {
@@ -315,7 +319,8 @@ class _$UnitMove implements UnitMove {
     required TResult Function(Unit unit, int destRow, int destColumn,
             int startRow, int startColumn)
         move,
-    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
+        attack,
     required TResult Function(Unit unit) die,
   }) {
     return move(unit, destRow, destColumn, startRow, startColumn);
@@ -328,7 +333,7 @@ class _$UnitMove implements UnitMove {
     TResult Function(Unit unit, int destRow, int destColumn, int startRow,
             int startColumn)?
         move,
-    TResult Function(Unit unit)? attack,
+    TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
     TResult Function(Unit unit)? die,
     required TResult orElse(),
   }) {
@@ -384,7 +389,7 @@ abstract class $UnitAttackCopyWith<$Res> {
   factory $UnitAttackCopyWith(
           UnitAttack value, $Res Function(UnitAttack) then) =
       _$UnitAttackCopyWithImpl<$Res>;
-  $Res call({Unit unit});
+  $Res call({Unit agressor, Unit victim, bool mirroredVictim});
 }
 
 /// @nodoc
@@ -398,13 +403,23 @@ class _$UnitAttackCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? unit = freezed,
+    Object? agressor = freezed,
+    Object? victim = freezed,
+    Object? mirroredVictim = freezed,
   }) {
     return _then(UnitAttack(
-      unit == freezed
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
+      agressor == freezed
+          ? _value.agressor
+          : agressor // ignore: cast_nullable_to_non_nullable
               as Unit,
+      victim == freezed
+          ? _value.victim
+          : victim // ignore: cast_nullable_to_non_nullable
+              as Unit,
+      mirroredVictim: mirroredVictim == freezed
+          ? _value.mirroredVictim
+          : mirroredVictim // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -412,27 +427,41 @@ class _$UnitAttackCopyWithImpl<$Res> extends _$UnitActionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnitAttack implements UnitAttack {
-  const _$UnitAttack(this.unit);
+  const _$UnitAttack(this.agressor, this.victim, {this.mirroredVictim = false});
 
   @override
-  final Unit unit;
+  final Unit agressor;
+  @override
+  final Unit victim;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool mirroredVictim;
 
   @override
   String toString() {
-    return 'UnitAction.attack(unit: $unit)';
+    return 'UnitAction.attack(agressor: $agressor, victim: $victim, mirroredVictim: $mirroredVictim)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UnitAttack &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
+            (identical(other.agressor, agressor) ||
+                const DeepCollectionEquality()
+                    .equals(other.agressor, agressor)) &&
+            (identical(other.victim, victim) ||
+                const DeepCollectionEquality().equals(other.victim, victim)) &&
+            (identical(other.mirroredVictim, mirroredVictim) ||
+                const DeepCollectionEquality()
+                    .equals(other.mirroredVictim, mirroredVictim)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(unit);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(agressor) ^
+      const DeepCollectionEquality().hash(victim) ^
+      const DeepCollectionEquality().hash(mirroredVictim);
 
   @JsonKey(ignore: true)
   @override
@@ -446,10 +475,11 @@ class _$UnitAttack implements UnitAttack {
     required TResult Function(Unit unit, int destRow, int destColumn,
             int startRow, int startColumn)
         move,
-    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
+        attack,
     required TResult Function(Unit unit) die,
   }) {
-    return attack(unit);
+    return attack(agressor, victim, mirroredVictim);
   }
 
   @override
@@ -459,12 +489,12 @@ class _$UnitAttack implements UnitAttack {
     TResult Function(Unit unit, int destRow, int destColumn, int startRow,
             int startColumn)?
         move,
-    TResult Function(Unit unit)? attack,
+    TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
     TResult Function(Unit unit)? die,
     required TResult orElse(),
   }) {
     if (attack != null) {
-      return attack(unit);
+      return attack(agressor, victim, mirroredVictim);
     }
     return orElse();
   }
@@ -497,9 +527,12 @@ class _$UnitAttack implements UnitAttack {
 }
 
 abstract class UnitAttack implements UnitAction {
-  const factory UnitAttack(Unit unit) = _$UnitAttack;
+  const factory UnitAttack(Unit agressor, Unit victim, {bool mirroredVictim}) =
+      _$UnitAttack;
 
-  Unit get unit => throw _privateConstructorUsedError;
+  Unit get agressor => throw _privateConstructorUsedError;
+  Unit get victim => throw _privateConstructorUsedError;
+  bool get mirroredVictim => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UnitAttackCopyWith<UnitAttack> get copyWith =>
       throw _privateConstructorUsedError;
@@ -571,7 +604,8 @@ class _$UnitDie implements UnitDie {
     required TResult Function(Unit unit, int destRow, int destColumn,
             int startRow, int startColumn)
         move,
-    required TResult Function(Unit unit) attack,
+    required TResult Function(Unit agressor, Unit victim, bool mirroredVictim)
+        attack,
     required TResult Function(Unit unit) die,
   }) {
     return die(unit);
@@ -584,7 +618,7 @@ class _$UnitDie implements UnitDie {
     TResult Function(Unit unit, int destRow, int destColumn, int startRow,
             int startColumn)?
         move,
-    TResult Function(Unit unit)? attack,
+    TResult Function(Unit agressor, Unit victim, bool mirroredVictim)? attack,
     TResult Function(Unit unit)? die,
     required TResult orElse(),
   }) {

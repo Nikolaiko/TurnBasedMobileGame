@@ -13,6 +13,13 @@ abstract class UnitAction with _$UnitAction {
     int startRow, 
     int startColumn
   ) = UnitMove;
-  const factory UnitAction.attack(Unit unit) = UnitAttack;
+  const factory UnitAction.attack(
+    Unit agressor,
+    Unit victim,
+    {
+      @Default(false)
+      bool mirroredVictim
+    }        
+  ) = UnitAttack;
   const factory UnitAction.die(Unit unit) = UnitDie;
 }

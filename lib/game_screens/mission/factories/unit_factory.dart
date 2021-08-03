@@ -31,8 +31,9 @@ class UnitFactory {
       animationFrames.add("$pathPart$frameName$i.png");
     }
 
-    if (unitAnimationType == UnitAnimationType.attack) {
+    if (unitAnimationType == UnitAnimationType.die) {
       print(animationFrames);
+      print(animationCallback);
     }
     
     return UnitWidget(
@@ -87,7 +88,7 @@ class UnitFactory {
         break;
       }
       case UnitAnimationType.die: {
-        frameCount = 8;
+        frameCount = 9;
         break;
       }
     }

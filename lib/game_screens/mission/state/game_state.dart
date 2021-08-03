@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:turn_based_game/game_screens/mission/helpers/turn_logic_resolver.dart';
 import 'package:turn_based_game/model/mission/available_tile.dart';
 import 'package:turn_based_game/model/mission/enums/available_tile_type.dart';
@@ -37,10 +38,6 @@ class GameState with ChangeNotifier {
     this._logicResolver
   ); 
   
-  // {    
-  //   _logicResolver = TurnLogicResolver(_missionMap);
-  // }
-
   void endTurn() {    
     for (final Unit currentUnit in _missionUnits) {
       currentUnit.alreadyMoved = false;
@@ -83,7 +80,7 @@ class GameState with ChangeNotifier {
   }
 
   void attackTap(int row, int column) {
-    if (_selectedUnit != null) {
+    if (_selectedUnit != null) {     
       var path = _logicResolver.getPath(
         _selectedUnit!, 
         Point<int>(_selectedUnit!.row, _selectedUnit!.column), 
@@ -111,7 +108,23 @@ class GameState with ChangeNotifier {
         ly = item.y;
       }
 
-      _currentActions.add(UnitAction.attack(_selectedUnit!));
+      Unit attackedUnit = _missionUnits.firstWhere(
+        (element) => element.column == column && element.row == row
+      );
+      
+      _currentActions.add(
+        UnitAction.attack(
+          _selectedUnit!,
+          attackedUnit,
+          mirroredVictim: column < path.last.y
+        )
+      );
+
+      attackedUnit.health -= _selectedUnit!.attack;
+      if (attackedUnit.health <= 0) {
+        _currentActions.add(UnitDie(attackedUnit));
+        //_missionUnits.remove(attackedUnit);
+      }
 
       _selectedUnit!.alreadyMoved = true;
       _selectedUnit!.column = ly;

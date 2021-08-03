@@ -99,7 +99,7 @@ class _UnitsWidgetState extends State<UnitsWidget>
           }
           return Object();
         },
-        attack: (attackingUnit) {
+        attack: (attackingUnit, attackedUnit, mirrored) {
           if (unit == attackingUnit) {     
             units.add(
               Positioned(
@@ -115,10 +115,47 @@ class _UnitsWidgetState extends State<UnitsWidget>
                 )
               )
             );                        
+          } else if (unit == attackedUnit) {
+            units.add(
+              Positioned(                                  
+                left: MapConsts.tileSide * unit.column,
+                top: MapConsts.tileSide * unit.row,
+                child: _factory.buildUnit(
+                  unit.type, 
+                  unit.conflictSide,
+                  UnitAnimationType.idle,
+                  flipped: mirrored,
+                  alreadyMoved: unit.alreadyMoved
+                )
+              )
+            );  
           } else {
-            units.add(_buildUnitWidget(unit));  
+            units.add(_buildUnitWidget(unit));
           }
           return Object();
+        },
+        die: (attackedUnit) {
+          if (unit == attackedUnit) {
+            print("Adding victim");
+            units.add(
+              Positioned(                                  
+                left: MapConsts.tileSide * unit.column,
+                top: MapConsts.tileSide * unit.row,
+                child: _factory.buildUnit(
+                  unit.type, 
+                  unit.conflictSide,
+                  UnitAnimationType.die,              
+                  alreadyMoved: unit.alreadyMoved,
+                  animationCallback: () { 
+                    print("DIED");
+                    _state.actionDone(); 
+                  }
+                )
+              )
+            );
+          } else {
+            units.add(_buildUnitWidget(unit));
+          }
         },
         orElse: () {
           units.add(_buildUnitWidget(unit));
