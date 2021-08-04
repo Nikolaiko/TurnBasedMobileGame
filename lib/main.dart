@@ -24,7 +24,9 @@ void main() async {
   );
 
 
-  NetworkService networkService = NetworkMockup();
+  NetworkMockup networkService = NetworkMockup();
+  networkService.init();
+
   GetIt.instance.registerSingleton<NetworkService>(networkService);
 
   var store = Store<AppState>(

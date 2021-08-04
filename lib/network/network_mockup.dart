@@ -3,11 +3,17 @@ import 'dart:isolate';
 import 'package:turn_based_game/model/network/network_response.dart';
 import 'package:turn_based_game/model/network/user_auth_data.dart';
 import 'package:turn_based_game/model/user_profile/user_profile.dart';
+import 'package:turn_based_game/network/server_mock/server_mock.dart';
 
 import 'isolate_functions.dart';
 import 'network_service.dart';
 
 class NetworkMockup implements NetworkService {
+  final ServerMock _serverMock = ServerMock();
+
+  Future<void> init() async {
+    _serverMock.init();
+  }
 
   @override
   Future loginUser(

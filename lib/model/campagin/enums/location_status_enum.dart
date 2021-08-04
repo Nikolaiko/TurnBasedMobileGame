@@ -1,0 +1,4 @@
+enum LocationsStatus {
+  notAvailable,
+  available
+}
