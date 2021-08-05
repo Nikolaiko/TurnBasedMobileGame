@@ -10,13 +10,11 @@ abstract class NetworkService {
   static const String userLoginUrl = "$_baseUrl/users/login";
   static const String userRegisterUrl = "$_baseUrl/users/register";
 
-  Future<void> loginUser(
-    UserAuthData userData, 
-    AuthResponseCallback callback
+  Future<NetworkResponse<UserProfile>> loginUser(
+    UserAuthData userData    
   );
-  Future<void> registerUser(
-    UserAuthData userData, 
-    AuthResponseCallback callback
+  Future<NetworkResponse<UserProfile>> registerUser(
+    UserAuthData userData    
   );
 
   Future<NetworkResponse<UserProfile>> getUserData(String userId);

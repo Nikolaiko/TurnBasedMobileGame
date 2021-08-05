@@ -1,11 +1,9 @@
-import 'dart:isolate';
-
 import 'package:turn_based_game/model/network/network_response.dart';
 import 'package:turn_based_game/model/network/user_auth_data.dart';
 import 'package:turn_based_game/model/user_profile/user_profile.dart';
 import 'package:turn_based_game/network/server_mock/server_mock.dart';
+import 'package:turn_based_game/network/server_mock/user_server_response.dart';
 
-import 'isolate_functions.dart';
 import 'network_service.dart';
 
 class NetworkMockup implements NetworkService {
@@ -16,53 +14,41 @@ class NetworkMockup implements NetworkService {
   }
 
   @override
-  Future loginUser(
-    UserAuthData userData, 
-    void Function(NetworkResponse<UserProfile>) callback
+  Future<NetworkResponse<UserProfile>> loginUser(
+    UserAuthData userData,     
   ) async {
-    var receivePort = ReceivePort();
-    var isolate = await Isolate.spawn<SendPort>(
-      tryToLogin, 
-      receivePort.sendPort
-    ); 
-    
-    receivePort.listen((dynamic receivedData) {
-      print('Получены новые данные из нового изолята : $receivedData');
-      if (receivedData is SendPort) {
-        receivedData.send(userData);
-      }
-      else if (receivedData is NetworkResponse<UserProfile>) {        
-        isolate.kill(priority: Isolate.immediate);        
-        receivePort.close();
-
-        callback(receivedData);
-      }
-    });
+    UserServerResponse? response = await _serverMock.tryToLogin(userData);
+    if (response != null) {
+      return NetworkResponse<UserProfile>(
+        LoggedUser(response.id, response.login, response.password),
+        success: true
+      );
+    } else {
+      return NetworkResponse<UserProfile>(
+        const NotLoggedUser(),
+        success: false,
+        message: "Something wrong!"
+      );
+    }
   }
 
   @override
-  Future<void> registerUser(
-    UserAuthData userData, 
-    void Function(NetworkResponse<UserProfile>
-  ) callback) async {
-    var receivePort = ReceivePort();
-
-    var isolate = await Isolate.spawn<SendPort>(
-      tryToRegister, 
-      receivePort.sendPort
-    ); 
-    receivePort.listen((dynamic receivedData) {
-      print('Получены новые данные из нового изолята : $receivedData');
-      if (receivedData is SendPort) {
-        receivedData.send(userData);
-      }
-      else if (receivedData is NetworkResponse<UserProfile>) {        
-        isolate.kill(priority: Isolate.immediate);        
-        receivePort.close();
-
-        callback(receivedData);
-      }
-    });
+  Future<NetworkResponse<UserProfile>> registerUser(
+    UserAuthData userData    
+  ) async {
+    UserServerResponse? response = await _serverMock.tryToRegister(userData);
+    if (response != null) {
+      return NetworkResponse<UserProfile>(
+        LoggedUser(response.id, response.login, response.password),
+        success: true
+      );
+    } else {
+      return NetworkResponse<UserProfile>(
+        const NotLoggedUser(),
+        success: false,
+        message: "Something wrong!"
+      );
+    }
   }
 
   @override

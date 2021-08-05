@@ -20,7 +20,12 @@ class MainScreen extends StatelessWidget {
         );
       },
       builder: (context, viewModel) {
-        return InitialLoadingScreen();
+        return viewModel.when(
+          init: () => InitialLoadingScreen(), 
+          loading: () => InitialLoadingScreen(), 
+          ready: () => InitialLoadingScreen(), 
+          profileError: () => InitialLoadingScreen()
+        );        
       }      
     );
   }

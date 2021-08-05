@@ -16,10 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MainScreenActionTearOff {
   const _$MainScreenActionTearOff();
 
-  LoadUserDataAction load() {
-    return const LoadUserDataAction();
-  }
-
   ShowProfileErrorAction profileError() {
     return const ShowProfileErrorAction();
   }
@@ -32,26 +28,22 @@ const $MainScreenAction = _$MainScreenActionTearOff();
 mixin _$MainScreenAction {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
     required TResult Function() profileError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
     TResult Function()? profileError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadUserDataAction value) load,
     required TResult Function(ShowProfileErrorAction value) profileError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadUserDataAction value)? load,
     TResult Function(ShowProfileErrorAction value)? profileError,
     required TResult orElse(),
   }) =>
@@ -73,92 +65,6 @@ class _$MainScreenActionCopyWithImpl<$Res>
   final MainScreenAction _value;
   // ignore: unused_field
   final $Res Function(MainScreenAction) _then;
-}
-
-/// @nodoc
-abstract class $LoadUserDataActionCopyWith<$Res> {
-  factory $LoadUserDataActionCopyWith(
-          LoadUserDataAction value, $Res Function(LoadUserDataAction) then) =
-      _$LoadUserDataActionCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$LoadUserDataActionCopyWithImpl<$Res>
-    extends _$MainScreenActionCopyWithImpl<$Res>
-    implements $LoadUserDataActionCopyWith<$Res> {
-  _$LoadUserDataActionCopyWithImpl(
-      LoadUserDataAction _value, $Res Function(LoadUserDataAction) _then)
-      : super(_value, (v) => _then(v as LoadUserDataAction));
-
-  @override
-  LoadUserDataAction get _value => super._value as LoadUserDataAction;
-}
-
-/// @nodoc
-
-class _$LoadUserDataAction implements LoadUserDataAction {
-  const _$LoadUserDataAction();
-
-  @override
-  String toString() {
-    return 'MainScreenAction.load()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoadUserDataAction);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function() profileError,
-  }) {
-    return load();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function()? profileError,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadUserDataAction value) load,
-    required TResult Function(ShowProfileErrorAction value) profileError,
-  }) {
-    return load(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadUserDataAction value)? load,
-    TResult Function(ShowProfileErrorAction value)? profileError,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadUserDataAction implements MainScreenAction {
-  const factory LoadUserDataAction() = _$LoadUserDataAction;
 }
 
 /// @nodoc
@@ -201,7 +107,6 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
     required TResult Function() profileError,
   }) {
     return profileError();
@@ -210,7 +115,6 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
     TResult Function()? profileError,
     required TResult orElse(),
   }) {
@@ -223,7 +127,6 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadUserDataAction value) load,
     required TResult Function(ShowProfileErrorAction value) profileError,
   }) {
     return profileError(this);
@@ -232,7 +135,6 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadUserDataAction value)? load,
     TResult Function(ShowProfileErrorAction value)? profileError,
     required TResult orElse(),
   }) {

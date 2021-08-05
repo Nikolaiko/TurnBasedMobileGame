@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:redux/redux.dart';
+import 'package:turn_based_game/model/network/network_response.dart';
+import 'package:turn_based_game/model/network/user_auth_data.dart';
+import 'package:turn_based_game/model/user_profile/user_profile.dart';
+import 'package:turn_based_game/network/network_service.dart';
+import 'package:turn_based_game/redux/app_state.dart';
+import 'package:turn_based_game/redux/auth/auth_action.dart';
+import 'package:turn_based_game/repositories/user_profile/user_profile_repository.dart';
 
-import '../../model/network/user_auth_data.dart';
-import '../../network/network_service.dart';
-import '../../redux/app_state.dart';
-import '../../redux/auth/auth_action.dart';
-import '../../repositories/user_profile/user_profile_repository.dart';
+
 
 ///State for auth process
 // ignore: prefer_mixin
@@ -52,14 +55,12 @@ class AuthProcessState with ChangeNotifier {
   String get password => _password;
 
 
-  ///State for auth process
   AuthProcessState(
     this._store,
     this._networkService,
     this._repository
   );
 
-  ///Setting username (login)
   void setUsername(String value) {
     var oldValue = isLoginEnabled;
 
@@ -70,8 +71,7 @@ class AuthProcessState with ChangeNotifier {
       notifyListeners();
     }     
   }
-
-  ///Setting password (login)
+  
   void setPassword(String value) {
     var oldValue = isLoginEnabled;
 
@@ -83,7 +83,6 @@ class AuthProcessState with ChangeNotifier {
     }
   }
 
-  ///Setting username (registration)
   void setNewUsername(String value) {
     var oldValue = isRegisterEnabled;
 
@@ -94,8 +93,7 @@ class AuthProcessState with ChangeNotifier {
       notifyListeners();
     }     
   }
-
-  ///Setting username (registration)
+  
   void setNewPassword(String value) {
     var oldValue = isRegisterEnabled;
 
@@ -106,41 +104,37 @@ class AuthProcessState with ChangeNotifier {
       notifyListeners();
     }
   }
-
-  ///Login function
-  void tryToLogin() {
+  
+  Future<void> tryToLogin() async {
     _isLoginLoading = true;
     notifyListeners();
 
     var data = UserAuthData(_userName, _password);    
-    _networkService.loginUser(data, (response) {
-      if (response.success) {     
-        _repository.setLoggedUser(response.result);  
-        _store.dispatch(LogUserInAction(response.result));
-      } else {
-        print(response.message);
-        _isLoginLoading = false;      
-        notifyListeners();
-      }
-    });    
+    var response = await _networkService.loginUser(data);
+    
+    if (response.success) {     
+      _repository.setLoggedUser(response.result);  
+      _store.dispatch(LogUserInAction(response.result));
+    } else {
+      print(response.message);
+      _isLoginLoading = false;      
+      notifyListeners();
+    }        
   }
-
-  ///Register user function
-  void tryToRegister() {
+  
+  Future<void> tryToRegister() async {
     _isRegisterLoading = true;
     notifyListeners();
 
     var data = UserAuthData(_userName, _password);    
-    _networkService.registerUser(data, (response) {
-      if (response.success) {      
-        _repository.setLoggedUser(response.result);
-        _store.dispatch(LogUserInAction(response.result));
-      } else {
-        print(response.message);
-        _isRegisterLoading = false;      
-        notifyListeners();
-      }
-    });    
+    var response = await _networkService.registerUser(data);
+    if (response.success) {      
+      _repository.setLoggedUser(response.result);
+      _store.dispatch(LogUserInAction(response.result));
+    } else {
+      print(response.message);
+      _isRegisterLoading = false;      
+      notifyListeners();
+    }
   }
-
 }
