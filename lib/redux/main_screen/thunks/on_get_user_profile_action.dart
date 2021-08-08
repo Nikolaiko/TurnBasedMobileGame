@@ -15,10 +15,8 @@ class OnGetUserProfileAction extends BaseUserRepositoryThunk {
     UserProfileRepository repository
   ) {
     final UserProfile profile = repository.getLoggedUser();
-    if (profile is LoggedUser) {
-      store.dispatch(OnLoadUserDataAction(profile.id));
-      
-
+    if (profile is LoggedUser) {      
+      store.dispatch(OnLoadUserDataAction(profile.id));      
     } else {
       store.dispatch(const ShowProfileErrorAction());
     }

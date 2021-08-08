@@ -1,6 +1,7 @@
 import 'package:turn_based_game/const/callback_types.dart';
 import 'package:turn_based_game/model/network/network_response.dart';
 import 'package:turn_based_game/model/network/user_auth_data.dart';
+import 'package:turn_based_game/model/user_profile/user_data.dart';
 import 'package:turn_based_game/model/user_profile/user_profile.dart';
 
 abstract class NetworkService {
@@ -17,5 +18,5 @@ abstract class NetworkService {
     UserAuthData userData    
   );
 
-  Future<NetworkResponse<UserProfile>> getUserData(String userId);
+  Future<NetworkResponse<UserData>> getUserData(String userId);
 }

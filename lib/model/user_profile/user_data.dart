@@ -8,10 +8,9 @@ part 'user_data.freezed.dart';
 @freezed
 class UserData {
   const factory UserData(
-    int level,
-    int experiense,
-    int nextLevelExp,
     int tokens,
     List<LocationData> locations
   ) = _UserData;
+
+  const factory UserData.empty() = EmptyUserData;
 }

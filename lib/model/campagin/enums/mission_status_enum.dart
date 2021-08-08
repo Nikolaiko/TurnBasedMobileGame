@@ -1,5 +1,4 @@
-enum MissionStatus {
-  notAvailable,
+enum MissionStatus {  
   notCompleted,
   completed
 }

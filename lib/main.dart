@@ -25,7 +25,7 @@ void main() async {
 
 
   NetworkMockup networkService = NetworkMockup();
-  networkService.init();
+  await networkService.init();
 
   GetIt.instance.registerSingleton<NetworkService>(networkService);
 

@@ -19,6 +19,16 @@ class _$MainScreenActionTearOff {
   ShowProfileErrorAction profileError() {
     return const ShowProfileErrorAction();
   }
+
+  ShowLoadUserDataErrorAction loadUserDataError() {
+    return const ShowLoadUserDataErrorAction();
+  }
+
+  ShowUserDataAction showUserData(UserData data) {
+    return ShowUserDataAction(
+      data,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +39,31 @@ mixin _$MainScreenAction {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() profileError,
+    required TResult Function() loadUserDataError,
+    required TResult Function(UserData data) showUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? profileError,
+    TResult Function()? loadUserDataError,
+    TResult Function(UserData data)? showUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowProfileErrorAction value) profileError,
+    required TResult Function(ShowLoadUserDataErrorAction value)
+        loadUserDataError,
+    required TResult Function(ShowUserDataAction value) showUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowProfileErrorAction value)? profileError,
+    TResult Function(ShowLoadUserDataErrorAction value)? loadUserDataError,
+    TResult Function(ShowUserDataAction value)? showUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +127,8 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() profileError,
+    required TResult Function() loadUserDataError,
+    required TResult Function(UserData data) showUserData,
   }) {
     return profileError();
   }
@@ -116,6 +137,8 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? profileError,
+    TResult Function()? loadUserDataError,
+    TResult Function(UserData data)? showUserData,
     required TResult orElse(),
   }) {
     if (profileError != null) {
@@ -128,6 +151,9 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowProfileErrorAction value) profileError,
+    required TResult Function(ShowLoadUserDataErrorAction value)
+        loadUserDataError,
+    required TResult Function(ShowUserDataAction value) showUserData,
   }) {
     return profileError(this);
   }
@@ -136,6 +162,8 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowProfileErrorAction value)? profileError,
+    TResult Function(ShowLoadUserDataErrorAction value)? loadUserDataError,
+    TResult Function(ShowUserDataAction value)? showUserData,
     required TResult orElse(),
   }) {
     if (profileError != null) {
@@ -147,4 +175,227 @@ class _$ShowProfileErrorAction implements ShowProfileErrorAction {
 
 abstract class ShowProfileErrorAction implements MainScreenAction {
   const factory ShowProfileErrorAction() = _$ShowProfileErrorAction;
+}
+
+/// @nodoc
+abstract class $ShowLoadUserDataErrorActionCopyWith<$Res> {
+  factory $ShowLoadUserDataErrorActionCopyWith(
+          ShowLoadUserDataErrorAction value,
+          $Res Function(ShowLoadUserDataErrorAction) then) =
+      _$ShowLoadUserDataErrorActionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ShowLoadUserDataErrorActionCopyWithImpl<$Res>
+    extends _$MainScreenActionCopyWithImpl<$Res>
+    implements $ShowLoadUserDataErrorActionCopyWith<$Res> {
+  _$ShowLoadUserDataErrorActionCopyWithImpl(ShowLoadUserDataErrorAction _value,
+      $Res Function(ShowLoadUserDataErrorAction) _then)
+      : super(_value, (v) => _then(v as ShowLoadUserDataErrorAction));
+
+  @override
+  ShowLoadUserDataErrorAction get _value =>
+      super._value as ShowLoadUserDataErrorAction;
+}
+
+/// @nodoc
+
+class _$ShowLoadUserDataErrorAction implements ShowLoadUserDataErrorAction {
+  const _$ShowLoadUserDataErrorAction();
+
+  @override
+  String toString() {
+    return 'MainScreenAction.loadUserDataError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ShowLoadUserDataErrorAction);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() profileError,
+    required TResult Function() loadUserDataError,
+    required TResult Function(UserData data) showUserData,
+  }) {
+    return loadUserDataError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? profileError,
+    TResult Function()? loadUserDataError,
+    TResult Function(UserData data)? showUserData,
+    required TResult orElse(),
+  }) {
+    if (loadUserDataError != null) {
+      return loadUserDataError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowProfileErrorAction value) profileError,
+    required TResult Function(ShowLoadUserDataErrorAction value)
+        loadUserDataError,
+    required TResult Function(ShowUserDataAction value) showUserData,
+  }) {
+    return loadUserDataError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowProfileErrorAction value)? profileError,
+    TResult Function(ShowLoadUserDataErrorAction value)? loadUserDataError,
+    TResult Function(ShowUserDataAction value)? showUserData,
+    required TResult orElse(),
+  }) {
+    if (loadUserDataError != null) {
+      return loadUserDataError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowLoadUserDataErrorAction implements MainScreenAction {
+  const factory ShowLoadUserDataErrorAction() = _$ShowLoadUserDataErrorAction;
+}
+
+/// @nodoc
+abstract class $ShowUserDataActionCopyWith<$Res> {
+  factory $ShowUserDataActionCopyWith(
+          ShowUserDataAction value, $Res Function(ShowUserDataAction) then) =
+      _$ShowUserDataActionCopyWithImpl<$Res>;
+  $Res call({UserData data});
+
+  $UserDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$ShowUserDataActionCopyWithImpl<$Res>
+    extends _$MainScreenActionCopyWithImpl<$Res>
+    implements $ShowUserDataActionCopyWith<$Res> {
+  _$ShowUserDataActionCopyWithImpl(
+      ShowUserDataAction _value, $Res Function(ShowUserDataAction) _then)
+      : super(_value, (v) => _then(v as ShowUserDataAction));
+
+  @override
+  ShowUserDataAction get _value => super._value as ShowUserDataAction;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(ShowUserDataAction(
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as UserData,
+    ));
+  }
+
+  @override
+  $UserDataCopyWith<$Res> get data {
+    return $UserDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ShowUserDataAction implements ShowUserDataAction {
+  const _$ShowUserDataAction(this.data);
+
+  @override
+  final UserData data;
+
+  @override
+  String toString() {
+    return 'MainScreenAction.showUserData(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ShowUserDataAction &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  $ShowUserDataActionCopyWith<ShowUserDataAction> get copyWith =>
+      _$ShowUserDataActionCopyWithImpl<ShowUserDataAction>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() profileError,
+    required TResult Function() loadUserDataError,
+    required TResult Function(UserData data) showUserData,
+  }) {
+    return showUserData(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? profileError,
+    TResult Function()? loadUserDataError,
+    TResult Function(UserData data)? showUserData,
+    required TResult orElse(),
+  }) {
+    if (showUserData != null) {
+      return showUserData(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowProfileErrorAction value) profileError,
+    required TResult Function(ShowLoadUserDataErrorAction value)
+        loadUserDataError,
+    required TResult Function(ShowUserDataAction value) showUserData,
+  }) {
+    return showUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowProfileErrorAction value)? profileError,
+    TResult Function(ShowLoadUserDataErrorAction value)? loadUserDataError,
+    TResult Function(ShowUserDataAction value)? showUserData,
+    required TResult orElse(),
+  }) {
+    if (showUserData != null) {
+      return showUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowUserDataAction implements MainScreenAction {
+  const factory ShowUserDataAction(UserData data) = _$ShowUserDataAction;
+
+  UserData get data => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ShowUserDataActionCopyWith<ShowUserDataAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }

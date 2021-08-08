@@ -16,15 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserDataTearOff {
   const _$UserDataTearOff();
 
-  _UserData call(int level, int experiense, int nextLevelExp, int tokens,
-      List<LocationData> locations) {
+  _UserData call(int tokens, List<LocationData> locations) {
     return _UserData(
-      level,
-      experiense,
-      nextLevelExp,
       tokens,
       locations,
     );
+  }
+
+  EmptyUserData empty() {
+    return const EmptyUserData();
   }
 }
 
@@ -33,14 +33,31 @@ const $UserData = _$UserDataTearOff();
 
 /// @nodoc
 mixin _$UserData {
-  int get level => throw _privateConstructorUsedError;
-  int get experiense => throw _privateConstructorUsedError;
-  int get nextLevelExp => throw _privateConstructorUsedError;
-  int get tokens => throw _privateConstructorUsedError;
-  List<LocationData> get locations => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserDataCopyWith<UserData> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations) $default, {
+    required TResult Function() empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations)? $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserData value) $default, {
+    required TResult Function(EmptyUserData value) empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserData value)? $default, {
+    TResult Function(EmptyUserData value)? empty,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -48,12 +65,6 @@ mixin _$UserData {
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res>;
-  $Res call(
-      {int level,
-      int experiense,
-      int nextLevelExp,
-      int tokens,
-      List<LocationData> locations});
 }
 
 /// @nodoc
@@ -63,51 +74,13 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
   final UserData _value;
   // ignore: unused_field
   final $Res Function(UserData) _then;
-
-  @override
-  $Res call({
-    Object? level = freezed,
-    Object? experiense = freezed,
-    Object? nextLevelExp = freezed,
-    Object? tokens = freezed,
-    Object? locations = freezed,
-  }) {
-    return _then(_value.copyWith(
-      level: level == freezed
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as int,
-      experiense: experiense == freezed
-          ? _value.experiense
-          : experiense // ignore: cast_nullable_to_non_nullable
-              as int,
-      nextLevelExp: nextLevelExp == freezed
-          ? _value.nextLevelExp
-          : nextLevelExp // ignore: cast_nullable_to_non_nullable
-              as int,
-      tokens: tokens == freezed
-          ? _value.tokens
-          : tokens // ignore: cast_nullable_to_non_nullable
-              as int,
-      locations: locations == freezed
-          ? _value.locations
-          : locations // ignore: cast_nullable_to_non_nullable
-              as List<LocationData>,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
+abstract class _$UserDataCopyWith<$Res> {
   factory _$UserDataCopyWith(_UserData value, $Res Function(_UserData) then) =
       __$UserDataCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {int level,
-      int experiense,
-      int nextLevelExp,
-      int tokens,
-      List<LocationData> locations});
+  $Res call({int tokens, List<LocationData> locations});
 }
 
 /// @nodoc
@@ -121,25 +94,10 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? level = freezed,
-    Object? experiense = freezed,
-    Object? nextLevelExp = freezed,
     Object? tokens = freezed,
     Object? locations = freezed,
   }) {
     return _then(_UserData(
-      level == freezed
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as int,
-      experiense == freezed
-          ? _value.experiense
-          : experiense // ignore: cast_nullable_to_non_nullable
-              as int,
-      nextLevelExp == freezed
-          ? _value.nextLevelExp
-          : nextLevelExp // ignore: cast_nullable_to_non_nullable
-              as int,
       tokens == freezed
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
@@ -155,15 +113,8 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserData implements _UserData {
-  const _$_UserData(this.level, this.experiense, this.nextLevelExp, this.tokens,
-      this.locations);
+  const _$_UserData(this.tokens, this.locations);
 
-  @override
-  final int level;
-  @override
-  final int experiense;
-  @override
-  final int nextLevelExp;
   @override
   final int tokens;
   @override
@@ -171,21 +122,13 @@ class _$_UserData implements _UserData {
 
   @override
   String toString() {
-    return 'UserData(level: $level, experiense: $experiense, nextLevelExp: $nextLevelExp, tokens: $tokens, locations: $locations)';
+    return 'UserData(tokens: $tokens, locations: $locations)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _UserData &&
-            (identical(other.level, level) ||
-                const DeepCollectionEquality().equals(other.level, level)) &&
-            (identical(other.experiense, experiense) ||
-                const DeepCollectionEquality()
-                    .equals(other.experiense, experiense)) &&
-            (identical(other.nextLevelExp, nextLevelExp) ||
-                const DeepCollectionEquality()
-                    .equals(other.nextLevelExp, nextLevelExp)) &&
             (identical(other.tokens, tokens) ||
                 const DeepCollectionEquality().equals(other.tokens, tokens)) &&
             (identical(other.locations, locations) ||
@@ -196,9 +139,6 @@ class _$_UserData implements _UserData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(level) ^
-      const DeepCollectionEquality().hash(experiense) ^
-      const DeepCollectionEquality().hash(nextLevelExp) ^
       const DeepCollectionEquality().hash(tokens) ^
       const DeepCollectionEquality().hash(locations);
 
@@ -206,24 +146,144 @@ class _$_UserData implements _UserData {
   @override
   _$UserDataCopyWith<_UserData> get copyWith =>
       __$UserDataCopyWithImpl<_UserData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations) $default, {
+    required TResult Function() empty,
+  }) {
+    return $default(tokens, locations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations)? $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(tokens, locations);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserData value) $default, {
+    required TResult Function(EmptyUserData value) empty,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserData value)? $default, {
+    TResult Function(EmptyUserData value)? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _UserData implements UserData {
-  const factory _UserData(int level, int experiense, int nextLevelExp,
-      int tokens, List<LocationData> locations) = _$_UserData;
+  const factory _UserData(int tokens, List<LocationData> locations) =
+      _$_UserData;
 
-  @override
-  int get level => throw _privateConstructorUsedError;
-  @override
-  int get experiense => throw _privateConstructorUsedError;
-  @override
-  int get nextLevelExp => throw _privateConstructorUsedError;
-  @override
   int get tokens => throw _privateConstructorUsedError;
-  @override
   List<LocationData> get locations => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$UserDataCopyWith<_UserData> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EmptyUserDataCopyWith<$Res> {
+  factory $EmptyUserDataCopyWith(
+          EmptyUserData value, $Res Function(EmptyUserData) then) =
+      _$EmptyUserDataCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmptyUserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
+    implements $EmptyUserDataCopyWith<$Res> {
+  _$EmptyUserDataCopyWithImpl(
+      EmptyUserData _value, $Res Function(EmptyUserData) _then)
+      : super(_value, (v) => _then(v as EmptyUserData));
+
+  @override
+  EmptyUserData get _value => super._value as EmptyUserData;
+}
+
+/// @nodoc
+
+class _$EmptyUserData implements EmptyUserData {
+  const _$EmptyUserData();
+
+  @override
+  String toString() {
+    return 'UserData.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EmptyUserData);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations) $default, {
+    required TResult Function() empty,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(int tokens, List<LocationData> locations)? $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserData value) $default, {
+    required TResult Function(EmptyUserData value) empty,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserData value)? $default, {
+    TResult Function(EmptyUserData value)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyUserData implements UserData {
+  const factory EmptyUserData() = _$EmptyUserData;
 }

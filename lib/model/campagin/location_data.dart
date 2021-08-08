@@ -8,8 +8,7 @@ part 'location_data.freezed.dart';
 class LocationData {
   const factory LocationData(
     String id,
-    String name,
-    LocationsStatus status,
+    String name,    
     List<ShortMissionData> missions
   ) = _LocationData;
 }
