@@ -5,7 +5,7 @@ import 'package:turn_based_game/model/campagin/short_mission_data.dart';
 part 'location_data.freezed.dart';
 
 @freezed
-class LocationData {
+class LocationData with _$LocationData{
   const factory LocationData(
     String id,
     String name,    
